@@ -1,0 +1,18 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Outer Circle -->
+  <circle cx="100" cy="100" r="90" stroke="#2E8B8B" stroke-width="2" fill="none"/>
+  
+  <!-- Cross Symbol (Medical + Vitality) -->
+  <line x1="100" y1="40" x2="100" y2="160" stroke="#2E8B8B" stroke-width="3" stroke-linecap="round"/>
+  <line x1="40" y1="100" x2="160" y2="100" stroke="#2E8B8B" stroke-width="3" stroke-linecap="round"/>
+  
+  <!-- Inner Circle -->
+  <circle cx="100" cy="100" r="20" stroke="#C9A84C" stroke-width="2" fill="none"/>
+  
+  <!-- Leaf Elements (representing vitality and integrative medicine) -->
+  <path d="M 100 60 Q 85 70 85 85" stroke="#4A7C59" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <path d="M 100 60 Q 115 70 115 85" stroke="#4A7C59" stroke-width="2" fill="none" stroke-linecap="round"/>
+  
+  <path d="M 100 140 Q 85 130 85 115" stroke="#4A7C59" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <path d="M 100 140 Q 115 130 115 115" stroke="#4A7C59" stroke-width="2" fill="none" stroke-linecap="round"/>
+</svg>
