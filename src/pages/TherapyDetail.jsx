@@ -12,9 +12,9 @@ export default function TherapyDetail() {
 
   if (!therapy) {
     return (
-      <div className="min-h-screen bg-brand-black pt-24 flex items-center justify-center">
+      <div className="min-h-screen bg-brand-white pt-24 flex items-center justify-center">
         <div className="text-center">
-          <h1 className="font-cormorant text-4xl text-brand-white mb-4">Therapy Not Found</h1>
+          <h1 className="font-cormorant text-4xl text-brand-navy mb-4">Therapy Not Found</h1>
           <Link to="/therapies" className="text-brand-teal hover:text-brand-tealLight">
             Return to Therapies
           </Link>
@@ -32,12 +32,12 @@ export default function TherapyDetail() {
     .slice(0, 3);
 
   return (
-    <div className="bg-brand-black pt-24">
+    <div className="bg-brand-white pt-24">
       {/* Therapy Hero */}
       <section className="min-h-[60vh] relative flex items-center justify-center px-6 bg-gradient-to-br from-brand-deep via-brand-black to-brand-black">
         <div className="max-w-4xl mx-auto text-center">
           <ScrollReveal>
-            <h1 className="font-cormorant text-6xl md:text-8xl text-brand-white mb-6">
+            <h1 className="font-cormorant text-6xl md:text-8xl text-brand-navy mb-6">
               {therapy.title}
             </h1>
             <p className="text-brand-muted text-xl md:text-2xl leading-relaxed mb-8">
@@ -48,7 +48,7 @@ export default function TherapyDetail() {
                 <div className="font-mono text-brand-teal text-xs uppercase tracking-wider mb-1">
                   Session Duration
                 </div>
-                <div className="text-brand-white font-dm font-medium">
+                <div className="text-brand-navy font-dm font-medium">
                   {therapy.sessionDuration}
                 </div>
               </div>
@@ -56,7 +56,7 @@ export default function TherapyDetail() {
                 <div className="font-mono text-brand-teal text-xs uppercase tracking-wider mb-1">
                   Typical Course
                 </div>
-                <div className="text-brand-white font-dm font-medium">
+                <div className="text-brand-navy font-dm font-medium">
                   {therapy.typicalCourse}
                 </div>
               </div>
@@ -64,7 +64,7 @@ export default function TherapyDetail() {
                 <div className="font-mono text-brand-teal text-xs uppercase tracking-wider mb-1">
                   Type
                 </div>
-                <div className="text-brand-white font-dm font-medium">
+                <div className="text-brand-navy font-dm font-medium">
                   {therapy.nonInvasive ? 'Non-invasive' : 'Minimally Invasive'}
                 </div>
               </div>
@@ -74,11 +74,11 @@ export default function TherapyDetail() {
       </section>
 
       {/* Initial Workup */}
-      <section className="py-24 px-6 bg-brand-deep">
+      <section className="py-24 px-6 bg-brand-ice">
         <div className="max-w-5xl mx-auto">
           <ScrollReveal>
             <SectionLabel>BEFORE YOU BEGIN</SectionLabel>
-            <h2 className="font-cormorant text-5xl md:text-6xl text-brand-white mb-12">
+            <h2 className="font-cormorant text-5xl md:text-6xl text-brand-navy mb-12">
               Pre-Treatment Assessment
             </h2>
           </ScrollReveal>
@@ -97,13 +97,13 @@ export default function TherapyDetail() {
       </section>
 
       {/* How It Works */}
-      <section className="py-24 px-6 bg-brand-black">
+      <section className="py-24 px-6 bg-brand-white">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-16 items-start">
             <ScrollReveal variant="fadeLeft">
               <div>
                 <SectionLabel>PROCEDURE</SectionLabel>
-                <h2 className="font-cormorant text-5xl md:text-6xl text-brand-white mb-12">
+                <h2 className="font-cormorant text-5xl md:text-6xl text-brand-navy mb-12">
                   How It Works
                 </h2>
                 <div className="space-y-6">
@@ -127,7 +127,7 @@ export default function TherapyDetail() {
                     <div className="font-mono text-brand-teal text-sm uppercase tracking-wider mb-2">
                       Supervision
                     </div>
-                    <div className="text-brand-white font-dm text-lg">
+                    <div className="text-brand-navy font-dm text-lg">
                       {therapy.supervision}
                     </div>
                   </div>
@@ -139,11 +139,11 @@ export default function TherapyDetail() {
       </section>
 
       {/* Clinical Benefits */}
-      <section className="py-24 px-6 bg-brand-deep">
+      <section className="py-24 px-6 bg-brand-ice">
         <div className="max-w-7xl mx-auto">
           <ScrollReveal>
             <SectionLabel>THERAPEUTIC OUTCOMES</SectionLabel>
-            <h2 className="font-cormorant text-5xl md:text-6xl text-brand-white mb-16">
+            <h2 className="font-cormorant text-5xl md:text-6xl text-brand-navy mb-16">
               Clinical Benefits
             </h2>
           </ScrollReveal>
@@ -153,7 +153,7 @@ export default function TherapyDetail() {
               <ScrollReveal key={index} delay={index * 0.05}>
                 <div className="glass-card p-6 hover:border-brand-teal transition-all duration-300">
                   <CheckCircle className="text-brand-teal mb-4" size={24} />
-                  <h3 className="text-brand-white font-dm font-medium text-lg">
+                  <h3 className="text-brand-navy font-dm font-medium text-lg">
                     {benefit}
                   </h3>
                 </div>
@@ -164,14 +164,14 @@ export default function TherapyDetail() {
       </section>
 
       {/* Session Details */}
-      <section className="py-16 px-6 bg-brand-black border-y border-brand-border">
+      <section className="py-16 px-6 bg-brand-white border-y border-brand-border">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="text-center">
               <div className="font-mono text-brand-teal text-xs uppercase tracking-wider mb-2">
                 Duration
               </div>
-              <div className="text-brand-white font-dm text-lg">
+              <div className="text-brand-navy font-dm text-lg">
                 {therapy.sessionDuration}
               </div>
             </div>
@@ -179,7 +179,7 @@ export default function TherapyDetail() {
               <div className="font-mono text-brand-teal text-xs uppercase tracking-wider mb-2">
                 Typical Course
               </div>
-              <div className="text-brand-white font-dm text-lg">
+              <div className="text-brand-navy font-dm text-lg">
                 {therapy.typicalCourse}
               </div>
             </div>
@@ -187,7 +187,7 @@ export default function TherapyDetail() {
               <div className="font-mono text-brand-teal text-xs uppercase tracking-wider mb-2">
                 Invasiveness
               </div>
-              <div className="text-brand-white font-dm text-lg">
+              <div className="text-brand-navy font-dm text-lg">
                 {therapy.nonInvasive ? 'Non-invasive' : 'Minimal'}
               </div>
             </div>
@@ -195,7 +195,7 @@ export default function TherapyDetail() {
               <div className="font-mono text-brand-teal text-xs uppercase tracking-wider mb-2">
                 Supervision
               </div>
-              <div className="text-brand-white font-dm text-lg">
+              <div className="text-brand-navy font-dm text-lg">
                 Medical
               </div>
             </div>
@@ -204,11 +204,11 @@ export default function TherapyDetail() {
       </section>
 
       {/* Follow-up */}
-      <section className="py-24 px-6 bg-brand-deep">
+      <section className="py-24 px-6 bg-brand-ice">
         <div className="max-w-4xl mx-auto">
           <ScrollReveal>
             <SectionLabel>POST-TREATMENT</SectionLabel>
-            <h2 className="font-cormorant text-5xl md:text-6xl text-brand-white mb-8">
+            <h2 className="font-cormorant text-5xl md:text-6xl text-brand-navy mb-8">
               Follow-up & Monitoring
             </h2>
             <p className="text-brand-muted leading-relaxed text-lg">
@@ -220,11 +220,11 @@ export default function TherapyDetail() {
 
       {/* Related Therapies */}
       {relatedTherapies.length > 0 && (
-        <section className="py-24 px-6 bg-brand-black">
+        <section className="py-24 px-6 bg-brand-white">
           <div className="max-w-7xl mx-auto">
             <ScrollReveal>
               <SectionLabel>COMPLEMENTARY THERAPIES</SectionLabel>
-              <h2 className="font-cormorant text-5xl md:text-6xl text-brand-white mb-16">
+              <h2 className="font-cormorant text-5xl md:text-6xl text-brand-navy mb-16">
                 Often Combined With
               </h2>
             </ScrollReveal>
@@ -246,10 +246,10 @@ export default function TherapyDetail() {
       )}
 
       {/* CTA */}
-      <section className="py-24 px-6 bg-brand-deep">
+      <section className="py-24 px-6 bg-brand-ice">
         <div className="max-w-4xl mx-auto text-center">
           <ScrollReveal>
-            <h2 className="font-cormorant text-5xl md:text-6xl text-brand-white mb-8">
+            <h2 className="font-cormorant text-5xl md:text-6xl text-brand-navy mb-8">
               Ready to Begin?
             </h2>
             <p className="text-brand-muted text-lg leading-relaxed mb-12 max-w-2xl mx-auto">

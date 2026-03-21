@@ -94,13 +94,13 @@ export default function Contact() {
   };
 
   return (
-    <div className="bg-brand-black pt-24">
+    <div className="bg-brand-white pt-24">
       {/* Hero */}
-      <section className="py-24 px-6 bg-brand-deep">
+      <section className="py-24 px-6 bg-brand-ice">
         <div className="max-w-4xl mx-auto text-center">
           <ScrollReveal>
             <SectionLabel>GET IN TOUCH</SectionLabel>
-            <h1 className="font-cormorant text-6xl md:text-8xl text-brand-white mb-8">
+            <h1 className="font-cormorant text-6xl md:text-8xl text-brand-navy mb-8">
               Begin Your Journey
             </h1>
             <p className="text-brand-muted text-lg leading-relaxed max-w-2xl mx-auto">
@@ -118,14 +118,14 @@ export default function Contact() {
             <div className="lg:col-span-3">
               <ScrollReveal>
                 <div className="glass-card p-8 md:p-12">
-                  <h2 className="font-cormorant text-4xl text-brand-white mb-8">
+                  <h2 className="font-cormorant text-4xl text-brand-navy mb-8">
                     Book Your Consultation
                   </h2>
                   
                   {submitted ? (
                     <div className="bg-brand-teal/10 border border-brand-teal/30 rounded-sm p-8 text-center">
                       <div className="text-brand-teal text-5xl mb-4">✓</div>
-                      <h3 className="font-dm font-semibold text-brand-white text-xl mb-2">
+                      <h3 className="font-dm font-semibold text-brand-navy text-xl mb-2">
                         Thank You!
                       </h3>
                       <p className="text-brand-muted">
@@ -145,7 +145,7 @@ export default function Contact() {
                           name="name"
                           value={formData.name}
                           onChange={handleChange}
-                          className={`w-full bg-brand-card border ${errors.name ? 'border-red-500' : 'border-brand-border'} focus:border-brand-teal px-4 py-3 text-brand-white placeholder-brand-dim outline-none transition-colors`}
+                          className={`w-full bg-brand-white border ${errors.name ? 'border-red-500' : 'border-brand-border'} focus:border-brand-teal px-4 py-3 text-brand-navy placeholder-brand-dim outline-none transition-colors`}
                           placeholder="Enter your full name"
                         />
                         {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
@@ -163,7 +163,7 @@ export default function Contact() {
                             name="phone"
                             value={formData.phone}
                             onChange={handleChange}
-                            className={`w-full bg-brand-card border ${errors.phone ? 'border-red-500' : 'border-brand-border'} focus:border-brand-teal px-4 py-3 text-brand-white placeholder-brand-dim outline-none transition-colors`}
+                            className={`w-full bg-brand-white border ${errors.phone ? 'border-red-500' : 'border-brand-border'} focus:border-brand-teal px-4 py-3 text-brand-navy placeholder-brand-dim outline-none transition-colors`}
                             placeholder="+91 9989033686"
                           />
                           {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone}</p>}
@@ -179,7 +179,7 @@ export default function Contact() {
                             name="email"
                             value={formData.email}
                             onChange={handleChange}
-                            className={`w-full bg-brand-card border ${errors.email ? 'border-red-500' : 'border-brand-border'} focus:border-brand-teal px-4 py-3 text-brand-white placeholder-brand-dim outline-none transition-colors`}
+                            className={`w-full bg-brand-white border ${errors.email ? 'border-red-500' : 'border-brand-border'} focus:border-brand-teal px-4 py-3 text-brand-navy placeholder-brand-dim outline-none transition-colors`}
                             placeholder="your@email.com"
                           />
                           {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
@@ -196,7 +196,7 @@ export default function Contact() {
                           name="therapy"
                           value={formData.therapy}
                           onChange={handleChange}
-                          className={`w-full bg-brand-card border ${errors.therapy ? 'border-red-500' : 'border-brand-border'} focus:border-brand-teal px-4 py-3 text-brand-white outline-none transition-colors`}
+                          className={`w-full bg-brand-white border ${errors.therapy ? 'border-red-500' : 'border-brand-border'} focus:border-brand-teal px-4 py-3 text-brand-navy outline-none transition-colors`}
                         >
                           <option value="">Select a therapy</option>
                           {therapyOptions.map(option => (
@@ -217,7 +217,7 @@ export default function Contact() {
                           name="preferredDate"
                           value={formData.preferredDate}
                           onChange={handleChange}
-                          className="w-full bg-brand-card border border-brand-border focus:border-brand-teal px-4 py-3 text-brand-white outline-none transition-colors"
+                          className="w-full bg-brand-white border border-brand-border focus:border-brand-teal px-4 py-3 text-brand-navy outline-none transition-colors"
                         />
                       </div>
 
@@ -232,7 +232,7 @@ export default function Contact() {
                           value={formData.message}
                           onChange={handleChange}
                           rows="4"
-                          className="w-full bg-brand-card border border-brand-border focus:border-brand-teal px-4 py-3 text-brand-white placeholder-brand-dim outline-none transition-colors resize-none"
+                          className="w-full bg-brand-white border border-brand-border focus:border-brand-teal px-4 py-3 text-brand-navy placeholder-brand-dim outline-none transition-colors resize-none"
                           placeholder="Tell us about your health concerns or questions..."
                         ></textarea>
                       </div>
@@ -240,7 +240,7 @@ export default function Contact() {
                       {/* Submit Button */}
                       <button
                         type="submit"
-                        className="w-full bg-brand-teal text-brand-white px-8 py-4 font-dm font-semibold uppercase tracking-widest text-sm hover:bg-brand-tealLight transition-all duration-300 flex items-center justify-center gap-3"
+                        className="w-full bg-brand-teal text-brand-navy px-8 py-4 font-dm font-semibold uppercase tracking-widest text-sm hover:bg-brand-tealLight transition-all duration-300 flex items-center justify-center gap-3"
                       >
                         <Send size={18} />
                         Book Consultation
@@ -257,7 +257,7 @@ export default function Contact() {
                 <ScrollReveal delay={0.2}>
                   <div className="glass-card p-8">
                     <Phone className="text-brand-teal mb-4" size={32} />
-                    <h3 className="font-dm font-semibold text-brand-white text-xl mb-3 uppercase tracking-wide">
+                    <h3 className="font-dm font-semibold text-brand-navy text-xl mb-3 uppercase tracking-wide">
                       Phone & WhatsApp
                     </h3>
                     <p className="text-brand-muted mb-2">
@@ -272,7 +272,7 @@ export default function Contact() {
                 <ScrollReveal delay={0.3}>
                   <div className="glass-card p-8">
                     <Mail className="text-brand-teal mb-4" size={32} />
-                    <h3 className="font-dm font-semibold text-brand-white text-xl mb-3 uppercase tracking-wide">
+                    <h3 className="font-dm font-semibold text-brand-navy text-xl mb-3 uppercase tracking-wide">
                       Email
                     </h3>
                     <p className="text-brand-muted mb-2">
@@ -287,13 +287,13 @@ export default function Contact() {
                 <ScrollReveal delay={0.4}>
                   <div className="glass-card p-8">
                     <Clock className="text-brand-teal mb-4" size={32} />
-                    <h3 className="font-dm font-semibold text-brand-white text-xl mb-3 uppercase tracking-wide">
+                    <h3 className="font-dm font-semibold text-brand-navy text-xl mb-3 uppercase tracking-wide">
                       Hours
                     </h3>
                     <div className="space-y-2 text-brand-muted">
                       <div className="flex justify-between">
                         <span>Monday – Saturday</span>
-                        <span className="text-brand-white">9:00 AM – 6:00 PM</span>
+                        <span className="text-brand-navy">9:00 AM – 6:00 PM</span>
                       </div>
                       <div className="flex justify-between">
                         <span>Sunday</span>
@@ -306,7 +306,7 @@ export default function Contact() {
                 <ScrollReveal delay={0.5}>
                   <div className="glass-card p-8">
                     <MapPin className="text-brand-teal mb-4" size={32} />
-                    <h3 className="font-dm font-semibold text-brand-white text-xl mb-3 uppercase tracking-wide">
+                    <h3 className="font-dm font-semibold text-brand-navy text-xl mb-3 uppercase tracking-wide">
                       Location
                     </h3>
                     <p className="text-brand-muted">
@@ -324,11 +324,11 @@ export default function Contact() {
       </section>
 
       {/* Map Section */}
-      <section className="py-24 px-6 bg-brand-deep">
+      <section className="py-24 px-6 bg-brand-ice">
         <div className="max-w-7xl mx-auto">
           <ScrollReveal>
             <div className="glass-card p-4 overflow-hidden">
-              <div className="aspect-video bg-brand-card flex items-center justify-center border border-brand-border">
+              <div className="aspect-video bg-brand-white flex items-center justify-center border border-brand-border">
                 <div className="text-center">
                   <MapPin className="mx-auto mb-4 text-brand-teal" size={48} />
                   <p className="text-brand-muted">

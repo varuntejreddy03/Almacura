@@ -72,13 +72,13 @@ export default function FAQ() {
   ];
 
   return (
-    <div className="bg-brand-black pt-24">
+    <div className="bg-brand-white pt-24">
       {/* Hero */}
-      <section className="py-24 px-6 bg-brand-deep">
+      <section className="py-24 px-6 bg-brand-ice">
         <div className="max-w-4xl mx-auto text-center">
           <ScrollReveal>
             <SectionLabel>FREQUENTLY ASKED QUESTIONS</SectionLabel>
-            <h1 className="font-cormorant text-6xl md:text-8xl text-brand-white mb-8">
+            <h1 className="font-cormorant text-6xl md:text-8xl text-brand-navy mb-8">
               Your Questions Answered
             </h1>
             <p className="text-brand-muted text-lg leading-relaxed max-w-2xl mx-auto">
@@ -103,7 +103,7 @@ export default function FAQ() {
                         className="w-full px-8 py-6 flex justify-between items-start gap-6 text-left hover:bg-brand-border/20 transition-colors"
                       >
                         <div className="flex-1">
-                          <h3 className="font-dm font-semibold text-brand-white text-lg mb-1">
+                          <h3 className="font-dm font-semibold text-brand-navy text-lg mb-1">
                             {faq.question}
                           </h3>
                         </div>
@@ -139,7 +139,7 @@ export default function FAQ() {
               <div className="sticky top-32">
                 <ScrollReveal delay={0.3}>
                   <div className="glass-card p-8 bg-gradient-to-br from-brand-teal/10 to-transparent border-brand-teal/30">
-                    <h3 className="font-cormorant text-3xl text-brand-white mb-4">
+                    <h3 className="font-cormorant text-3xl text-brand-navy mb-4">
                       Still Have Questions?
                     </h3>
                     <p className="text-brand-muted leading-relaxed mb-6">
@@ -155,7 +155,7 @@ export default function FAQ() {
                           <div className="font-mono text-brand-teal text-xs uppercase tracking-wider mb-1">
                             Phone & WhatsApp
                           </div>
-                          <div className="text-brand-white">
+                          <div className="text-brand-navy">
                             +91 9989033686
                           </div>
                         </div>
@@ -163,7 +163,7 @@ export default function FAQ() {
                           <div className="font-mono text-brand-teal text-xs uppercase tracking-wider mb-1">
                             Email
                           </div>
-                          <div className="text-brand-white break-all">
+                          <div className="text-brand-navy break-all">
                             doctorkvsreddy@yahoo.com
                           </div>
                         </div>
@@ -171,7 +171,7 @@ export default function FAQ() {
                           <div className="font-mono text-brand-teal text-xs uppercase tracking-wider mb-1">
                             Hours
                           </div>
-                          <div className="text-brand-white">
+                          <div className="text-brand-navy">
                             Mon–Sat, 9:00 AM – 6:00 PM
                           </div>
                         </div>
@@ -186,10 +186,10 @@ export default function FAQ() {
       </section>
 
       {/* Additional Help Section */}
-      <section className="py-24 px-6 bg-brand-deep">
+      <section className="py-24 px-6 bg-brand-ice">
         <div className="max-w-4xl mx-auto text-center">
           <ScrollReveal>
-            <h2 className="font-cormorant text-5xl md:text-6xl text-brand-white mb-8">
+            <h2 className="font-cormorant text-5xl md:text-6xl text-brand-navy mb-8">
               Need More Information?
             </h2>
             <p className="text-brand-muted text-lg leading-relaxed mb-12 max-w-2xl mx-auto">

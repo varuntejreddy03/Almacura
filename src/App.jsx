@@ -52,7 +52,7 @@ function App() {
   return (
     <Router>
       <ScrollToTop />
-      <div className="bg-brand-black">
+      <div className="bg-brand-white">
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />

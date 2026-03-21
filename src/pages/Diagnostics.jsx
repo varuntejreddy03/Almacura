@@ -47,7 +47,7 @@ export default function Diagnostics() {
   ];
 
   return (
-    <div className="bg-brand-black pt-24">
+    <div className="bg-brand-white pt-24">
       {/* Hero */}
       <section className="min-h-[60vh] relative flex items-center justify-center px-6 noise-texture">
         <div className="absolute inset-0 opacity-10">
@@ -63,7 +63,7 @@ export default function Diagnostics() {
             <h1 className="font-cormorant text-6xl md:text-8xl mb-8">
               <span className="text-brand-teal italic">Diagnostics First.</span>
               <br />
-              <span className="text-brand-white">Therapy Later.</span>
+              <span className="text-brand-navy">Therapy Later.</span>
             </h1>
             <p className="text-brand-muted text-lg md:text-xl leading-relaxed max-w-2xl mx-auto">
               We do not guess. We assess, identify root causes, and intervene with precision. Every therapeutic protocol begins with comprehensive diagnostic evaluation.
@@ -73,11 +73,11 @@ export default function Diagnostics() {
       </section>
 
       {/* Diagnostic Categories Grid */}
-      <section className="py-24 px-6 bg-brand-deep">
+      <section className="py-24 px-6 bg-brand-ice">
         <div className="max-w-7xl mx-auto">
           <ScrollReveal>
             <SectionLabel>DIAGNOSTIC CATEGORIES</SectionLabel>
-            <h2 className="font-cormorant text-5xl md:text-6xl text-brand-white mb-16">
+            <h2 className="font-cormorant text-5xl md:text-6xl text-brand-navy mb-16">
               Comprehensive Assessment Protocols
             </h2>
           </ScrollReveal>
@@ -87,7 +87,7 @@ export default function Diagnostics() {
               <ScrollReveal key={category.title} delay={index * 0.1}>
                 <div className="glass-card p-8 h-full hover:border-brand-teal transition-all duration-300">
                   <category.icon className="mb-6 text-brand-teal" size={40} strokeWidth={1.5} />
-                  <h3 className="font-dm font-semibold text-brand-white text-xl mb-4 uppercase tracking-wide">
+                  <h3 className="font-dm font-semibold text-brand-navy text-xl mb-4 uppercase tracking-wide">
                     {category.title}
                   </h3>
                   <p className="text-brand-muted leading-relaxed text-sm">
@@ -101,11 +101,11 @@ export default function Diagnostics() {
       </section>
 
       {/* Therapy-Specific Workup Table */}
-      <section className="py-24 px-6 bg-brand-black">
+      <section className="py-24 px-6 bg-brand-white">
         <div className="max-w-7xl mx-auto">
           <ScrollReveal>
             <SectionLabel>THERAPY-SPECIFIC REQUIREMENTS</SectionLabel>
-            <h2 className="font-cormorant text-5xl md:text-6xl text-brand-white mb-16">
+            <h2 className="font-cormorant text-5xl md:text-6xl text-brand-navy mb-16">
               Pre-Treatment Assessment Matrix
             </h2>
           </ScrollReveal>
@@ -115,13 +115,13 @@ export default function Diagnostics() {
               <table className="w-full glass-card">
                 <thead>
                   <tr className="border-b border-brand-border">
-                    <th className="px-6 py-4 text-left font-dm font-semibold text-brand-white uppercase tracking-wider text-sm">
+                    <th className="px-6 py-4 text-left font-dm font-semibold text-brand-navy uppercase tracking-wider text-sm">
                       Therapy
                     </th>
-                    <th className="px-6 py-4 text-left font-dm font-semibold text-brand-white uppercase tracking-wider text-sm">
+                    <th className="px-6 py-4 text-left font-dm font-semibold text-brand-navy uppercase tracking-wider text-sm">
                       Pre-Assessment Required
                     </th>
-                    <th className="px-6 py-4 text-left font-dm font-semibold text-brand-white uppercase tracking-wider text-sm">
+                    <th className="px-6 py-4 text-left font-dm font-semibold text-brand-navy uppercase tracking-wider text-sm">
                       Key Markers
                     </th>
                   </tr>
@@ -138,7 +138,7 @@ export default function Diagnostics() {
                       <td className="px-6 py-4 text-brand-muted text-sm">
                         {row.assessment}
                       </td>
-                      <td className="px-6 py-4 font-mono text-brand-white text-xs">
+                      <td className="px-6 py-4 font-mono text-brand-navy text-xs">
                         {row.markers}
                       </td>
                     </tr>
@@ -151,7 +151,7 @@ export default function Diagnostics() {
       </section>
 
       {/* Philosophy Block */}
-      <section className="py-24 px-6 bg-brand-deep">
+      <section className="py-24 px-6 bg-brand-ice">
         <div className="max-w-5xl mx-auto">
           <ScrollReveal>
             <div className="text-center mb-12">
@@ -169,7 +169,7 @@ export default function Diagnostics() {
               <p>
                 We measure biomarkers, assess metabolic function, evaluate inflammatory status, and identify deficiencies. Only then do we design personalized therapeutic protocols.
               </p>
-              <p className="text-brand-white font-dm font-medium">
+              <p className="text-brand-navy font-dm font-medium">
                 Diagnostics guide therapy. Evidence informs protocol. Outcomes are measured and optimized.
               </p>
             </div>

@@ -44,16 +44,14 @@ export default function Navbar() {
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled 
-            ? 'bg-brand-black/95 backdrop-blur-xl' 
-            : 'bg-brand-black/90 backdrop-blur-md'
-        }`}
+        className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+        style={{
+          backgroundColor: 'rgba(255,255,255,0.97)',
+          backdropFilter: 'blur(16px)',
+          borderBottom: '1px solid rgba(11,110,110,0.1)'
+        }}
       >
-        {/* Teal accent bar at very top */}
-        <div className="h-1 bg-brand-teal w-full"></div>
-        
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-5">
           <div className="flex items-center justify-between">
             {/* Logo - Left */}
             <Link to="/" className="flex items-center gap-3">
@@ -65,43 +63,78 @@ export default function Navbar() {
                 height="40"
                 loading="eager"
               />
-              <span className="font-cormorant text-[18px] font-semibold tracking-[0.18em] uppercase text-white">
+              <span className="font-cormorant text-[18px] sm:text-[20px] font-semibold tracking-[0.18em] uppercase text-brand-navy">
                 ALMACURA
               </span>
             </Link>
 
             {/* Nav Links + CTA - Right */}
-            <div className="hidden lg:flex items-center gap-8">
+            <div className="hidden lg:flex items-center" style={{ gap: '36px' }}>
               {navLinks.map((link) => (
                 <Link
                   key={link.path}
                   to={link.path}
-                  className={`font-dm font-medium text-[13px] tracking-[0.14em] uppercase transition-colors duration-150 ${
-                    location.pathname === link.path
-                      ? 'text-white'
-                      : 'text-[#7A8FA0] hover:text-white'
-                  }`}
+                  className="relative group transition-all duration-200"
+                  style={{
+                    fontSize: '13px',
+                    letterSpacing: '1.2px',
+                    color: location.pathname === link.path ? '#0B6E6E' : '#0D2137',
+                    fontWeight: 500,
+                    textTransform: 'uppercase'
+                  }}
                 >
                   {link.name}
+                  <motion.div
+                    initial={{ width: 0 }}
+                    animate={{ width: location.pathname === link.path ? '100%' : 0 }}
+                    whileHover={{ width: '100%' }}
+                    className="absolute -bottom-1 left-0 bg-brand-teal"
+                    style={{ height: '2px' }}
+                    transition={{ duration: 0.3 }}
+                  />
                 </Link>
               ))}
               
-              {/* Solid Teal CTA Button */}
+              {/* Enhanced Gradient CTA Button */}
               <Link to="/contact">
-                <button className="px-6 py-2.5 bg-brand-teal text-white font-dm font-semibold text-[11px] tracking-[0.2em] uppercase hover:bg-brand-tealLight transition-all duration-200">
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="font-dm uppercase"
+                  style={{
+                    borderRadius: '6px',
+                    padding: '12px 28px',
+                    background: '#0B6E6E',
+                    color: '#FFFFFF',
+                    fontWeight: 600,
+                    letterSpacing: '1.5px',
+                    fontSize: '13px',
+                    boxShadow: '0 4px 15px rgba(11,110,110,0.3)',
+                    transition: 'all 0.3s ease'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = '#095C5C';
+                    e.currentTarget.style.boxShadow = '0 6px 20px rgba(11,110,110,0.45)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = '#0B6E6E';
+                    e.currentTarget.style.boxShadow = '0 4px 15px rgba(11,110,110,0.3)';
+                  }}
+                >
                   Book Consultation
-                </button>
+                </motion.button>
               </Link>
             </div>
 
-            {/* Mobile Menu Button */}
-            <button
+            {/* Mobile Menu Button - Enhanced */}
+            <motion.button
+              whileTap={{ scale: 0.9 }}
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden text-brand-white p-2 -mr-2"
+              className="lg:hidden text-brand-navy p-3 -mr-2 rounded-sm hover:bg-brand-ice/50 active:bg-brand-ice transition-colors"
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
-            </button>
+            </motion.button>
           </div>
         </div>
       </motion.nav>
@@ -114,7 +147,7 @@ export default function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: shouldReduceMotion ? 0 : 0.3 }}
-            className="fixed inset-0 z-40 bg-brand-black lg:hidden overflow-y-auto"
+            className="fixed inset-0 z-40 bg-white lg:hidden overflow-y-auto"
           >
             <div className="flex flex-col items-center justify-center min-h-screen px-6 py-24">
               {navLinks.map((link, index) => (
@@ -123,11 +156,15 @@ export default function Navbar() {
                   initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: shouldReduceMotion ? 0 : index * 0.08 }}
-                  className="w-full text-center py-4"
+                  className="w-full text-center py-5"
                 >
                   <Link
                     to={link.path}
-                    className="font-cormorant text-4xl text-brand-white hover:text-brand-teal transition-colors block"
+                    className={`font-cormorant text-4xl transition-colors block py-2 ${
+                      location.pathname === link.path
+                        ? 'text-brand-teal'
+                        : 'text-brand-navy hover:text-brand-teal'
+                    }`}
                   >
                     {link.name}
                   </Link>
@@ -137,12 +174,15 @@ export default function Navbar() {
                 initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: shouldReduceMotion ? 0 : navLinks.length * 0.08 }}
-                className="w-full max-w-xs mt-8"
+                className="w-full max-w-xs mt-10 px-6"
               >
                 <Link to="/contact">
-                  <button className="w-full px-8 py-4 bg-brand-teal text-white font-dm font-semibold uppercase tracking-widest text-sm hover:bg-brand-tealLight transition-all duration-300">
+                  <motion.button 
+                    whileTap={{ scale: 0.95 }}
+                    className="w-full px-8 py-5 bg-gradient-to-r from-brand-teal to-brand-blue text-white font-dm font-semibold uppercase tracking-widest text-base rounded-sm shadow-xl shadow-brand-teal/30 active:shadow-lg transition-all duration-300"
+                  >
                     Book Consultation
-                  </button>
+                  </motion.button>
                 </Link>
               </motion.div>
             </div>

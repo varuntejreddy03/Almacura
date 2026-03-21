@@ -23,13 +23,13 @@ export default function Nutrition() {
   ];
 
   return (
-    <div className="bg-brand-black pt-24">
+    <div className="bg-brand-white pt-24">
       {/* Hero */}
-      <section className="min-h-[60vh] relative flex items-center justify-center px-6 bg-brand-deep">
+      <section className="min-h-[60vh] relative flex items-center justify-center px-6 bg-brand-ice">
         <div className="max-w-4xl mx-auto text-center">
           <ScrollReveal>
             <SectionLabel>METABOLIC INTERVENTION</SectionLabel>
-            <h1 className="font-cormorant text-6xl md:text-8xl text-brand-white mb-8">
+            <h1 className="font-cormorant text-6xl md:text-8xl text-brand-navy mb-8">
               Nutrition Is Clinical Correction.
             </h1>
             <p className="text-brand-muted text-xl md:text-2xl leading-relaxed max-w-2xl mx-auto">
@@ -40,11 +40,11 @@ export default function Nutrition() {
       </section>
 
       {/* Assessment Section */}
-      <section className="py-24 px-6 bg-brand-black">
+      <section className="py-24 px-6 bg-brand-white">
         <div className="max-w-7xl mx-auto">
           <ScrollReveal>
             <SectionLabel>NUTRITIONAL ASSESSMENT</SectionLabel>
-            <h2 className="font-cormorant text-5xl md:text-6xl text-brand-white mb-16">
+            <h2 className="font-cormorant text-5xl md:text-6xl text-brand-navy mb-16">
               Diagnostic-Driven Nutrition
             </h2>
           </ScrollReveal>
@@ -54,7 +54,7 @@ export default function Nutrition() {
               <ScrollReveal key={card.title} delay={index * 0.1}>
                 <div className="glass-card p-8 h-full hover:border-brand-green transition-all duration-300">
                   <card.icon className="mb-6 text-brand-green" size={40} strokeWidth={1.5} />
-                  <h3 className="font-dm font-semibold text-brand-white text-xl mb-4 uppercase tracking-wide">
+                  <h3 className="font-dm font-semibold text-brand-navy text-xl mb-4 uppercase tracking-wide">
                     {card.title}
                   </h3>
                   <p className="text-brand-muted leading-relaxed">
@@ -68,11 +68,11 @@ export default function Nutrition() {
       </section>
 
       {/* Therapeutic Nutrition Support */}
-      <section className="py-24 px-6 bg-brand-deep">
+      <section className="py-24 px-6 bg-brand-ice">
         <div className="max-w-7xl mx-auto">
           <ScrollReveal>
             <SectionLabel>SUPPORTING YOUR THERAPY</SectionLabel>
-            <h2 className="font-cormorant text-5xl md:text-6xl text-brand-white mb-16">
+            <h2 className="font-cormorant text-5xl md:text-6xl text-brand-navy mb-16">
               Nutrition Underpins Every Protocol
             </h2>
           </ScrollReveal>
@@ -161,7 +161,7 @@ export default function Nutrition() {
                     <span>Amplify longevity protocols with cellular health optimization</span>
                   </li>
                 </ul>
-                <p className="text-brand-white font-dm font-medium">
+                <p className="text-brand-navy font-dm font-medium">
                   Every nutritional recommendation is based on your diagnostic findings and therapeutic goals.
                 </p>
               </div>
@@ -171,11 +171,11 @@ export default function Nutrition() {
       </section>
 
       {/* Protocol Examples */}
-      <section className="py-24 px-6 bg-brand-black">
+      <section className="py-24 px-6 bg-brand-white">
         <div className="max-w-5xl mx-auto">
           <ScrollReveal>
             <SectionLabel>INTERVENTION EXAMPLES</SectionLabel>
-            <h2 className="font-cormorant text-5xl md:text-6xl text-brand-white mb-16">
+            <h2 className="font-cormorant text-5xl md:text-6xl text-brand-navy mb-16">
               Targeted Nutritional Protocols
             </h2>
           </ScrollReveal>
@@ -210,7 +210,7 @@ export default function Nutrition() {
                       <div className="font-mono text-brand-green text-xs uppercase tracking-wider mb-2">
                         Condition
                       </div>
-                      <div className="text-brand-white font-dm font-medium">
+                      <div className="text-brand-navy font-dm font-medium">
                         {protocol.condition}
                       </div>
                     </div>
@@ -239,11 +239,11 @@ export default function Nutrition() {
       </section>
 
       {/* Follow-up */}
-      <section className="py-24 px-6 bg-brand-deep">
+      <section className="py-24 px-6 bg-brand-ice">
         <div className="max-w-4xl mx-auto">
           <ScrollReveal>
             <SectionLabel>MONITORING & REASSESSMENT</SectionLabel>
-            <h2 className="font-cormorant text-5xl md:text-6xl text-brand-white mb-8">
+            <h2 className="font-cormorant text-5xl md:text-6xl text-brand-navy mb-8">
               Continuous Optimization
             </h2>
             <div className="space-y-6 text-brand-muted leading-relaxed">
@@ -253,7 +253,7 @@ export default function Nutrition() {
               <p>
                 Dietary protocols are adjusted based on clinical response, treatment phase, and evolving health goals. This is not static supplementation — this is dynamic metabolic optimization.
               </p>
-              <p className="text-brand-white font-dm font-medium">
+              <p className="text-brand-navy font-dm font-medium">
                 Nutrition is not an afterthought. It is integral to every therapeutic protocol at ALMACURA.
               </p>
             </div>

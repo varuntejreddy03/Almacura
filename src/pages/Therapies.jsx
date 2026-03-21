@@ -5,13 +5,13 @@ import { therapyList, therapiesData } from '../data/therapiesData';
 
 export default function Therapies() {
   return (
-    <div className="bg-brand-black pt-24">
+    <div className="bg-brand-white pt-24">
       {/* Hero */}
-      <section className="min-h-[60vh] relative flex items-center justify-center px-6 bg-brand-deep">
+      <section className="min-h-[60vh] relative flex items-center justify-center px-6 bg-brand-ice">
         <div className="max-w-4xl mx-auto text-center">
           <ScrollReveal>
             <SectionLabel>EVIDENCE-BASED INTERVENTIONS</SectionLabel>
-            <h1 className="font-cormorant text-6xl md:text-8xl text-brand-white mb-8">
+            <h1 className="font-cormorant text-6xl md:text-8xl text-brand-navy mb-8">
               Advanced Medical Therapies
             </h1>
             <p className="text-brand-muted text-lg md:text-xl leading-relaxed max-w-2xl mx-auto">
@@ -44,7 +44,7 @@ export default function Therapies() {
       </section>
 
       {/* Philosophy Section */}
-      <section className="py-24 px-6 bg-brand-deep">
+      <section className="py-24 px-6 bg-brand-ice">
         <div className="max-w-4xl mx-auto text-center">
           <ScrollReveal>
             <div className="text-5xl md:text-6xl font-cormorant italic text-brand-teal leading-tight mb-8">

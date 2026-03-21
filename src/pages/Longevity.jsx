@@ -85,7 +85,7 @@ export default function Longevity() {
   ];
 
   return (
-    <div className="bg-brand-black pt-24">
+    <div className="bg-brand-white pt-24">
       {/* Hero */}
       <section className="min-h-[70vh] relative flex items-center justify-center px-6 overflow-hidden">
         <div className="absolute inset-0">
@@ -114,7 +114,7 @@ export default function Longevity() {
           <ScrollReveal>
             <SectionLabel>BIOLOGICAL AGE OPTIMIZATION</SectionLabel>
             <h1 className="font-cormorant text-6xl md:text-8xl mb-8">
-              <span className="text-brand-white">Your Biological Age</span>
+              <span className="text-brand-navy">Your Biological Age</span>
               <br />
               <span className="text-gradient-teal italic">Can Be Different</span>
             </h1>
@@ -126,7 +126,7 @@ export default function Longevity() {
       </section>
 
       {/* Biological Age Explainer */}
-      <section className="py-24 px-6 bg-brand-deep">
+      <section className="py-24 px-6 bg-brand-ice">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <ScrollReveal variant="fadeLeft">
@@ -137,7 +137,7 @@ export default function Longevity() {
                     <div>
                       <div className="flex items-center justify-between mb-3">
                         <span className="font-mono text-brand-muted text-sm uppercase">Chronological Age</span>
-                        <span className="font-cormorant text-3xl text-brand-white">50</span>
+                        <span className="font-cormorant text-3xl text-brand-navy">50</span>
                       </div>
                       <div className="h-3 bg-brand-border rounded-full overflow-hidden">
                         <div className="h-full bg-brand-dim" style={{ width: '50%' }}></div>
@@ -163,7 +163,7 @@ export default function Longevity() {
                     <div className="font-mono text-brand-teal text-xs uppercase tracking-wider mb-2">
                       Optimization Potential
                     </div>
-                    <div className="font-cormorant text-4xl text-brand-white">
+                    <div className="font-cormorant text-4xl text-brand-navy">
                       12 Years
                     </div>
                   </div>
@@ -179,7 +179,7 @@ export default function Longevity() {
                 <p>
                   Unlike chronological age, biological age can be modified through targeted interventions. Our longevity protocol combines advanced therapies designed to reduce cellular aging, enhance mitochondrial function, and optimize systemic health.
                 </p>
-                <p className="text-brand-white font-dm font-medium">
+                <p className="text-brand-navy font-dm font-medium">
                   The goal is not to live longer in decline. The goal is to extend health span — the years lived in optimal function and vitality.
                 </p>
               </div>
@@ -189,11 +189,11 @@ export default function Longevity() {
       </section>
 
       {/* Longevity Therapies Protocol */}
-      <section className="py-24 px-6 bg-brand-black">
+      <section className="py-24 px-6 bg-brand-white">
         <div className="max-w-5xl mx-auto">
           <ScrollReveal>
             <SectionLabel>THE LONGEVITY PROTOCOL</SectionLabel>
-            <h2 className="font-cormorant text-5xl md:text-6xl text-brand-white mb-16">
+            <h2 className="font-cormorant text-5xl md:text-6xl text-brand-navy mb-16">
               Five-Step Cellular Optimization
             </h2>
           </ScrollReveal>
@@ -213,7 +213,7 @@ export default function Longevity() {
                       <div className="font-mono text-brand-teal text-xs uppercase tracking-wider mb-2">
                         {step.therapy}
                       </div>
-                      <h3 className="font-dm font-semibold text-brand-white text-xl mb-2">
+                      <h3 className="font-dm font-semibold text-brand-navy text-xl mb-2">
                         {step.title}
                       </h3>
                       <p className="text-brand-muted text-sm">
@@ -248,11 +248,11 @@ export default function Longevity() {
       </section>
 
       {/* Follow-up & Monitoring */}
-      <section className="py-24 px-6 bg-brand-deep">
+      <section className="py-24 px-6 bg-brand-ice">
         <div className="max-w-7xl mx-auto">
           <ScrollReveal>
             <SectionLabel>MONITORING & ASSESSMENT</SectionLabel>
-            <h2 className="font-cormorant text-5xl md:text-6xl text-brand-white mb-16">
+            <h2 className="font-cormorant text-5xl md:text-6xl text-brand-navy mb-16">
               Continuous Optimization
             </h2>
           </ScrollReveal>
@@ -262,7 +262,7 @@ export default function Longevity() {
               <ScrollReveal key={card.title} delay={index * 0.1}>
                 <div className="glass-card p-8 h-full hover:border-brand-teal transition-all duration-300">
                   <Clock className="mb-6 text-brand-teal" size={40} strokeWidth={1.5} />
-                  <h3 className="font-dm font-semibold text-brand-white text-xl mb-4 uppercase tracking-wide">
+                  <h3 className="font-dm font-semibold text-brand-navy text-xl mb-4 uppercase tracking-wide">
                     {card.title}
                   </h3>
                   <p className="text-brand-muted leading-relaxed text-sm">
@@ -276,11 +276,11 @@ export default function Longevity() {
       </section>
 
       {/* Who Should Enroll */}
-      <section className="py-24 px-6 bg-brand-black">
+      <section className="py-24 px-6 bg-brand-white">
         <div className="max-w-7xl mx-auto">
           <ScrollReveal>
             <SectionLabel>PATIENT PROFILES</SectionLabel>
-            <h2 className="font-cormorant text-5xl md:text-6xl text-brand-white mb-16">
+            <h2 className="font-cormorant text-5xl md:text-6xl text-brand-navy mb-16">
               Who Should Enroll
             </h2>
           </ScrollReveal>
@@ -290,7 +290,7 @@ export default function Longevity() {
               <ScrollReveal key={profile.title} delay={index * 0.1}>
                 <div className="glass-card p-8 h-full hover:border-brand-teal transition-all duration-300">
                   <profile.icon className="mb-6 text-brand-teal" size={40} strokeWidth={1.5} />
-                  <h3 className="font-dm font-semibold text-brand-white text-xl mb-4">
+                  <h3 className="font-dm font-semibold text-brand-navy text-xl mb-4">
                     {profile.title}
                   </h3>
                   <p className="text-brand-muted leading-relaxed">
@@ -304,10 +304,10 @@ export default function Longevity() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 px-6 bg-brand-deep">
+      <section className="py-24 px-6 bg-brand-ice">
         <div className="max-w-4xl mx-auto text-center">
           <ScrollReveal>
-            <h2 className="font-cormorant text-5xl md:text-6xl text-brand-white mb-8">
+            <h2 className="font-cormorant text-5xl md:text-6xl text-brand-navy mb-8">
               Start Your Longevity Assessment
             </h2>
             <p className="text-brand-muted text-lg leading-relaxed mb-12 max-w-2xl mx-auto">

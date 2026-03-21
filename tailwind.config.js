@@ -8,19 +8,16 @@ export default {
     extend: {
       colors: {
         brand: {
-          black: '#0A0C0F',
-          deep: '#0F1318',
-          card: '#141920',
-          border: '#1E2730',
-          teal: '#2E8B8B',
-          tealDark: '#1A5F5F',
-          tealLight: '#5BBFBF',
-          gold: '#E8952A',
-          goldLight: '#F5B563',
-          green: '#4A7C59',
-          white: '#F0F4F7',
-          muted: '#8A9BAE',
-          dim: '#4A5568',
+          white: '#FFFFFF',
+          ice: '#F0F7FF',
+          light: '#F7FBFF',
+          teal: '#0B6E6E',
+          blue: '#1A8FBF',
+          gold: '#C8903A',
+          navy: '#0D2137',
+          text: '#3D5166',
+          muted: '#5A7184',
+          border: '#E2EEF5',
         }
       },
       fontFamily: {
