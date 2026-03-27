@@ -12,10 +12,10 @@ export default function Therapies() {
           <ScrollReveal>
             <SectionLabel>EVIDENCE-BASED INTERVENTIONS</SectionLabel>
             <h1 className="font-cormorant text-6xl md:text-8xl text-brand-navy mb-8">
-              Advanced Medical Therapies
+              Integrative Medicine
             </h1>
-            <p className="text-brand-muted text-lg md:text-xl leading-relaxed max-w-2xl mx-auto">
-              Seven therapeutic modalities designed to restore function, optimize cellular health, and enhance human vitality. Each therapy is preceded by diagnostic assessment and administered under medical supervision.
+            <p className="text-brand-muted text-lg md:text-xl font-dm italic leading-relaxed max-w-2xl mx-auto border-l-2 border-brand-teal pl-6">
+              Nine therapeutic modalities designed to restore function, optimize cellular health, and address chronic disease. Every protocol is evidence-respecting and medically supervised.
             </p>
           </ScrollReveal>
         </div>

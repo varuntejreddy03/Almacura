@@ -49,23 +49,23 @@ export default function Longevity() {
   const patientProfiles = [
     {
       icon: Briefcase,
-      title: 'Performance Optimization',
-      description: 'Professionals seeking cognitive enhancement, energy optimization, and sustained peak performance.'
+      title: 'Busy Professionals',
+      description: 'Seeking cognitive enhancement, peak energy, and executive health optimisation.'
     },
     {
       icon: HeartIcon,
-      title: 'Metabolic Risk Management',
-      description: 'Patients with pre-diabetes, cardiovascular risk factors, or metabolic syndrome seeking preventive intervention.'
+      title: 'Metabolic Risk Individuals',
+      description: 'Addressing early signs of dysfunction to prevent cardiovascular and diabetic complications.'
     },
     {
       icon: Shield,
-      title: 'Preventive Healthcare',
-      description: 'Health-conscious individuals investing in long-term vitality and disease prevention.'
+      title: 'Preventive Health Seekers',
+      description: 'Individuals investing in long-term vitality, functional immunity, and disease prevention.'
     },
     {
-      icon: User,
-      title: 'Healthy Aging',
-      description: 'Aging population seeking to maintain function, vitality, and quality of life through evidence-based interventions.'
+      icon: Users,
+      title: 'Active Aging Population',
+      description: 'Maintaining independence, muscle integrity, and neuro-emotional balance over time.'
     }
   ];
 
@@ -112,14 +112,12 @@ export default function Longevity() {
 
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <ScrollReveal>
-            <SectionLabel>BIOLOGICAL AGE OPTIMIZATION</SectionLabel>
+            <SectionLabel>VITALITY & LONGEVITY</SectionLabel>
             <h1 className="font-cormorant text-6xl md:text-8xl mb-8">
-              <span className="text-brand-navy">Your Biological Age</span>
-              <br />
-              <span className="text-gradient-teal italic">Can Be Different</span>
+              <span className="text-brand-navy leading-tight">Healthspan <br className="md:hidden" /> Optimisation</span>
             </h1>
-            <p className="text-brand-muted text-lg md:text-xl leading-relaxed max-w-2xl mx-auto">
-              Chronological age is fixed. Biological age is modifiable. Our longevity protocol targets cellular function, mitochondrial health, and systemic optimization.
+            <p className="text-brand-muted text-lg md:text-xl font-dm italic leading-relaxed max-w-2xl mx-auto border-l-2 border-brand-teal pl-6">
+              Focusing on improving the number of years lived in good health, vitality, and independence through early detection and metabolic optimisation.
             </p>
           </ScrollReveal>
         </div>

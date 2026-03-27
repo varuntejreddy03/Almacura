@@ -18,7 +18,7 @@ export default function TherapyCard({ icon, title, description, slug, sessionDur
           <Icon size={32} strokeWidth={1.5} />
         </div>
         
-        <h3 className="font-cormorant text-2xl text-brand-white mb-3">{title}</h3>
+        <h3 className="font-cormorant text-2xl text-brand-navy mb-3">{title}</h3>
         
         {sessionDuration && (
           <div className="font-mono text-xs text-brand-teal uppercase tracking-wider mb-3">

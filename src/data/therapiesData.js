@@ -215,43 +215,116 @@ export const therapiesData = {
     ],
     followUp: "Pain assessment at 1 week and 4 weeks post-procedure. Functional improvement and duration of relief guide additional intervention needs.",
     relatedTherapies: ['prp', 'ozone', 'photobiomodulation']
+  },
+  hifem: {
+    title: "HIFEM Therapy",
+    subtitle: "High-Intensity Focused Electromagnetic technology",
+    sessionDuration: "30 minutes",
+    typicalCourse: "6–10 sessions",
+    nonInvasive: true,
+    supervision: "Medical staff monitored",
+    workup: [
+      "Pelvic floor assessment",
+      "Continence level evaluation",
+      "Medical history review",
+      "Contraindication screening"
+    ],
+    procedure: [
+      "Patient remains fully clothed",
+      "Positions on HIFEM chair",
+      "Adjustable intensity settings",
+      "Supramaximal muscle contractions",
+      "Relaxation phases included"
+    ],
+    benefits: [
+      "Strengthens pelvic floor muscles",
+      "Improves urinary continence",
+      "Enhances pelvic functional support",
+      "Non-invasive treatment",
+      "Restores neuromuscular control",
+      "Improved sexual well-being"
+    ],
+    followUp: "Pelvic strength reassessment at 4 and 12 weeks. Maintenance sessions recommended based on clinical outcome.",
+    relatedTherapies: ['hifu', 'nutrition', 'gynaecology']
+  },
+  hifu: {
+    title: "HIFU Therapy",
+    subtitle: "High-Intensity Focused Ultrasound",
+    sessionDuration: "30–45 minutes",
+    typicalCourse: "1–3 sessions",
+    nonInvasive: true,
+    supervision: "Physician administered",
+    workup: [
+      "Structural tissue assessment",
+      "Tissue laxity evaluation",
+      "Imaging if indicated",
+      "Suitability screening"
+    ],
+    procedure: [
+      "Precise ultrasound energy delivery",
+      "Focused thermal coagulation points",
+      "Targeted deep tissue layers",
+      "Controlled intensity and depth",
+      "Real-time monitoring"
+    ],
+    benefits: [
+      "Supports tissue tightening",
+      "Improves structural integrity",
+      "Stimulates collagen production",
+      "Non-surgical functional restoration",
+      "Long-term structural support",
+      "Minimally invasive approach"
+    ],
+    followUp: "Tissue tone assessment at 3 and 6 months. Long-term structural monitoring to evaluate sustained benefits.",
+    relatedTherapies: ['hifem', 'prp', 'gynaecology']
   }
 };
 
 export const therapyList = [
   {
     slug: 'hbot',
-    icon: 'Droplet',
-    shortDescription: 'Enhanced tissue oxygenation under controlled pressure for healing and regeneration'
+    icon: 'Waves',
+    shortDescription: 'Improves tissue oxygenation, wound healing, cellular repair, and recovery in chronic conditions.'
   },
   {
     slug: 'eecp',
-    icon: 'Heart',
-    shortDescription: 'Non-invasive cardiac circulation enhancement for coronary health'
+    icon: 'HeartPulse',
+    shortDescription: 'Non-invasive therapy that improves blood flow to the heart and enhances coronary circulation.'
   },
   {
     slug: 'prp',
     icon: 'Syringe',
-    shortDescription: 'Autologous growth factor therapy for tissue regeneration'
+    shortDescription: "Uses the patient's own blood-derived growth factors to support healing and tissue regeneration."
   },
   {
     slug: 'ozone',
     icon: 'Wind',
-    shortDescription: 'Medical ozone therapy for oxygen metabolism and immune modulation'
+    shortDescription: 'Uses medical-grade ozone to improve oxygen utilisation and modulate immune function.'
   },
   {
     slug: 'photobiomodulation',
     icon: 'Lightbulb',
-    shortDescription: 'Light-based therapy for mitochondrial energy optimization'
+    shortDescription: 'Uses light to stimulate cellular function, enhance mitochondrial activity and promote repair.'
   },
   {
     slug: 'hydrogen',
     icon: 'Atom',
-    shortDescription: 'Molecular hydrogen for selective antioxidant protection'
+    shortDescription: 'Inhalation of molecular hydrogen acts as a selective antioxidant to reduce oxidative stress.'
   },
   {
     slug: 'pain-management',
-    icon: 'Shield',
-    shortDescription: 'Targeted neural blocks for precise pain pathway intervention'
+    icon: 'ShieldAlert',
+    shortDescription: 'Targeted injections to interrupt pain pathways, reduce chronic pain, and improve mobility.'
+  },
+  {
+    slug: 'hifem',
+    icon: 'Zap',
+    shortDescription: 'Non-invasive pelvic muscle strengthening therapy for improving continence and pelvic support.'
+  },
+  {
+    slug: 'hifu',
+    icon: 'Focus',
+    shortDescription: 'Focused ultrasound therapy used for tissue tightening and support in selected cases.'
   }
 ];
+

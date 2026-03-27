@@ -61,12 +61,12 @@ export default function Diagnostics() {
           <ScrollReveal>
             <SectionLabel>ASSESSMENT FIRST</SectionLabel>
             <h1 className="font-cormorant text-6xl md:text-8xl mb-8">
-              <span className="text-brand-teal italic">Diagnostics First.</span>
+              <span className="text-brand-teal italic">Every Treatment Begins</span>
               <br />
-              <span className="text-brand-navy">Therapy Later.</span>
+              <span className="text-brand-navy">With Evaluation.</span>
             </h1>
-            <p className="text-brand-muted text-lg md:text-xl leading-relaxed max-w-2xl mx-auto">
-              We do not guess. We assess, identify root causes, and intervene with precision. Every therapeutic protocol begins with comprehensive diagnostic evaluation.
+            <p className="text-brand-muted text-lg md:text-xl leading-relaxed max-w-2xl mx-auto border-l-2 border-brand-teal pl-6">
+              We do not guess. We assess, identify root causes, and intervene with precision. Every therapeutic protocol at ALMACURA begins with comprehensive diagnostic evaluation.
             </p>
           </ScrollReveal>
         </div>

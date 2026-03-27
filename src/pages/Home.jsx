@@ -1,6 +1,6 @@
 import { motion, useReducedMotion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Activity, Microscope, Heart, Leaf, ArrowDown } from 'lucide-react';
+import { ArrowRight, Activity, Microscope, Heart, Leaf, ArrowDown, Shield, Target, Waves, Zap, ShieldCheck, Brain, Sparkles } from 'lucide-react';
 import { useState } from 'react';
 import CountUp from 'react-countup';
 import { useInView } from 'react-intersection-observer';
@@ -34,15 +34,18 @@ export default function Home() {
     }
   ];
 
-  const marqueeText = "HBOT · EECP · PRP · OZONE · PHOTOBIOMODULATION · MOLECULAR HYDROGEN · PAIN MANAGEMENT · ";
+  const marqueeItems = [
+    'HBOT', 'EECP', 'PRP', 'OZONE', 'PHOTOBIOMODULATION', 
+    'MOLECULAR HYDROGEN', 'PAIN MANAGEMENT', 'REGENERATIVE GYNAECOLOGY', 
+    'METABOLIC OPTIMISATION', 'CELLULAR HEALTH'
+  ];
 
   return (
     <div className="bg-brand-white overflow-x-hidden">
       {/* Section 1: Hero */}
       <section 
-        className="relative flex items-center justify-center overflow-hidden px-4 sm:px-6"
+        className="relative flex flex-col items-center overflow-hidden px-4 sm:px-6 min-h-screen"
         style={{
-          minHeight: 'calc(100vh - 80px)',
           background: 'linear-gradient(135deg, #E8F5F5 0%, #EBF6F8 35%, #F0F9FF 65%, #E8F5F2 100%)'
         }}
       >
@@ -62,53 +65,11 @@ export default function Home() {
               background: 'radial-gradient(ellipse at 10% 90%, rgba(26,143,191,0.08) 0%, transparent 50%)'
             }}
           />
-          {/* Large circle outline top-right */}
-          <div 
-            className="absolute"
-            style={{
-              top: '-100px',
-              right: '-100px',
-              width: '500px',
-              height: '500px',
-              borderRadius: '50%',
-              border: '1px solid rgba(11,110,110,0.08)'
-            }}
-          />
         </div>
 
-        <div className="relative z-10 text-center max-w-5xl mx-auto w-full flex flex-col items-center justify-center" style={{ paddingTop: '60px' }}>
-          <motion.div
-            initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: shouldReduceMotion ? 0 : 0.6 }}
-            className="flex items-center gap-3 mb-6 sm:mb-8 justify-center"
-            style={{
-              color: '#0B6E6E',
-              letterSpacing: '3px',
-              fontSize: '11px',
-              fontWeight: 500,
-              textTransform: 'uppercase'
-            }}
-          >
-            <div 
-              style={{
-                background: 'linear-gradient(90deg, transparent, #0B6E6E, transparent)',
-                height: '1px',
-                width: '60px'
-              }}
-            />
-            <span>ALMACURA · HYDERABAD · EST. 2025</span>
-            <div 
-              style={{
-                background: 'linear-gradient(90deg, transparent, #0B6E6E, transparent)',
-                height: '1px',
-                width: '60px'
-              }}
-            />
-          </motion.div>
-
+        <div className="relative z-10 text-center max-w-5xl mx-auto w-full flex flex-col items-center pt-48 pb-64">
           <motion.h1
-            className="font-cormorant italic mb-4 sm:mb-6"
+            className="font-dm tracking-tight mb-6"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: shouldReduceMotion ? 0 : 0.2 }}
@@ -117,12 +78,11 @@ export default function Home() {
               initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: shouldReduceMotion ? 0 : 0.3, duration: shouldReduceMotion ? 0 : 0.8 }}
-              className="block"
+              className="block leading-none"
               style={{
-                fontSize: 'clamp(48px, 10vw, 88px)',
+                fontSize: 'clamp(40px, 8vw, 76px)',
                 color: '#0D2137',
-                fontWeight: 700,
-                lineHeight: 1.0
+                fontWeight: 700
               }}
             >
               All Paths
@@ -131,14 +91,13 @@ export default function Home() {
               initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: shouldReduceMotion ? 0 : 0.5, duration: shouldReduceMotion ? 0 : 0.8 }}
-              className="block"
+              className="block leading-none mt-2"
               style={{
-                fontSize: 'clamp(48px, 10vw, 88px)',
+                fontSize: 'clamp(40px, 8vw, 76px)',
                 color: '#0B6E6E',
                 fontWeight: 700,
                 fontStyle: 'italic',
-                lineHeight: 1.0,
-                textShadow: '0 2px 20px rgba(11,110,110,0.08)'
+                textShadow: '0 2px 20px rgba(11,110,110,0.05)'
               }}
             >
               To Vitality
@@ -151,77 +110,40 @@ export default function Home() {
             transition={{ delay: shouldReduceMotion ? 0 : 0.8 }}
             className="mx-auto px-4"
             style={{
-              fontSize: '18px',
+              fontSize: '17px',
               color: '#4A6477',
               lineHeight: 1.8,
-              maxWidth: '580px',
-              marginTop: '24px',
-              marginBottom: '40px'
+              maxWidth: '650px',
+              marginTop: '12px'
             }}
           >
-            Advanced diagnostics, regenerative therapies, and longevity medicine designed to restore health and optimize human vitality.
+            Treating Disease. Restoring Vitality. Optimising Healthspan. <br className="hidden md:block" />
+            <span className="text-[13px] opacity-70 font-dm uppercase tracking-[0.2em] mt-5 block text-brand-teal font-bold">
+              Integrative Medicine & Healthspan Optimisation
+            </span>
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: shouldReduceMotion ? 0 : 1 }}
-            className="flex flex-col sm:flex-row justify-center items-center w-full max-w-xs sm:max-w-none mx-auto"
-            style={{ gap: '20px' }}
+            className="flex flex-col sm:flex-row justify-center items-center gap-6 mt-10"
           >
-            {/* Button 1 - Book Consultation */}
-            <Link to="/contact" className="w-full sm:w-auto">
+            <Link to="/contact">
               <motion.button
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
-                className="w-full font-dm uppercase"
-                style={{
-                  background: '#0B6E6E',
-                  color: '#FFFFFF',
-                  borderRadius: '6px',
-                  padding: '16px 36px',
-                  fontSize: '13px',
-                  letterSpacing: '1.5px',
-                  fontWeight: 600,
-                  boxShadow: '0 6px 24px rgba(11,110,110,0.35)',
-                  transition: 'all 0.3s ease'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = '#095C5C';
-                  e.currentTarget.style.boxShadow = '0 8px 30px rgba(11,110,110,0.45)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = '#0B6E6E';
-                  e.currentTarget.style.boxShadow = '0 6px 24px rgba(11,110,110,0.35)';
-                }}
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-10 py-5 bg-brand-navy text-white font-dm font-bold uppercase tracking-[0.2em] text-[12px] rounded-full shadow-[0_15px_35px_rgba(13,33,55,0.25)] hover:shadow-brand-teal/40 hover:bg-brand-teal transition-all duration-500"
               >
                 Book Consultation
               </motion.button>
             </Link>
             
-            {/* Button 2 - Explore Therapies */}
-            <Link to="/therapies" className="w-full sm:w-auto">
+            <Link to="/therapies">
               <motion.button
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
-                className="w-full font-dm uppercase"
-                style={{
-                  border: '2px solid #0B6E6E',
-                  color: '#0B6E6E',
-                  background: 'transparent',
-                  borderRadius: '6px',
-                  padding: '16px 36px',
-                  fontSize: '13px',
-                  letterSpacing: '1.5px',
-                  fontWeight: 600,
-                  transition: 'all 0.3s ease'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = 'rgba(11,110,110,0.06)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = 'transparent';
-                }}
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-10 py-5 border-[1.5px] border-brand-teal text-brand-teal font-dm font-bold uppercase tracking-[0.2em] text-[12px] rounded-full hover:bg-brand-teal/5 transition-all duration-500 bg-white/40 backdrop-blur-sm"
               >
                 Explore Therapies
               </motion.button>
@@ -229,32 +151,47 @@ export default function Home() {
           </motion.div>
         </div>
 
-        {/* Scrolling Ticker Bar */}
-        <div 
-          className="absolute bottom-0 left-0 right-0 overflow-hidden"
-          style={{
-            height: '44px',
-            background: 'linear-gradient(90deg, #0B6E6E 0%, #1A8FBF 100%)',
-            display: 'flex',
-            alignItems: 'center',
-            marginBottom: '-5px'
-          }}
+        {/* Cinematic Scroll Indicator */}
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.5, duration: 1 }}
+          className="absolute bottom-20 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 cursor-pointer group"
+          onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
         >
-          <motion.div
-            animate={{ x: [0, -1000] }}
-            transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-            className="flex whitespace-nowrap font-mono"
-            style={{
-              color: '#FFFFFF',
-              letterSpacing: '2.5px',
-              fontSize: '11px',
-              fontWeight: 500
-            }}
-          >
-            <span>{marqueeText}</span>
-            <span>{marqueeText}</span>
-            <span>{marqueeText}</span>
-          </motion.div>
+          <div className="w-[1px] h-12 bg-gradient-to-b from-brand-teal/80 to-transparent group-hover:h-16 transition-all duration-700"></div>
+          <span className="font-dm text-[9px] uppercase tracking-[0.4em] text-brand-teal font-bold opacity-60 group-hover:opacity-100 transition-opacity">Scroll to Explore</span>
+          <div className="relative w-6 h-10 border-[1.5px] border-brand-teal/40 rounded-full flex justify-center p-1.5 group-hover:border-brand-teal/80 transition-all duration-500">
+            <motion.div 
+              animate={{ y: [0, 12, 0] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              className="w-1.5 h-1.5 bg-brand-teal rounded-full"
+            />
+          </div>
+        </motion.div>
+
+        {/* Upgraded Scrolling Ticker Bar - Glassmorphism */}
+        <div className="absolute bottom-0 left-0 right-0 overflow-hidden z-20">
+          <div className="relative bg-white/60 backdrop-blur-3xl border-t border-brand-teal/10 py-5 shadow-[0_-10px_40px_rgba(0,0,0,0.03)]">
+            <motion.div
+              animate={{ x: [0, -1500] }}
+              transition={{ duration: 50, repeat: Infinity, ease: "linear" }}
+              className="flex whitespace-nowrap"
+            >
+              {[...Array(6)].map((_, i) => (
+                <div key={i} className="flex items-center gap-10 px-5">
+                  {marqueeItems.map((text) => (
+                    <div key={text} className="flex items-center gap-10">
+                      <span className="font-dm text-[11px] font-bold tracking-[0.25em] uppercase text-brand-navy/60 hover:text-brand-teal transition-colors duration-300">
+                        {text}
+                      </span>
+                      <div className="w-1.5 h-1.5 rounded-full bg-brand-teal/30"></div>
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -300,12 +237,13 @@ export default function Home() {
             </h2>
           </ScrollReveal>
 
-          <div className="flex flex-col md:grid md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+          <div className="flex flex-col md:grid md:grid-cols-3 lg:grid-cols-5 gap-6 sm:gap-8">
             {[
-              { num: '01', icon: Microscope, title: 'DIAGNOSTICS', desc: 'Comprehensive assessment first' },
-              { num: '02', icon: Heart, title: 'LONGEVITY', desc: 'Biological age optimization' },
-              { num: '03', icon: Activity, title: 'THERAPIES', desc: 'Evidence-based interventions' },
-              { num: '04', icon: Leaf, title: 'NUTRITION', desc: 'Metabolic correction support' }
+              { num: '01', icon: Microscope, title: 'ASSESSMENT', desc: 'Structured evaluation first' },
+              { num: '02', icon: Activity, title: 'DIAGNOSIS', desc: 'Identifying root causes' },
+              { num: '03', icon: Heart, title: 'TREATMENT', desc: 'Integrative clinical care' },
+              { num: '04', icon: Shield, title: 'RESTORATION', desc: 'Functional recovery focus' },
+              { num: '05', icon: Target, title: 'HEALTHSPAN', desc: 'Long-term vitality support' }
             ].map((step, index) => (
               <div key={step.num}>
                 <ScrollReveal delay={index * 0.1}>
@@ -318,14 +256,9 @@ export default function Home() {
                       </h3>
                       <p className="text-brand-muted text-sm">{step.desc}</p>
                     </div>
-                    {index < 3 && (
-                      <div className="hidden lg:block absolute top-1/2 -right-4 w-8 h-px bg-brand-teal/30">
-                        <ArrowRight className="absolute -right-2 -top-2 text-brand-teal/30" size={16} />
-                      </div>
-                    )}
                   </div>
                 </ScrollReveal>
-                {index < 3 && (
+                {index < 4 && (
                   <div className="flex md:hidden justify-center py-4">
                     <ArrowDown className="text-brand-teal/30" size={24} />
                   </div>
@@ -349,38 +282,41 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mb-6 sm:mb-8">
             {[
               {
-                icon: Microscope,
-                title: 'Diagnostics',
-                desc: 'Comprehensive biomarker assessment, metabolic panels, and functional testing before any therapeutic intervention.',
-                link: '/diagnostics'
+                icon: Activity,
+                title: 'Integrative Medicine',
+                desc: 'For patients with existing medical conditions. Diagnosis → Treatment → Recovery.',
+                link: '/therapies'
               },
               {
                 icon: Heart,
-                title: 'Longevity',
-                desc: 'Biological age optimization through targeted therapies designed to enhance cellular function and extend health span.',
+                title: 'Healthspan Optimisation',
+                desc: 'For individuals seeking long-term vitality. Assessment → Optimisation → Prevention.',
                 link: '/longevity'
               },
               {
-                icon: Activity,
-                title: 'Therapies',
-                desc: 'Seven advanced medical therapies including HBOT, EECP, PRP, Ozone, Photobiomodulation, Hydrogen, and Pain Management.',
-                link: '/therapies'
+                icon: Shield,
+                title: 'Gynaecology',
+                desc: 'Focusing on women’s hormonal, functional, and pelvic healthy non-invasively.',
+                link: '/gynaecology'
               }
-            ].map((pillar, index) => (
-              <ScrollReveal key={pillar.title} delay={index * 0.1}>
-                <div className="glass-card p-6 sm:p-8 h-full group hover:border-brand-teal transition-all duration-300">
-                  <pillar.icon className="mb-4 sm:mb-6 text-brand-teal" size={40} strokeWidth={1.5} />
-                  <h3 className="font-cormorant text-2xl sm:text-3xl text-brand-navy mb-3 sm:mb-4">{pillar.title}</h3>
-                  <p className="text-brand-muted leading-relaxed mb-4 sm:mb-6 text-sm sm:text-base">{pillar.desc}</p>
-                  <a
-                    href={pillar.link}
-                    className="inline-flex items-center gap-2 text-brand-blue hover:text-brand-teal transition-colors text-sm font-medium"
-                  >
-                    Learn More <ArrowRight size={16} />
-                  </a>
-                </div>
-              </ScrollReveal>
-            ))}
+            ].map((pillar, index) => {
+              const Icon = pillar.icon;
+              return (
+                <ScrollReveal key={pillar.title} delay={index * 0.1}>
+                  <div className="glass-card p-6 sm:p-8 h-full group hover:border-brand-teal transition-all duration-300">
+                    <Icon className="mb-4 sm:mb-6 text-brand-teal" size={40} strokeWidth={1.5} />
+                    <h3 className="font-cormorant text-2xl sm:text-3xl text-brand-navy mb-3 sm:mb-4">{pillar.title}</h3>
+                    <p className="text-brand-muted leading-relaxed mb-4 sm:mb-6 text-sm sm:text-base">{pillar.desc}</p>
+                    <Link
+                      to={pillar.link}
+                      className="inline-flex items-center gap-2 text-brand-blue hover:text-brand-teal transition-colors text-sm font-medium"
+                    >
+                      Learn More <ArrowRight size={16} />
+                    </Link>
+                  </div>
+                </ScrollReveal>
+              );
+            })}
           </div>
 
           <ScrollReveal delay={0.3}>
@@ -405,8 +341,95 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Section 4.5: Vitality Axis */}
+      <section className="py-16 sm:py-20 md:py-24 px-6 sm:px-8 md:px-12 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <ScrollReveal>
+            <SectionLabel>THE VITALITY AXIS</SectionLabel>
+            <h2 className="font-cormorant text-4xl sm:text-5xl md:text-6xl text-brand-navy mb-8">
+              The Science of Vitality
+            </h2>
+            <p className="text-brand-muted text-lg max-w-2xl mb-12">
+              Health depends on interconnected physiological systems. All therapies at ALMACURA are designed to restore and optimise these systems.
+            </p>
+          </ScrollReveal>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+            {[
+              { title: 'Circulation', icon: Activity },
+              { title: 'Oxygen Delivery', icon: Waves },
+              { title: 'Cellular Energy', icon: Zap },
+              { title: 'Inflammation Balance', icon: ShieldCheck },
+              { title: 'Gut Health', icon: Heart },
+              { title: 'Neuro-Emotional', icon: Brain },
+              { title: 'Hormonal Balance', icon: Sparkles }
+            ].map((item, index) => {
+              const Icon = item.icon;
+              return (
+                <ScrollReveal key={item.title} delay={index * 0.05}>
+                  <div className="flex items-center gap-4 p-4 rounded-sm border border-brand-teal/10 hover:border-brand-teal/30 hover:bg-brand-ice/30 transition-all duration-300 group">
+                    <div className="w-10 h-10 rounded-full bg-brand-teal/05 flex items-center justify-center group-hover:bg-brand-teal group-hover:text-white transition-all duration-300">
+                      <Icon size={20} strokeWidth={1.5} />
+                    </div>
+                    <span className="font-dm font-medium text-brand-navy text-sm uppercase tracking-wide">{item.title}</span>
+                  </div>
+                </ScrollReveal>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Section 4.6: Programs */}
+      <section className="py-16 sm:py-20 md:py-24 px-6 sm:px-8 md:px-12 bg-brand-ice">
+        <div className="max-w-7xl mx-auto">
+          <ScrollReveal>
+            <SectionLabel>STRUCTURED PROGRAMS</SectionLabel>
+            <h2 className="font-cormorant text-4xl sm:text-5xl md:text-6xl text-brand-navy mb-16">
+              Clinical Programs for Restoration
+            </h2>
+          </ScrollReveal>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                title: 'Integrative Medicine',
+                programs: ['Cardiac Recovery & Circulation', 'Diabetes Complication Recovery', 'Pain Recovery Program']
+              },
+              {
+                title: 'Healthspan Optimisation',
+                programs: ['Vitality & Energy Restoration', 'Executive Healthspan Optimisation', 'Preventive Care Program']
+              },
+              {
+                title: 'Women’s Health',
+                programs: ['Hormonal Balance Program', 'Pelvic Health Program', 'Menopause Support Program']
+              }
+            ].map((category, index) => (
+              <ScrollReveal key={category.title} delay={index * 0.1}>
+                <div className="glass-card p-8 h-full bg-white">
+                  <h3 className="font-cormorant text-2xl text-brand-teal mb-6 italic underline underline-offset-8 decoration-brand-teal/20">{category.title}</h3>
+                  <ul className="space-y-4">
+                    {category.programs.map(program => (
+                      <li key={program} className="flex items-start gap-3 group translate-z-0">
+                        <ArrowRight size={14} className="text-brand-teal mt-1 flex-shrink-0 group-hover:translate-x-1 transition-transform" />
+                        <span className="text-brand-muted text-[15px] leading-tight group-hover:text-brand-navy transition-colors">{program}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="mt-8 pt-6 border-t border-brand-teal/10">
+                    <Link to="/contact" className="text-brand-teal font-mono text-[11px] uppercase tracking-widest font-bold flex items-center gap-2 hover:gap-3 transition-all">
+                      Enquire Now <ArrowRight size={12} />
+                    </Link>
+                  </div>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Section 5: Signature Therapies Grid */}
-      <section className="py-16 sm:py-20 md:py-24 px-6 sm:px-8 md:px-12 bg-brand-white">
+      <section className="py-16 sm:py-20 md:py-24 px-6 sm:px-8 md:px-12 bg-white">
         <div className="max-w-7xl mx-auto">
           <ScrollReveal>
             <SectionLabel>SIGNATURE THERAPIES</SectionLabel>

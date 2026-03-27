@@ -7,12 +7,14 @@ import WhatsAppButton from './components/WhatsAppButton';
 import Home from './pages/Home';
 import Diagnostics from './pages/Diagnostics';
 import Longevity from './pages/Longevity';
+import Gynaecology from './pages/Gynaecology'; // Added
 import Therapies from './pages/Therapies';
 import TherapyDetail from './pages/TherapyDetail';
 import Nutrition from './pages/Nutrition';
 import Founder from './pages/Founder';
 import FAQ from './pages/FAQ';
 import Contact from './pages/Contact';
+import Terms from './pages/Terms'; // Added
 import NotFound from './pages/NotFound';
 
 function ScrollToTop() {
@@ -58,12 +60,14 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/diagnostics" element={<Diagnostics />} />
           <Route path="/longevity" element={<Longevity />} />
+          <Route path="/gynaecology" element={<Gynaecology />} />
           <Route path="/therapies" element={<Therapies />} />
           <Route path="/therapies/:slug" element={<TherapyDetail />} />
           <Route path="/nutrition" element={<Nutrition />} />
           <Route path="/founder" element={<Founder />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/terms" element={<Terms />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />

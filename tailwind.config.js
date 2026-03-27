@@ -18,6 +18,9 @@ export default {
           text: '#3D5166',
           muted: '#5A7184',
           border: '#E2EEF5',
+          green: '#10B981',
+          beige: '#FDF9F6',
+          'gold-soft': '#DCC2A1',
         }
       },
       fontFamily: {

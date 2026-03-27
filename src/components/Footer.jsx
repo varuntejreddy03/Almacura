@@ -29,10 +29,10 @@ export default function Footer() {
               Quick Links
             </h4>
             <ul className="space-y-2">
-              {['Home', 'Diagnostics', 'Longevity', 'Founder'].map((item) => (
+              {['Home', 'Diagnostics', 'Healthspan', 'Founder', 'FAQs'].map((item) => (
                 <li key={item}>
                   <Link
-                    to={`/${item.toLowerCase() === 'home' ? '' : item.toLowerCase()}`}
+                    to={item === 'Healthspan' ? '/longevity' : (item.toLowerCase() === 'home' ? '/' : (item === 'FAQs' ? '/faq' : `/${item.toLowerCase()}`))}
                     className="text-white/70 hover:text-brand-blue transition-colors text-sm"
                   >
                     {item}
@@ -45,16 +45,21 @@ export default function Footer() {
           {/* Therapies */}
           <div>
             <h4 className="font-dm font-semibold text-white mb-4 uppercase tracking-wider text-sm">
-              Therapies
+              Clinical Verticals
             </h4>
             <ul className="space-y-2">
-              {['HBOT', 'EECP', 'PRP', 'Ozone', 'Nutrition'].map((item) => (
-                <li key={item}>
+              {[
+                { name: 'Integrative Medicine', path: '/therapies' },
+                { name: 'Healthspan Optimisation', path: '/longevity' },
+                { name: 'Gynaecology', path: '/gynaecology' },
+                { name: 'Nutrition', path: '/nutrition' }
+              ].map((item) => (
+                <li key={item.name}>
                   <Link
-                    to={item === 'Nutrition' ? '/nutrition' : `/therapies/${item.toLowerCase()}`}
+                    to={item.path}
                     className="text-white/70 hover:text-brand-blue transition-colors text-sm"
                   >
-                    {item}
+                    {item.name}
                   </Link>
                 </li>
               ))}
@@ -70,8 +75,8 @@ export default function Footer() {
               <li className="flex items-start gap-3 text-white/70 text-sm">
                 <Phone size={16} className="text-brand-teal mt-1 flex-shrink-0" />
                 <div>
-                  <div>+91 9989033686</div>
-                  <div className="text-xs text-white/50">Phone & WhatsApp</div>
+                  <div className="font-medium">+91 9989033686</div>
+                  <div className="text-[11px] text-white/50 tracking-wider">PHONE & WHATSAPP</div>
                 </div>
               </li>
               <li className="flex items-start gap-3 text-white/70 text-sm">
@@ -83,8 +88,8 @@ export default function Footer() {
               <li className="flex items-start gap-3 text-white/70 text-sm">
                 <Clock size={16} className="text-brand-teal mt-1 flex-shrink-0" />
                 <div>
-                  <div>Mon–Sat</div>
-                  <div className="text-xs text-white/50">9:00 AM – 6:00 PM</div>
+                  <div>Monday–Saturday</div>
+                  <div className="text-[11px] text-white/50 tracking-wider uppercase">9:00 AM – 6:00 PM</div>
                 </div>
               </li>
             </ul>
@@ -92,12 +97,17 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-white/10 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-white/50 text-sm">
-            © {new Date().getFullYear()} ALMACURA. All rights reserved.
-          </p>
-          <p className="text-white/50 text-xs text-center md:text-right">
-            Institute of Integrative Medicine & Health Span Optimization · Hyderabad, India
+        <div className="border-t border-white/10 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
+          <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8">
+            <p className="text-white/50 text-xs">
+              © {new Date().getFullYear()} ALMACURA. All rights reserved.
+            </p>
+            <Link to="/terms" className="text-white/40 hover:text-white transition-colors text-xs underline underline-offset-4 decoration-white/20">
+              Terms of Treatment
+            </Link>
+          </div>
+          <p className="text-white/30 text-[10px] text-center md:text-right uppercase tracking-[0.2em]">
+            Integrative Medicine · Healthspan · Gynaecology
           </p>
         </div>
       </div>
