@@ -1,637 +1,478 @@
 import { motion, useReducedMotion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Activity, Microscope, Heart, Leaf, ArrowDown, Shield, Target, Waves, Zap, ShieldCheck, Brain, Sparkles } from 'lucide-react';
+import { ArrowRight, Activity, Microscope, Heart, Leaf, Shield, Target, Waves, Zap, ShieldCheck, Brain, Sparkles, Stethoscope, ChevronRight, MessageCircle } from 'lucide-react';
 import { useState } from 'react';
 import CountUp from 'react-countup';
 import { useInView } from 'react-intersection-observer';
 import ScrollReveal from '../components/ScrollReveal';
 import SectionLabel from '../components/SectionLabel';
-import CTAButton from '../components/CTAButton';
+import SuitabilityModal from '../components/SuitabilityModal';
 import TherapyCard from '../components/TherapyCard';
 import { therapyList } from '../data/therapiesData';
 
 export default function Home() {
-  const [activeAccordion, setActiveAccordion] = useState(0);
+  const [isSuitabilityModalOpen, setIsSuitabilityModalOpen] = useState(false);
   const [statsRef, statsInView] = useInView({ triggerOnce: true, threshold: 0.5 });
   const shouldReduceMotion = useReducedMotion();
 
-  const faqs = [
+  const coreTherapies = therapyList.slice(0, 6);
+
+  const supportConditions = [
+    { title: 'Chronic fatigue', icon: Zap },
+    { title: 'Diabetes support', icon: Activity },
+    { title: 'Pain & inflammation', icon: ShieldCheck },
+    { title: 'Neurological recovery', icon: Brain },
+    { title: 'Fertility & hormonal balance', icon: Sparkles },
+    { title: 'Skin & anti-aging', icon: Heart }
+  ];
+
+  const testimonials = [
     {
-      question: "Are these therapies medically approved?",
-      answer: "Yes. All therapies offered at ALMACURA are evidence-based and administered under medical supervision. We follow established clinical protocols and safety standards."
+      text: "Improved my energy levels significantly. I feel more vibrant and ready for the day after HBOT.",
+      author: "Energy Patient"
     },
     {
-      question: "How many sessions are required?",
-      answer: "Session requirements vary by therapy and individual response. HBOT typically requires 20-40 sessions, EECP requires 35 sessions, while PRP may need 3-6 sessions. Your personalized protocol will be determined after diagnostic assessment."
+      text: "Pain reduced without surgery. The integrative approach actually worked when standard treatments failed.",
+      author: "Chronic Pain Patient"
     },
     {
-      question: "Are the therapies safe?",
-      answer: "Yes. All therapies are non-invasive or minimally invasive, performed under medical supervision with continuous monitoring. Pre-treatment assessments ensure patient safety and suitability."
-    },
-    {
-      question: "What diagnostics are needed before starting?",
-      answer: "Each therapy requires specific pre-assessments. Common requirements include blood biomarkers, metabolic panels, cardiac screening, and functional assessments. Your complete workup will be determined during initial consultation."
+      text: "Very professional and scientific approach. The diagnostic phase was thorough and reassuring.",
+      author: "Health Optimization Patient"
     }
   ];
 
-  const marqueeItems = [
-    'HBOT', 'EECP', 'PRP', 'OZONE', 'PHOTOBIOMODULATION', 
-    'MOLECULAR HYDROGEN', 'PAIN MANAGEMENT', 'REGENERATIVE GYNAECOLOGY', 
-    'METABOLIC OPTIMISATION', 'CELLULAR HEALTH'
-  ];
-
   return (
-    <div className="bg-brand-white overflow-x-hidden">
+    <div className="bg-brand-white overflow-x-hidden pt-20">
       {/* Section 1: Hero */}
-      <section 
-        className="relative flex flex-col items-center overflow-hidden px-4 sm:px-6 min-h-screen"
-        style={{
-          background: 'linear-gradient(135deg, #E8F5F5 0%, #EBF6F8 35%, #F0F9FF 65%, #E8F5F2 100%)'
-        }}
-      >
-        {/* Decorative Elements */}
-        <div className="absolute inset-0 z-0 pointer-events-none">
-          {/* Teal glow top-right */}
-          <div 
-            className="absolute inset-0"
-            style={{
-              background: 'radial-gradient(ellipse at 85% 15%, rgba(11,110,110,0.12) 0%, transparent 55%)'
-            }}
-          />
-          {/* Blue glow bottom-left */}
-          <div 
-            className="absolute inset-0"
-            style={{
-              background: 'radial-gradient(ellipse at 10% 90%, rgba(26,143,191,0.08) 0%, transparent 50%)'
-            }}
-          />
+      <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 md:px-8 py-32 overflow-hidden">
+        {/* Cinematic Backdrop */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-gradient-to-br from-brand-ice via-white to-brand-ice/40" />
+          <div className="absolute top-1/4 -right-1/4 w-[800px] h-[800px] bg-brand-teal/5 rounded-full blur-[120px] mix-blend-multiply transition-all duration-[20s] animate-pulse" />
+          <div className="absolute -bottom-1/4 -left-1/4 w-[600px] h-[600px] bg-brand-blue/5 rounded-full blur-[100px] mix-blend-multiply" />
         </div>
 
-        <div className="relative z-10 text-center max-w-5xl mx-auto w-full flex flex-col items-center pt-48 pb-64">
-          <motion.h1
-            className="font-dm tracking-tight mb-6"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: shouldReduceMotion ? 0 : 0.2 }}
-          >
-            <motion.span
-              initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: shouldReduceMotion ? 0 : 0.3, duration: shouldReduceMotion ? 0 : 0.8 }}
-              className="block leading-none"
-              style={{
-                fontSize: 'clamp(40px, 8vw, 76px)',
-                color: '#0D2137',
-                fontWeight: 700
-              }}
-            >
-              All Paths
-            </motion.span>
-            <motion.span
-              initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: shouldReduceMotion ? 0 : 0.5, duration: shouldReduceMotion ? 0 : 0.8 }}
-              className="block leading-none mt-2"
-              style={{
-                fontSize: 'clamp(40px, 8vw, 76px)',
-                color: '#0B6E6E',
-                fontWeight: 700,
-                fontStyle: 'italic',
-                textShadow: '0 2px 20px rgba(11,110,110,0.05)'
-              }}
-            >
-              To Vitality
-            </motion.span>
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: shouldReduceMotion ? 0 : 0.8 }}
-            className="mx-auto px-4"
-            style={{
-              fontSize: '17px',
-              color: '#4A6477',
-              lineHeight: 1.8,
-              maxWidth: '650px',
-              marginTop: '12px'
-            }}
-          >
-            Treating Disease. Restoring Vitality. Optimising Healthspan. <br className="hidden md:block" />
-            <span className="text-[13px] opacity-70 font-dm uppercase tracking-[0.2em] mt-5 block text-brand-teal font-bold">
-              Integrative Medicine & Healthspan Optimisation
-            </span>
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: shouldReduceMotion ? 0 : 1 }}
-            className="flex flex-col sm:flex-row justify-center items-center gap-6 mt-10"
-          >
-            <Link to="/contact">
-              <motion.button
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-10 py-5 bg-brand-navy text-white font-dm font-bold uppercase tracking-[0.2em] text-[12px] rounded-full shadow-[0_15px_35px_rgba(13,33,55,0.25)] hover:shadow-brand-teal/40 hover:bg-brand-teal transition-all duration-500"
-              >
-                Book Consultation
-              </motion.button>
-            </Link>
-            
-            <Link to="/therapies">
-              <motion.button
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-10 py-5 border-[1.5px] border-brand-teal text-brand-teal font-dm font-bold uppercase tracking-[0.2em] text-[12px] rounded-full hover:bg-brand-teal/5 transition-all duration-500 bg-white/40 backdrop-blur-sm"
-              >
-                Explore Therapies
-              </motion.button>
-            </Link>
-          </motion.div>
-        </div>
-
-        {/* Cinematic Scroll Indicator */}
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5, duration: 1 }}
-          className="absolute bottom-20 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 cursor-pointer group"
-          onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
-        >
-          <div className="w-[1px] h-12 bg-gradient-to-b from-brand-teal/80 to-transparent group-hover:h-16 transition-all duration-700"></div>
-          <span className="font-dm text-[9px] uppercase tracking-[0.4em] text-brand-teal font-bold opacity-60 group-hover:opacity-100 transition-opacity">Scroll to Explore</span>
-          <div className="relative w-6 h-10 border-[1.5px] border-brand-teal/40 rounded-full flex justify-center p-1.5 group-hover:border-brand-teal/80 transition-all duration-500">
-            <motion.div 
-              animate={{ y: [0, 12, 0] }}
-              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-              className="w-1.5 h-1.5 bg-brand-teal rounded-full"
-            />
-          </div>
-        </motion.div>
-
-        {/* Upgraded Scrolling Ticker Bar - Glassmorphism */}
-        <div className="absolute bottom-0 left-0 right-0 overflow-hidden z-20">
-          <div className="relative bg-white/60 backdrop-blur-3xl border-t border-brand-teal/10 py-5 shadow-[0_-10px_40px_rgba(0,0,0,0.03)]">
-            <motion.div
-              animate={{ x: [0, -1500] }}
-              transition={{ duration: 50, repeat: Infinity, ease: "linear" }}
-              className="flex whitespace-nowrap"
-            >
-              {[...Array(6)].map((_, i) => (
-                <div key={i} className="flex items-center gap-10 px-5">
-                  {marqueeItems.map((text) => (
-                    <div key={text} className="flex items-center gap-10">
-                      <span className="font-dm text-[11px] font-bold tracking-[0.25em] uppercase text-brand-navy/60 hover:text-brand-teal transition-colors duration-300">
-                        {text}
-                      </span>
-                      <div className="w-1.5 h-1.5 rounded-full bg-brand-teal/30"></div>
-                    </div>
-                  ))}
-                </div>
-              ))}
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Section 2: Institute Introduction */}
-      <section className="py-16 sm:py-20 md:py-24 px-6 sm:px-8 md:px-12 bg-brand-ice">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col lg:grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-            <ScrollReveal variant="fadeUp">
-              <div className="relative">
-                <div className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-cormorant italic text-brand-teal leading-tight">
-                  "We believe health should be preserved, optimized, and restored — not merely treated."
-                </div>
-              </div>
-            </ScrollReveal>
-
-            <ScrollReveal variant="fadeUp" delay={0.2}>
-              <div className="space-y-4 sm:space-y-6 text-brand-muted leading-loose lg:border-l lg:border-brand-teal lg:pl-8">
-                <p>
-                  ALMACURA is an integrative medical institute dedicated to health span optimization through advanced diagnostics and evidence-based regenerative therapies. We do not treat symptoms in isolation. We assess, identify root causes, and intervene with precision.
-                </p>
-                <p>
-                  Our approach combines modern diagnostic medicine with innovative therapeutic technologies — Hyperbaric Oxygen Therapy, Enhanced External Counter Pulsation, Platelet-Rich Plasma, Ozone Therapy, Photobiomodulation, Molecular Hydrogen, and targeted Pain Management.
-                </p>
-                <p>
-                  Every therapy is preceded by comprehensive diagnostic workup. Every protocol is personalized. Every outcome is measured. This is clinical medicine designed for long-term vitality, not short-term relief.
-                </p>
-                <p className="text-brand-navy font-dm font-medium">
-                  We are not a wellness center. We are a medical institute committed to restoring and optimizing human health.
-                </p>
-              </div>
-            </ScrollReveal>
-          </div>
-        </div>
-      </section>
-
-      {/* Section 3: Clinical Pathway Model */}
-      <section className="py-16 sm:py-20 md:py-24 px-6 sm:px-8 md:px-12 bg-brand-white">
-        <div className="max-w-7xl mx-auto">
-          <ScrollReveal>
-            <SectionLabel>THE ALMACURA MODEL</SectionLabel>
-            <h2 className="font-cormorant text-4xl sm:text-5xl md:text-6xl text-brand-navy mb-12 sm:mb-16">
-              A Structured Pathway to Vitality
-            </h2>
-          </ScrollReveal>
-
-          <div className="flex flex-col md:grid md:grid-cols-3 lg:grid-cols-5 gap-6 sm:gap-8">
-            {[
-              { num: '01', icon: Microscope, title: 'ASSESSMENT', desc: 'Structured evaluation first' },
-              { num: '02', icon: Activity, title: 'DIAGNOSIS', desc: 'Identifying root causes' },
-              { num: '03', icon: Heart, title: 'TREATMENT', desc: 'Integrative clinical care' },
-              { num: '04', icon: Shield, title: 'RESTORATION', desc: 'Functional recovery focus' },
-              { num: '05', icon: Target, title: 'HEALTHSPAN', desc: 'Long-term vitality support' }
-            ].map((step, index) => (
-              <div key={step.num}>
-                <ScrollReveal delay={index * 0.1}>
-                  <div className="relative">
-                    <div className="glass-card p-6 sm:p-8 text-center group hover:border-brand-teal transition-all duration-300">
-                      <div className="font-mono text-brand-teal text-sm mb-4">{step.num}</div>
-                      <step.icon className="mx-auto mb-4 text-brand-teal" size={40} strokeWidth={1.5} />
-                      <h3 className="font-dm font-semibold text-brand-navy text-base sm:text-lg mb-2 uppercase tracking-wider">
-                        {step.title}
-                      </h3>
-                      <p className="text-brand-muted text-sm">{step.desc}</p>
-                    </div>
-                  </div>
-                </ScrollReveal>
-                {index < 4 && (
-                  <div className="flex md:hidden justify-center py-4">
-                    <ArrowDown className="text-brand-teal/30" size={24} />
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Section 4: Three Pillars + Nutrition */}
-      <section className="py-16 sm:py-20 md:py-24 px-6 sm:px-8 md:px-12 bg-brand-ice">
-        <div className="max-w-7xl mx-auto">
-          <ScrollReveal>
-            <SectionLabel>CORE PILLARS</SectionLabel>
-            <h2 className="font-cormorant text-4xl sm:text-5xl md:text-6xl text-brand-navy mb-12 sm:mb-16">
-              The Foundation of Our Practice
-            </h2>
-          </ScrollReveal>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mb-6 sm:mb-8">
-            {[
-              {
-                icon: Activity,
-                title: 'Integrative Medicine',
-                desc: 'For patients with existing medical conditions. Diagnosis → Treatment → Recovery.',
-                link: '/therapies'
-              },
-              {
-                icon: Heart,
-                title: 'Healthspan Optimisation',
-                desc: 'For individuals seeking long-term vitality. Assessment → Optimisation → Prevention.',
-                link: '/longevity'
-              },
-              {
-                icon: Shield,
-                title: 'Gynaecology',
-                desc: 'Focusing on women’s hormonal, functional, and pelvic healthy non-invasively.',
-                link: '/gynaecology'
-              }
-            ].map((pillar, index) => {
-              const Icon = pillar.icon;
-              return (
-                <ScrollReveal key={pillar.title} delay={index * 0.1}>
-                  <div className="glass-card p-6 sm:p-8 h-full group hover:border-brand-teal transition-all duration-300">
-                    <Icon className="mb-4 sm:mb-6 text-brand-teal" size={40} strokeWidth={1.5} />
-                    <h3 className="font-cormorant text-2xl sm:text-3xl text-brand-navy mb-3 sm:mb-4">{pillar.title}</h3>
-                    <p className="text-brand-muted leading-relaxed mb-4 sm:mb-6 text-sm sm:text-base">{pillar.desc}</p>
-                    <Link
-                      to={pillar.link}
-                      className="inline-flex items-center gap-2 text-brand-blue hover:text-brand-teal transition-colors text-sm font-medium"
-                    >
-                      Learn More <ArrowRight size={16} />
-                    </Link>
-                  </div>
-                </ScrollReveal>
-              );
-            })}
-          </div>
-
-          <ScrollReveal delay={0.3}>
-            <div className="glass-card p-6 sm:p-8 bg-brand-ice border-brand-teal/30">
-              <div className="flex flex-col md:flex-row items-start gap-4 sm:gap-6">
-                <Leaf className="text-brand-green flex-shrink-0" size={40} strokeWidth={1.5} />
-                <div className="flex-1">
-                  <h3 className="font-cormorant text-2xl sm:text-3xl text-brand-navy mb-3 sm:mb-4">Nutrition</h3>
-                  <p className="text-brand-muted leading-relaxed mb-3 sm:mb-4 text-sm sm:text-base">
-                    Clinical nutrition protocols that support all three pillars. Not diet advice — targeted metabolic intervention based on diagnostic findings to optimize therapeutic outcomes.
-                  </p>
-                  <a
-                    href="/nutrition"
-                    className="inline-flex items-center gap-2 text-brand-teal hover:text-brand-blue transition-colors text-sm font-medium"
-                  >
-                    View Nutrition Protocols <ArrowRight size={16} />
-                  </a>
-                </div>
-              </div>
+        <div className="max-w-7xl mx-auto relative z-10 w-full text-center">
+          <ScrollReveal variant="fadeUp">
+            <div className="flex flex-col items-center gap-1.5 mb-8">
+              <span className="font-dm text-[9px] uppercase tracking-[0.6em] text-brand-teal font-bold opacity-60">Institute of Integrative Medicine & Healthspan Optimization</span>
+              <div className="w-10 h-[1.5px] bg-brand-teal/20"></div>
             </div>
           </ScrollReveal>
-        </div>
-      </section>
 
-      {/* Section 4.5: Vitality Axis */}
-      <section className="py-16 sm:py-20 md:py-24 px-6 sm:px-8 md:px-12 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <ScrollReveal>
-            <SectionLabel>THE VITALITY AXIS</SectionLabel>
-            <h2 className="font-cormorant text-4xl sm:text-5xl md:text-6xl text-brand-navy mb-8">
-              The Science of Vitality
-            </h2>
-            <p className="text-brand-muted text-lg max-w-2xl mb-12">
-              Health depends on interconnected physiological systems. All therapies at ALMACURA are designed to restore and optimise these systems.
+          <ScrollReveal variant="fadeUp" delay={0.2}>
+            <h1 className="font-dm tracking-tight mb-8">
+              <span className="block text-[clamp(44px,8vw,86px)] leading-[0.95] text-brand-navy font-bold">ALMACURA</span>
+              <span className="block text-[clamp(32px,6vw,62px)] leading-tight text-brand-teal italic font-cormorant mt-2">All Paths to Vitality</span>
+            </h1>
+          </ScrollReveal>
+
+          <ScrollReveal variant="fadeUp" delay={0.4}>
+            <p className="max-w-2xl mx-auto text-brand-muted text-lg sm:text-xl leading-relaxed mb-12 px-4">
+              Evidence-based therapies combining modern medicine <br className="hidden md:block" /> with advanced bio-optimization technologies.
             </p>
           </ScrollReveal>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
-            {[
-              { title: 'Circulation', icon: Activity },
-              { title: 'Oxygen Delivery', icon: Waves },
-              { title: 'Cellular Energy', icon: Zap },
-              { title: 'Inflammation Balance', icon: ShieldCheck },
-              { title: 'Gut Health', icon: Heart },
-              { title: 'Neuro-Emotional', icon: Brain },
-              { title: 'Hormonal Balance', icon: Sparkles }
-            ].map((item, index) => {
-              const Icon = item.icon;
-              return (
-                <ScrollReveal key={item.title} delay={index * 0.05}>
-                  <div className="flex items-center gap-4 p-4 rounded-sm border border-brand-teal/10 hover:border-brand-teal/30 hover:bg-brand-ice/30 transition-all duration-300 group">
-                    <div className="w-10 h-10 rounded-full bg-brand-teal/05 flex items-center justify-center group-hover:bg-brand-teal group-hover:text-white transition-all duration-300">
-                      <Icon size={20} strokeWidth={1.5} />
-                    </div>
-                    <span className="font-dm font-medium text-brand-navy text-sm uppercase tracking-wide">{item.title}</span>
+          <ScrollReveal variant="fadeUp" delay={0.6}>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-5 sm:gap-6 px-4">
+              <Link to="/contact" className="w-full sm:w-auto">
+                <motion.button
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="w-full sm:w-auto px-10 py-5 bg-brand-navy text-white font-dm font-bold uppercase tracking-[0.2em] text-[11px] rounded-full shadow-[0_20px_40px_rgba(13,33,55,0.2)] hover:shadow-brand-teal/30 hover:bg-brand-teal transition-all duration-500"
+                >
+                  Book Doctor Consultation
+                </motion.button>
+              </Link>
+              
+              <motion.button
+                onClick={() => setIsSuitabilityModalOpen(true)}
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                className="w-full sm:w-auto px-10 py-5 bg-white border border-brand-teal/20 text-brand-teal font-dm font-bold uppercase tracking-[0.2em] text-[11px] rounded-full shadow-lg shadow-brand-teal/5 hover:bg-brand-teal/5 transition-all duration-500 backdrop-blur-xl"
+              >
+                Check Therapy Suitability (Free)
+              </motion.button>
+            </div>
+          </ScrollReveal>
+        </div>
+
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.2, duration: 1 }}
+          className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 opacity-20 select-none pointer-events-none hidden md:flex"
+        >
+          <span className="font-dm text-[8px] uppercase tracking-[0.4em] font-bold text-brand-navy">Explore More</span>
+          <motion.div 
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 2, repeat: Infinity }}
+            className="w-[1px] h-10 bg-brand-navy"
+          />
+        </motion.div>
+      </section>
+
+      {/* Section 2: "NOT SURE WHERE TO START?" */}
+      <section className="py-24 px-6 sm:px-8 md:px-12 bg-brand-ice relative z-10">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16 px-4">
+            <ScrollReveal>
+              <h2 className="font-cormorant text-4xl sm:text-5xl md:text-6xl text-brand-navy mb-4">Not sure where to start?</h2>
+              <p className="text-brand-muted text-lg tracking-wide italic">Choose what suits your needs best</p>
+            </ScrollReveal>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            <ScrollReveal delay={0.2}>
+              <div className="bg-white p-10 sm:p-12 rounded-[40px] shadow-2xl shadow-brand-navy/5 border border-white relative overflow-hidden group hover:border-brand-teal/40 transition-all duration-500 h-full">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-brand-teal/5 rounded-bl-full group-hover:scale-125 transition-transform duration-700" />
+                <div className="relative z-10">
+                  <div className="w-12 h-12 rounded-2xl bg-brand-teal/10 flex items-center justify-center text-brand-teal mb-8">
+                    <Stethoscope size={24} />
                   </div>
-                </ScrollReveal>
-              );
-            })}
+                  <h3 className="font-cormorant text-3xl text-brand-navy mb-4 font-bold">Paid Medical Consultation</h3>
+                  <div className="space-y-4 mb-10 text-brand-muted">
+                    <div className="flex items-center gap-3">
+                      <ChevronRight size={14} className="text-brand-teal" />
+                      <span className="font-dm font-bold text-[11px] uppercase tracking-wider">Detailed assessment</span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <ChevronRight size={14} className="text-brand-teal" />
+                      <span className="font-dm font-bold text-[11px] uppercase tracking-wider">Diagnosis & treatment plan</span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <ChevronRight size={14} className="text-brand-teal" />
+                      <span className="font-dm font-bold text-[11px] uppercase tracking-wider">Doctor-led protocols</span>
+                    </div>
+                  </div>
+                  <Link to="/contact">
+                    <button className="w-full py-4 bg-brand-navy text-white rounded-2xl font-dm font-bold text-[11px] uppercase tracking-[0.2em] hover:bg-brand-teal transition-all shadow-xl shadow-brand-navy/10">
+                      Book Doctor Visit
+                    </button>
+                  </Link>
+                </div>
+              </div>
+            </ScrollReveal>
+
+            <ScrollReveal delay={0.4}>
+              <div className="bg-white p-10 sm:p-12 rounded-[40px] shadow-2xl shadow-brand-navy/5 border border-white relative overflow-hidden group hover:border-brand-teal/40 transition-all duration-500 h-full">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-brand-teal/5 rounded-bl-full group-hover:scale-125 transition-transform duration-700" />
+                <div className="relative z-10">
+                  <div className="w-12 h-12 rounded-2xl bg-brand-teal/10 flex items-center justify-center text-brand-teal mb-8">
+                    <ShieldCheck size={24} />
+                  </div>
+                  <h3 className="font-cormorant text-3xl text-brand-navy mb-4 font-bold">Free Suitability Guidance</h3>
+                  <div className="space-y-4 mb-10 text-brand-muted">
+                    <div className="flex items-center gap-3">
+                      <ChevronRight size={14} className="text-brand-teal" />
+                      <span className="font-dm font-bold text-[11px] uppercase tracking-wider">Understand available therapies</span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <ChevronRight size={14} className="text-brand-teal" />
+                      <span className="font-dm font-bold text-[11px] uppercase tracking-wider">Know if you are a candidate</span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <ChevronRight size={14} className="text-brand-teal" />
+                      <span className="font-dm font-bold text-[11px] uppercase tracking-wider">No obligation</span>
+                    </div>
+                  </div>
+                  <button 
+                    onClick={() => setIsSuitabilityModalOpen(true)}
+                    className="w-full py-4 border-2 border-brand-navy text-brand-navy rounded-2xl font-dm font-bold text-[11px] uppercase tracking-[0.2em] hover:bg-brand-navy hover:text-white transition-all"
+                  >
+                    Get Free Guidance
+                  </button>
+                </div>
+              </div>
+            </ScrollReveal>
+          </div>
+
+          <div className="text-center mt-12 overflow-visible">
+            <span className="font-dm text-[10px] uppercase tracking-[0.4em] text-brand-teal/60 font-bold overflow-visible">Start with clarity before you commit</span>
           </div>
         </div>
       </section>
 
-      {/* Section 4.6: Programs */}
-      <section className="py-16 sm:py-20 md:py-24 px-6 sm:px-8 md:px-12 bg-brand-ice">
+      {/* Section 3: OUR APPROACH */}
+      <section className="py-24 px-6 sm:px-8 md:px-12 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto">
-          <ScrollReveal>
-            <SectionLabel>STRUCTURED PROGRAMS</SectionLabel>
-            <h2 className="font-cormorant text-4xl sm:text-5xl md:text-6xl text-brand-navy mb-16">
-              Clinical Programs for Restoration
-            </h2>
-          </ScrollReveal>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                title: 'Integrative Medicine',
-                programs: ['Cardiac Recovery & Circulation', 'Diabetes Complication Recovery', 'Pain Recovery Program']
-              },
-              {
-                title: 'Healthspan Optimisation',
-                programs: ['Vitality & Energy Restoration', 'Executive Healthspan Optimisation', 'Preventive Care Program']
-              },
-              {
-                title: 'Women’s Health',
-                programs: ['Hormonal Balance Program', 'Pelvic Health Program', 'Menopause Support Program']
-              }
-            ].map((category, index) => (
-              <ScrollReveal key={category.title} delay={index * 0.1}>
-                <div className="glass-card p-8 h-full bg-white">
-                  <h3 className="font-cormorant text-2xl text-brand-teal mb-6 italic underline underline-offset-8 decoration-brand-teal/20">{category.title}</h3>
-                  <ul className="space-y-4">
-                    {category.programs.map(program => (
-                      <li key={program} className="flex items-start gap-3 group translate-z-0">
-                        <ArrowRight size={14} className="text-brand-teal mt-1 flex-shrink-0 group-hover:translate-x-1 transition-transform" />
-                        <span className="text-brand-muted text-[15px] leading-tight group-hover:text-brand-navy transition-colors">{program}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <div className="mt-8 pt-6 border-t border-brand-teal/10">
-                    <Link to="/contact" className="text-brand-teal font-mono text-[11px] uppercase tracking-widest font-bold flex items-center gap-2 hover:gap-3 transition-all">
-                      Enquire Now <ArrowRight size={12} />
-                    </Link>
+          <div className="flex flex-col lg:grid lg:grid-cols-2 gap-16 lg:items-center">
+            <ScrollReveal>
+              <div className="relative">
+                <SectionLabel>OUR APPROACH</SectionLabel>
+                <h2 className="font-cormorant text-4xl sm:text-5xl md:text-6xl text-brand-navy mb-8 leading-[1.1]">
+                  Integrative Medicine + Healthspan Optimization
+                </h2>
+                <p className="text-brand-muted text-lg max-w-xl leading-loose mb-10">
+                  We bridge the gap between conventional medicine, preventive care, and advanced longevity science. Our protocols focus on treating the root cause, not just symptoms.
+                </p>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                  {[
+                    { title: 'Conventional medicine', icon: Stethoscope },
+                    { title: 'Preventive care', icon: Shield },
+                    { title: 'Longevity science', icon: Target }
+                  ].map((item, i) => (
+                    <div key={i} className="flex flex-col gap-3">
+                      <div className="w-10 h-10 rounded-full bg-brand-ice flex items-center justify-center text-brand-teal">
+                        <item.icon size={18} />
+                      </div>
+                      <span className="font-dm font-bold text-[10px] uppercase tracking-widest text-brand-navy">{item.title}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </ScrollReveal>
+            
+            <ScrollReveal delay={0.3}>
+              <div className="relative h-[400px] sm:h-[500px] rounded-[40px] overflow-hidden group">
+                <div className="absolute inset-0 bg-brand-navy" />
+                <img 
+                  src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80" 
+                  alt="Modern Clinic" 
+                  className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-[3s]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/80 via-transparent to-transparent" />
+                <div className="absolute bottom-10 left-10">
+                  <div className="flex items-center gap-3 text-white border-l-2 border-brand-teal pl-6">
+                    <span className="font-cormorant text-2xl italic tracking-wide">Excellence in Integrative Care</span>
                   </div>
                 </div>
-              </ScrollReveal>
-            ))}
+              </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
 
-      {/* Section 5: Signature Therapies Grid */}
-      <section className="py-16 sm:py-20 md:py-24 px-6 sm:px-8 md:px-12 bg-white">
+      {/* Section 4: OUR CORE THERAPIES */}
+      <section className="py-24 px-6 sm:px-8 md:px-12 bg-brand-ice">
         <div className="max-w-7xl mx-auto">
           <ScrollReveal>
-            <SectionLabel>SIGNATURE THERAPIES</SectionLabel>
-            <h2 className="font-cormorant text-4xl sm:text-5xl md:text-6xl text-brand-navy mb-12 sm:mb-16">
-              Advanced Medical Therapies
-            </h2>
+            <div className="text-center mb-16">
+              <SectionLabel>OUR CORE THERAPIES</SectionLabel>
+              <h2 className="font-cormorant text-4xl sm:text-5xl md:text-6xl text-brand-navy mt-4">Advanced Therapeutic Solutions</h2>
+            </div>
           </ScrollReveal>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-            {therapyList.map((therapy, index) => (
-              <ScrollReveal key={therapy.slug} delay={index * 0.05} className={index === 6 ? 'lg:col-start-2 lg:col-span-1' : ''}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            {coreTherapies.map((therapy, index) => (
+              <ScrollReveal key={therapy.slug} delay={index * 0.05}>
                 <TherapyCard
                   icon={therapy.icon}
-                  title={therapy.slug.toUpperCase().replace('-', ' ')}
+                  title={therapy.title || therapy.slug.toUpperCase().replace('-', ' ')}
                   description={therapy.shortDescription}
                   slug={therapy.slug}
                 />
               </ScrollReveal>
             ))}
           </div>
-        </div>
-      </section>
 
-      {/* Section 6: Stats / Credibility Bar */}
-      <section ref={statsRef} className="py-12 sm:py-16 px-6 sm:px-8 md:px-12" style={{background: 'linear-gradient(135deg, #0B6E6E, #0D2137)'}}>
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-            {[
-              { value: 30, suffix: '+', label: 'Years Clinical Experience' },
-              { value: 7, suffix: '', label: 'Advanced Therapies' },
-              { value: 4, suffix: '', label: 'Diagnostic Pathways' },
-              { value: 1, suffix: '', label: 'Integrated Protocol' }
-            ].map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className="font-cormorant text-4xl sm:text-5xl md:text-6xl text-white mb-2">
-                  {statsInView && <CountUp end={stat.value} duration={2} delay={index * 0.2} />}
-                  {stat.suffix}
-                </div>
-                <div className="font-mono text-white/70 text-[10px] sm:text-xs uppercase tracking-wider px-2">
-                  {stat.label}
-                </div>
-              </div>
-            ))}
+          <div className="text-center mt-12">
+            <Link to="/therapies">
+              <button className="px-8 py-4 border-b-2 border-brand-teal text-brand-teal font-dm font-bold text-[11px] uppercase tracking-[.3em] hover:text-brand-navy hover:border-brand-navy transition-all duration-300">
+                View All Clinical Protocols
+              </button>
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* Section 7: Founder Preview */}
-      <section className="py-16 sm:py-20 md:py-24 px-6 sm:px-8 md:px-12 bg-brand-white">
+      {/* Section 5: CONDITIONS WE SUPPORT */}
+      <section className="py-24 px-6 sm:px-8 md:px-12 bg-white">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col lg:grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <ScrollReveal variant="fadeUp">
-              <div className="w-64 h-72 bg-brand-white border border-brand-teal/20 rounded-sm flex flex-col items-center justify-center gap-4 mx-auto">
-                <div className="w-16 h-16 rounded-full border border-brand-teal/40 flex items-center justify-center">
-                  <span className="font-cormorant text-2xl italic text-brand-teal/60">DR</span>
-                </div>
-                <div className="text-center">
-                  <p className="font-cormorant text-lg text-brand-navy tracking-wide">
-                    Vijay Shekar Reddy
-                  </p>
-                  <p className="font-mono text-[10px] text-brand-teal tracking-[0.2em] mt-1 uppercase">
-                    MBBS · MS (Surgery)
-                  </p>
-                  <p className="font-mono text-[10px] text-brand-muted tracking-[0.12em] mt-2 uppercase">
-                    30+ Years Clinical Experience
-                  </p>
-                </div>
-              </div>
-            </ScrollReveal>
-
-            <ScrollReveal variant="fadeUp" delay={0.2}>
-              <div>
-                <SectionLabel>FOUNDER & DIRECTOR</SectionLabel>
-                <h2 className="font-cormorant text-4xl sm:text-5xl md:text-6xl text-brand-navy mb-3 sm:mb-4">
-                  Dr. Vijay Shekar Reddy
-                </h2>
-                <div className="font-mono text-brand-teal text-xs sm:text-sm uppercase tracking-wider mb-4 sm:mb-6">
-                  MBBS · MS (General Surgery)
-                </div>
-                <div className="space-y-3 sm:space-y-4 text-brand-muted leading-loose mb-6 sm:mb-8 text-sm sm:text-base">
-                  <p>
-                    With over 30 years of clinical experience, Dr. Reddy has dedicated his career to integrative medicine and health span optimization. His vision extends beyond conventional treatment paradigms to embrace innovative therapeutic technologies.
-                  </p>
-                  <p>
-                    He founded ALMACURA to create a medical institute where diagnostics guide therapy, where evidence informs protocol, and where patient outcomes are measured and optimized.
-                  </p>
-                </div>
-                <div className="border-l-2 border-brand-teal pl-4 sm:pl-6 mb-6 sm:mb-8">
-                  <p className="font-cormorant italic text-xl sm:text-2xl text-brand-teal leading-relaxed">
-                    "To create a medical institute that integrates modern diagnostics with innovative therapies — improving long-term health outcomes for every patient."
-                  </p>
-                </div>
-                <a
-                  href="/founder"
-                  className="inline-flex items-center gap-2 text-brand-teal hover:text-brand-blue transition-colors font-medium text-sm sm:text-base"
-                >
-                  Read Full Profile <ArrowRight size={20} />
-                </a>
-              </div>
-            </ScrollReveal>
-          </div>
-        </div>
-      </section>
-
-      {/* Section 8: FAQ Preview */}
-      <section className="py-16 sm:py-20 md:py-24 px-6 sm:px-8 md:px-12 bg-brand-ice">
-        <div className="max-w-4xl mx-auto">
           <ScrollReveal>
-            <SectionLabel>FREQUENTLY ASKED</SectionLabel>
-            <h2 className="font-cormorant text-4xl sm:text-5xl md:text-6xl text-brand-navy mb-12 sm:mb-16">
-              Common Questions
-            </h2>
+            <div className="text-center mb-20">
+              <SectionLabel>CLINICAL FOCUS</SectionLabel>
+              <h2 className="font-cormorant text-4xl sm:text-5xl md:text-6xl text-brand-navy mt-4">Conditions We Support</h2>
+            </div>
           </ScrollReveal>
 
-          <div className="space-y-3 sm:space-y-4 mb-8 sm:mb-12">
-            {faqs.map((faq, index) => (
-              <ScrollReveal key={index} delay={index * 0.1}>
-                <div className="glass-card overflow-hidden">
-                  <button
-                    onClick={() => setActiveAccordion(activeAccordion === index ? -1 : index)}
-                    className="w-full px-6 sm:px-8 py-5 sm:py-6 flex justify-between items-start gap-4 text-left hover:bg-brand-border/20 transition-colors min-h-[44px]"
-                  >
-                    <span className="font-dm font-medium text-brand-navy text-sm sm:text-base">{faq.question}</span>
-                    <motion.div
-                      animate={{ rotate: activeAccordion === index ? 45 : 0 }}
-                      transition={{ duration: 0.3 }}
-                      className="text-brand-teal flex-shrink-0 mt-1"
-                    >
-                      <ArrowRight size={18} />
-                    </motion.div>
-                  </button>
-                  <motion.div
-                    initial={false}
-                    animate={{
-                      height: activeAccordion === index ? 'auto' : 0,
-                      opacity: activeAccordion === index ? 1 : 0
-                    }}
-                    transition={{ duration: 0.3 }}
-                    className="overflow-hidden"
-                  >
-                    <div className="px-6 sm:px-8 pb-5 sm:pb-6 text-brand-muted leading-relaxed text-sm sm:text-base">
-                      {faq.answer}
-                    </div>
-                  </motion.div>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 sm:gap-4 md:gap-8 overflow-visible">
+            {supportConditions.map((condition, index) => (
+              <ScrollReveal key={condition.title} delay={index * 0.05} className="overflow-visible">
+                <div className="flex flex-col items-center text-center p-6 rounded-[30px] border border-brand-ice hover:border-brand-teal/20 hover:bg-brand-ice/30 transition-all duration-300 group overflow-visible">
+                  <div className="w-14 h-14 rounded-2xl bg-brand-ice mb-6 flex items-center justify-center text-brand-teal group-hover:scale-110 transition-transform duration-500 overflow-visible">
+                    <condition.icon size={28} strokeWidth={1.5} />
+                  </div>
+                  <span className="font-dm font-bold text-[10px] uppercase tracking-widest text-brand-navy leading-none overflow-visible whitespace-pre-wrap">{condition.title}</span>
                 </div>
               </ScrollReveal>
             ))}
           </div>
-
-          <ScrollReveal>
-            <div className="text-center">
-              <CTAButton variant="secondary" to="/faq" className="w-full sm:w-auto">
-                View All FAQs
-              </CTAButton>
-            </div>
-          </ScrollReveal>
         </div>
       </section>
 
-      {/* Section 9: Contact / CTA Banner */}
-      <section className="py-16 sm:py-20 md:py-24 pb-20 px-6 sm:px-8 md:px-12 relative overflow-visible" style={{background: 'linear-gradient(135deg, #0B6E6E 0%, #1A8FBF 100%)'}}>
-        <div className="max-w-4xl mx-auto text-center relative z-10 overflow-visible">
+      {/* Section 6: HOW IT WORKS */}
+      <section className="py-24 px-6 sm:px-8 md:px-12 bg-brand-navy text-white overflow-hidden">
+        <div className="max-w-7xl mx-auto">
           <ScrollReveal>
-            <h2 className="font-cormorant text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white mb-6 sm:mb-8 overflow-visible">
-              Begin Your Journey to Vitality
-            </h2>
-            <div className="flex flex-col sm:flex-row sm:flex-wrap justify-center gap-3 sm:gap-6 text-white/90 mb-8 sm:mb-12 font-mono text-xs sm:text-sm">
-              <div className="flex items-center justify-center gap-2">
-                <span className="text-white font-semibold">Phone:</span>
-                <span>+91 9989033686</span>
-              </div>
-              <div className="hidden sm:block text-white/50">·</div>
-              <div className="flex items-center justify-center gap-2">
-                <span className="text-white font-semibold">WhatsApp:</span>
-                <span>+91 9989033686</span>
-              </div>
-              <div className="hidden sm:block text-white/50">·</div>
-              <div className="flex items-center justify-center gap-2">
-                <span className="text-white font-semibold">Email:</span>
-                <span className="break-all">doctorkvsreddy@yahoo.com</span>
-              </div>
+            <div className="mb-20">
+              <SectionLabel className="text-white/40">THE PROCESS</SectionLabel>
+              <h2 className="font-cormorant text-4xl sm:text-5xl md:text-6xl text-white mt-4">How it works</h2>
             </div>
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center mb-6 sm:mb-8 w-full max-w-xs sm:max-w-none mx-auto">
-              <CTAButton variant="primary" to="/contact" className="w-full sm:w-auto">
-                Book Consultation
-              </CTAButton>
+          </ScrollReveal>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-12 relative">
+            {/* Desktop Connector Line */}
+            <div className="hidden lg:block absolute top-[60px] left-20 right-20 h-[1px] bg-white/10" />
+
+            {[
+              { num: '01', title: 'Consultation / Free Guidance', desc: 'Starting your path with clarity' },
+              { num: '02', title: 'Medical Assessment', desc: 'Evidence-informed evaluations' },
+              { num: '03', title: 'Personalized Therapy Plan', desc: 'Protocol tailored to your biology' },
+              { num: '04', title: 'Treatment Sessions', desc: 'Scientifically administered care' },
+              { num: '05', title: 'Monitoring & Optimization', desc: 'Tracking progress & outcomes' }
+            ].map((step, index) => (
+              <ScrollReveal key={index} delay={index * 0.1}>
+                <div className="relative z-10 flex flex-col items-center text-center lg:text-left lg:items-start group">
+                  <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center font-cormorant text-2xl font-bold italic text-brand-teal group-hover:border-brand-teal group-hover:bg-brand-teal/10 transition-all duration-500 mb-8">
+                    {step.num}
+                  </div>
+                  <h3 className="font-dm font-bold text-sm uppercase tracking-widest text-white mb-3">{step.title}</h3>
+                  <p className="text-white/40 text-[13px] leading-relaxed group-hover:text-white/60 transition-colors uppercase tracking-wider">{step.desc}</p>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Section 7: OUR TEAM & STATS */}
+      <section className="py-24 px-6 sm:px-8 md:px-12 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col lg:grid lg:grid-cols-2 gap-16 items-center">
+            <ScrollReveal>
+              <div className="relative">
+                <SectionLabel>OUR EXPERTISE</SectionLabel>
+                <h2 className="font-cormorant text-4xl sm:text-5xl md:text-6xl text-brand-navy mb-8">Led by experienced medical professionals</h2>
+                <div className="space-y-6 text-brand-muted text-lg leading-loose mb-10">
+                  <p>With over 30 years of clinical expertise, our medical team brings together advanced specialization and integrative thinking to provide evidence-informed therapy protocols.</p>
+                  <div className="grid grid-cols-2 gap-12 pt-4">
+                    <div ref={statsRef}>
+                      <div className="font-cormorant text-5xl text-brand-teal font-bold mb-2">
+                        {statsInView && <CountUp end={30} suffix="+" />}
+                      </div>
+                      <div className="font-dm text-[9px] uppercase tracking-[.3em] font-bold text-brand-navy/40">Years Clinical Expertise</div>
+                    </div>
+                    <div>
+                      <div className="font-cormorant text-5xl text-brand-teal font-bold mb-2">
+                        {statsInView && <CountUp end={100} suffix="%" />}
+                      </div>
+                      <div className="font-dm text-[9px] uppercase tracking-[.3em] font-bold text-brand-navy/40">Evidence Informed</div>
+                    </div>
+                  </div>
+                  <p className="font-italic pt-4 border-l-4 border-brand-teal/20 pl-6 text-brand-navy font-cormorant text-2xl italic">"We are committed to delivering science-backed protocols that ensure patient safety and maximize therapeutic outcomes."</p>
+                </div>
+                <Link to="/about">
+                  <button className="flex items-center gap-3 text-brand-teal group font-dm font-bold text-[11px] uppercase tracking-[.3em]">
+                    Meet the Team <ArrowRight size={16} className="group-hover:translate-x-2 transition-transform" />
+                  </button>
+                </Link>
+              </div>
+            </ScrollReveal>
+            
+            <ScrollReveal variant="fadeUp" delay={0.3}>
+              <div className="relative group">
+                <div className="absolute -inset-4 bg-brand-ice rounded-[50px] rotate-2 transition-transform group-hover:rotate-0 duration-700" />
+                <img 
+                  src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&q=80" 
+                  alt="Medical Team" 
+                  className="relative rounded-[40px] shadow-2xl transition-all duration-700"
+                />
+              </div>
+            </ScrollReveal>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 8: TESTIMONIALS */}
+      <section className="py-24 px-6 sm:px-8 md:px-12 bg-brand-ice overflow-hidden">
+        <div className="max-w-7xl mx-auto text-center px-4">
+          <ScrollReveal>
+            <SectionLabel>VOICES OF VITALITY</SectionLabel>
+            <h2 className="font-cormorant text-4xl sm:text-5xl md:text-6xl text-brand-navy mb-16">Patient Experiences</h2>
+          </ScrollReveal>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+            {testimonials.map((t, i) => (
+              <ScrollReveal key={i} delay={i * 0.1}>
+                <div className="bg-white p-10 rounded-[35px] shadow-xl shadow-brand-navy/5 border border-white group hover:border-brand-teal/20 transition-all duration-500 flex flex-col justify-between h-full">
+                  <div className="font-dm text-4xl text-brand-teal/10 mb-6 select-none">“</div>
+                  <p className="text-brand-navy text-lg font-cormorant leading-relaxed italic mb-8 flex-1">"{t.text}"</p>
+                  <div className="flex items-center gap-4 border-t border-brand-ice pt-8">
+                    <div className="w-10 h-10 rounded-full bg-brand-ice flex items-center justify-center text-brand-teal font-dm text-[11px] font-bold">PT</div>
+                    <div>
+                      <div className="font-dm font-bold text-[9px] uppercase tracking-widest text-brand-navy">{t.author}</div>
+                      <div className="font-dm text-[8px] uppercase tracking-widest text-brand-teal/60 font-bold">Verified Result</div>
+                    </div>
+                  </div>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Section 9: FINAL CTA */}
+      <section className="py-24 px-6 sm:px-8 md:px-12 relative overflow-hidden" style={{background: 'linear-gradient(135deg, #0D2137 0%, #0B6E6E 100%)'}}>
+        {/* Animated Background Elements */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_-20%,rgba(11,110,110,0.4),transparent_50%)]" />
+          <motion.div 
+            animate={{ 
+              scale: [1, 1.2, 1],
+              opacity: [0.1, 0.2, 0.1],
+              x: [-20, 20, -20]
+            }}
+            transition={{ duration: 10, repeat: Infinity }}
+            className="absolute -top-[50%] -right-[20%] w-[1000px] h-[1000px] bg-brand-teal/20 rounded-full blur-[150px]" 
+          />
+        </div>
+
+        <div className="max-w-5xl mx-auto text-center relative z-10 px-4">
+          <ScrollReveal>
+            <h2 className="font-cormorant text-5xl sm:text-6xl md:text-8xl text-white mb-8 leading-[0.95]">
+              Ready to restore <br className="hidden md:block" /> your vitality?
+            </h2>
+            <p className="text-white/60 text-lg sm:text-xl max-w-2xl mx-auto mb-16 italic font-dm tracking-wide">Take the first step towards evidence-based health optimization.</p>
+            
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
               <Link to="/contact" className="w-full sm:w-auto">
                 <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="w-full px-8 py-4 bg-white border-2 border-white text-brand-teal font-dm font-semibold uppercase tracking-widest text-sm rounded-sm hover:bg-white/10 hover:text-white transition-all duration-300"
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="w-full sm:w-auto px-12 py-5 bg-white text-brand-navy font-dm font-bold uppercase tracking-[.25em] text-[12px] rounded-full shadow-2xl shadow-black/20 hover:bg-brand-teal hover:text-white transition-all duration-500"
                 >
-                  Contact Us
+                  Book Consultation
                 </motion.button>
               </Link>
+              
+              <a href="https://wa.me/919989033686" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+                <motion.button
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="w-full sm:w-auto px-12 py-5 bg-transparent border-2 border-white/20 text-white font-dm font-bold uppercase tracking-[.25em] text-[12px] rounded-full flex items-center justify-center gap-3 hover:bg-white/5 hover:border-white transition-all duration-500"
+                >
+                  <MessageCircle size={18} /> WhatsApp Us
+                </motion.button>
+              </a>
             </div>
-            <div className="font-mono text-white/70 text-[10px] sm:text-xs uppercase tracking-wider">
-              Monday–Saturday · 9:00 AM – 6:00 PM
+            
+            <div className="mt-20 flex flex-col items-center gap-4">
+              <img 
+                src="/Almacura_Logo_Transparent.png" 
+                alt="ALMACURA" 
+                className="h-12 w-auto opacity-45" 
+              />
+              <span className="font-dm text-[10px] uppercase tracking-[.6em] text-white/30 font-bold whitespace-nowrap">ALMACURA · SECUNDARABAD · HYDERABAD</span>
             </div>
           </ScrollReveal>
         </div>
       </section>
+
+      <SuitabilityModal 
+        isOpen={isSuitabilityModalOpen} 
+        onClose={() => setIsSuitabilityModalOpen(false)} 
+      />
     </div>
   );
 }

@@ -1,9 +1,8 @@
 import { useParams, Link } from 'react-router-dom';
-import { CheckCircle, Clock, ArrowRight } from 'lucide-react';
+import { CheckCircle, Clock, ArrowRight, ShieldCheck, Target, AlertCircle, ChevronRight, MessageCircle } from 'lucide-react';
+import { motion } from 'framer-motion';
 import ScrollReveal from '../components/ScrollReveal';
 import SectionLabel from '../components/SectionLabel';
-import CTAButton from '../components/CTAButton';
-import TherapyCard from '../components/TherapyCard';
 import { therapiesData, therapyList } from '../data/therapiesData';
 
 export default function TherapyDetail() {
@@ -14,9 +13,9 @@ export default function TherapyDetail() {
     return (
       <div className="min-h-screen bg-brand-white pt-24 flex items-center justify-center">
         <div className="text-center">
-          <h1 className="font-cormorant text-4xl text-brand-navy mb-4">Therapy Not Found</h1>
-          <Link to="/therapies" className="text-brand-teal hover:text-brand-tealLight">
-            Return to Therapies
+          <h1 className="font-cormorant text-4xl text-brand-navy mb-4 font-bold">Therapy Protocol Not Found</h1>
+          <Link to="/therapies" className="text-brand-teal hover:text-brand-navy transition-colors font-dm font-bold text-[11px] uppercase tracking-widest">
+            Return to All Therapies
           </Link>
         </div>
       </div>
@@ -24,138 +23,153 @@ export default function TherapyDetail() {
   }
 
   const relatedTherapies = therapy.relatedTherapies
-    .map(relatedSlug => {
-      const relatedData = therapiesData[relatedSlug];
-      const relatedInfo = therapyList.find(t => t.slug === relatedSlug);
-      return { ...relatedData, ...relatedInfo, slug: relatedSlug };
-    })
-    .slice(0, 3);
+    ? therapy.relatedTherapies.map(relatedSlug => {
+        const relatedData = therapiesData[relatedSlug];
+        const relatedInfo = therapyList.find(t => t.slug === relatedSlug);
+        return { ...relatedData, ...relatedInfo, slug: relatedSlug };
+      }).slice(0, 3)
+    : [];
 
   return (
-    <div className="bg-brand-white pt-24">
-      {/* Therapy Hero */}
-      <section className="min-h-[60vh] relative flex items-center justify-center px-6 bg-gradient-to-br from-brand-deep via-brand-black to-brand-black">
-        <div className="max-w-4xl mx-auto text-center">
-          <ScrollReveal>
-            <h1 className="font-cormorant text-6xl md:text-8xl text-brand-navy mb-6">
+    <div className="bg-brand-white pt-20">
+      {/* Dynamic Therapy Hero */}
+      <section className="relative min-h-[70vh] flex items-center justify-center px-6 overflow-hidden">
+        <div className="absolute inset-0 bg-brand-ice/50" />
+        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(11,110,110,0.05),transparent_70%)]" />
+        
+        <div className="max-w-5xl mx-auto text-center relative z-10 pt-20 pb-32">
+          <ScrollReveal variant="fadeUp">
+            <div className="flex flex-col items-center gap-2 mb-8">
+              <SectionLabel>CLINICAL PROTOCOL</SectionLabel>
+            </div>
+            <h1 className="font-dm text-[clamp(44px,8vw,86px)] leading-[0.95] text-brand-navy font-bold tracking-tight mb-8">
               {therapy.title}
             </h1>
-            <p className="text-brand-muted text-xl md:text-2xl leading-relaxed mb-8">
-              {therapy.subtitle}
+            <p className="text-brand-muted text-xl sm:text-2xl leading-relaxed italic max-w-2xl mx-auto font-cormorant mt-6 mb-12">
+              "{therapy.subtitle}"
             </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <div className="glass-card px-6 py-3">
-                <div className="font-mono text-brand-teal text-xs uppercase tracking-wider mb-1">
-                  Session Duration
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+              {[
+                { label: 'Session Duration', value: therapy.sessionDuration },
+                { label: 'Typical Course', value: therapy.typicalCourse },
+                { label: 'Methodology', value: therapy.nonInvasive ? 'Non-invasive' : 'Advanced Method' },
+                { label: 'Clinical Review', value: 'Physician Managed' }
+              ].map((spec, i) => (
+                <div key={i} className="bg-white/60 backdrop-blur-xl border border-white p-6 rounded-3xl shadow-xl shadow-brand-navy/5">
+                  <div className="font-dm text-[9px] uppercase tracking-[.25em] text-brand-teal font-bold mb-2">{spec.label}</div>
+                  <div className="text-brand-navy font-dm font-bold text-sm tracking-[0.1em] uppercase">{spec.value}</div>
                 </div>
-                <div className="text-brand-navy font-dm font-medium">
-                  {therapy.sessionDuration}
-                </div>
-              </div>
-              <div className="glass-card px-6 py-3">
-                <div className="font-mono text-brand-teal text-xs uppercase tracking-wider mb-1">
-                  Typical Course
-                </div>
-                <div className="text-brand-navy font-dm font-medium">
-                  {therapy.typicalCourse}
-                </div>
-              </div>
-              <div className="glass-card px-6 py-3">
-                <div className="font-mono text-brand-teal text-xs uppercase tracking-wider mb-1">
-                  Type
-                </div>
-                <div className="text-brand-navy font-dm font-medium">
-                  {therapy.nonInvasive ? 'Non-invasive' : 'Minimally Invasive'}
-                </div>
-              </div>
+              ))}
             </div>
           </ScrollReveal>
         </div>
-      </section>
 
-      {/* Initial Workup */}
-      <section className="py-24 px-6 bg-brand-ice">
-        <div className="max-w-5xl mx-auto">
-          <ScrollReveal>
-            <SectionLabel>BEFORE YOU BEGIN</SectionLabel>
-            <h2 className="font-cormorant text-5xl md:text-6xl text-brand-navy mb-12">
-              Pre-Treatment Assessment
-            </h2>
-          </ScrollReveal>
-
-          <div className="grid md:grid-cols-2 gap-4">
-            {therapy.workup.map((item, index) => (
-              <ScrollReveal key={index} delay={index * 0.05}>
-                <div className="flex items-start gap-4 glass-card p-6">
-                  <CheckCircle className="text-brand-teal flex-shrink-0 mt-1" size={20} />
-                  <span className="text-brand-muted">{item}</span>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
+        {/* Scroll Indicator */}
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 opacity-20">
+          <motion.div animate={{ y: [0, 10, 0] }} transition={{ repeat: Infinity, duration: 2 }}>
+            <ArrowRight size={24} className="rotate-90" />
+          </motion.div>
         </div>
       </section>
 
-      {/* How It Works */}
-      <section className="py-24 px-6 bg-brand-white">
+      {/* Core Description & Benefits */}
+      <section className="py-24 px-6 sm:px-8 md:px-12 bg-white">
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-16 items-start">
-            <ScrollReveal variant="fadeLeft">
-              <div>
-                <SectionLabel>PROCEDURE</SectionLabel>
-                <h2 className="font-cormorant text-5xl md:text-6xl text-brand-navy mb-12">
-                  How It Works
-                </h2>
+          <div className="grid lg:grid-cols-2 gap-20 items-start">
+            <ScrollReveal>
+              <div className="bg-brand-ice p-12 rounded-[50px] relative overflow-hidden group border border-white h-full">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-brand-teal/5 rounded-bl-full group-hover:scale-125 transition-transform duration-700" />
+                <h2 className="font-cormorant text-4xl text-brand-navy mb-8 font-bold italic">What is {therapy.title.split('(')[0].trim()}?</h2>
+                <p className="text-brand-muted text-lg leading-relaxed mb-10">
+                  {therapy.description}
+                </p>
                 <div className="space-y-6">
-                  {therapy.procedure.map((step, index) => (
-                    <div key={index} className="flex items-start gap-4">
-                      <div className="font-mono text-2xl text-brand-teal/30 flex-shrink-0 w-12">
-                        {String(index + 1).padStart(2, '0')}
+                  <div className="font-dm font-bold text-[11px] uppercase tracking-widest text-brand-teal mb-4">Therapy Benefits</div>
+                  <div className="grid grid-cols-1 gap-4">
+                    {therapy.benefits.map((benefit, i) => (
+                      <div key={i} className="flex items-center gap-4 p-4 bg-white/60 rounded-2xl border border-white group/item hover:border-brand-teal/30 transition-all">
+                        <div className="w-8 h-8 rounded-full bg-brand-teal/10 flex items-center justify-center text-brand-teal group-hover/item:bg-brand-teal group-hover/item:text-white transition-all">
+                          <CheckCircle size={16} />
+                        </div>
+                        <span className="font-dm font-bold text-[10px] uppercase tracking-widest text-brand-navy">{benefit}</span>
                       </div>
-                      <p className="text-brand-muted leading-relaxed pt-1">{step}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </ScrollReveal>
-
-            <ScrollReveal variant="fadeRight" delay={0.2}>
-              <div className="glass-card p-12 bg-gradient-to-br from-brand-teal/5 to-transparent border-brand-teal/30">
-                <div className="aspect-square flex items-center justify-center">
-                  <div className="text-center">
-                    <Clock className="mx-auto mb-4 text-brand-teal" size={64} strokeWidth={1} />
-                    <div className="font-mono text-brand-teal text-sm uppercase tracking-wider mb-2">
-                      Supervision
-                    </div>
-                    <div className="text-brand-navy font-dm text-lg">
-                      {therapy.supervision}
-                    </div>
+                    ))}
                   </div>
                 </div>
               </div>
             </ScrollReveal>
+
+            <div className="space-y-16">
+              <ScrollReveal delay={0.2}>
+                <div>
+                  <div className="flex items-center gap-4 mb-8">
+                    <div className="w-10 h-10 rounded-xl bg-brand-teal/10 flex items-center justify-center text-brand-teal">
+                      <Target size={20} />
+                    </div>
+                    <h3 className="font-dm font-bold text-[11px] uppercase tracking-[.4em] text-brand-navy">Core Applications</h3>
+                  </div>
+                  <h4 className="font-cormorant text-4xl text-brand-navy italic mb-8">Used For</h4>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {therapy.usedFor.map((use, i) => (
+                      <div key={i} className="flex items-center gap-3 py-3 border-b border-brand-ice">
+                        <ChevronRight size={14} className="text-brand-teal" />
+                        <span className="font-dm font-bold text-[10px] uppercase tracking-widest text-brand-navy/70">{use}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </ScrollReveal>
+
+              <ScrollReveal delay={0.4}>
+                <div className="bg-brand-navy p-10 rounded-[40px] text-white overflow-hidden relative group">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-bl-full group-hover:scale-125 transition-transform duration-700" />
+                  <div className="flex items-center gap-4 mb-8">
+                    <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-brand-teal">
+                      <AlertCircle size={20} />
+                    </div>
+                    <h3 className="font-dm font-bold text-[11px] uppercase tracking-[.4em] text-white/60">Precautions</h3>
+                  </div>
+                  <h4 className="font-cormorant text-4xl text-white italic mb-8">Not Suitable For</h4>
+                  <div className="space-y-4">
+                    {therapy.notSuitableFor.length > 0 ? (
+                      therapy.notSuitableFor.map((item, i) => (
+                        <div key={i} className="flex items-start gap-3 opacity-60">
+                          <CheckCircle size={14} className="mt-1 flex-shrink-0 text-brand-teal" />
+                          <span className="text-[13px] uppercase tracking-widest leading-relaxed">{item}</span>
+                        </div>
+                      ))
+                    ) : (
+                      <p className="text-white/40 italic uppercase text-xs tracking-widest">No major contraindications reported. Consult with our medical staff for suitability.</p>
+                    )}
+                  </div>
+                </div>
+              </ScrollReveal>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Clinical Benefits */}
-      <section className="py-24 px-6 bg-brand-ice">
-        <div className="max-w-7xl mx-auto">
+      {/* Procedure Steps */}
+      <section className="py-24 px-6 sm:px-8 md:px-12 bg-brand-ice bg-opacity-50">
+        <div className="max-w-5xl mx-auto">
           <ScrollReveal>
-            <SectionLabel>THERAPEUTIC OUTCOMES</SectionLabel>
-            <h2 className="font-cormorant text-5xl md:text-6xl text-brand-navy mb-16">
-              Clinical Benefits
-            </h2>
+            <div className="text-center mb-16">
+              <SectionLabel>THE JOURNEY</SectionLabel>
+              <h2 className="font-cormorant text-4xl sm:text-5xl text-brand-navy mt-4 italic">Protocol Execution</h2>
+            </div>
           </ScrollReveal>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {therapy.benefits.map((benefit, index) => (
-              <ScrollReveal key={index} delay={index * 0.05}>
-                <div className="glass-card p-6 hover:border-brand-teal transition-all duration-300">
-                  <CheckCircle className="text-brand-teal mb-4" size={24} />
-                  <h3 className="text-brand-navy font-dm font-medium text-lg">
-                    {benefit}
-                  </h3>
+          <div className="space-y-4">
+            {therapy.procedure.map((step, i) => (
+              <ScrollReveal key={i} delay={i * 0.1}>
+                <div className="bg-white p-8 rounded-3xl border border-white shadow-xl shadow-brand-navy/5 group hover:border-brand-teal/20 transition-all flex items-start gap-8">
+                  <div className="font-cormorant text-3xl font-bold italic text-brand-teal/20 group-hover:text-brand-teal/60 transition-colors w-10 flex-shrink-0">
+                    {String(i + 1).padStart(2, '0')}
+                  </div>
+                  <p className="text-brand-navy font-dm font-bold text-[11px] uppercase tracking-[.25em] leading-relaxed pt-2">
+                    {step}
+                  </p>
                 </div>
               </ScrollReveal>
             ))}
@@ -163,104 +177,63 @@ export default function TherapyDetail() {
         </div>
       </section>
 
-      {/* Session Details */}
-      <section className="py-16 px-6 bg-brand-white border-y border-brand-border">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="font-mono text-brand-teal text-xs uppercase tracking-wider mb-2">
-                Duration
-              </div>
-              <div className="text-brand-navy font-dm text-lg">
-                {therapy.sessionDuration}
-              </div>
-            </div>
-            <div className="text-center">
-              <div className="font-mono text-brand-teal text-xs uppercase tracking-wider mb-2">
-                Typical Course
-              </div>
-              <div className="text-brand-navy font-dm text-lg">
-                {therapy.typicalCourse}
-              </div>
-            </div>
-            <div className="text-center">
-              <div className="font-mono text-brand-teal text-xs uppercase tracking-wider mb-2">
-                Invasiveness
-              </div>
-              <div className="text-brand-navy font-dm text-lg">
-                {therapy.nonInvasive ? 'Non-invasive' : 'Minimal'}
-              </div>
-            </div>
-            <div className="text-center">
-              <div className="font-mono text-brand-teal text-xs uppercase tracking-wider mb-2">
-                Supervision
-              </div>
-              <div className="text-brand-navy font-dm text-lg">
-                Medical
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Follow-up */}
-      <section className="py-24 px-6 bg-brand-ice">
-        <div className="max-w-4xl mx-auto">
+      {/* CTA Section */}
+      <section className="py-24 px-6 sm:px-8 md:px-12 bg-brand-navy relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(11,110,110,0.2),transparent_60%)]" />
+        <div className="max-w-4xl mx-auto text-center relative z-10">
           <ScrollReveal>
-            <SectionLabel>POST-TREATMENT</SectionLabel>
-            <h2 className="font-cormorant text-5xl md:text-6xl text-brand-navy mb-8">
-              Follow-up & Monitoring
-            </h2>
-            <p className="text-brand-muted leading-relaxed text-lg">
-              {therapy.followUp}
-            </p>
+            <h2 className="font-cormorant text-4xl sm:text-6xl text-white mb-8">Ready for {therapy.title.split('(')[0].trim()}?</h2>
+            <p className="text-white/60 text-lg sm:text-xl font-cormorant italic mb-12">"Every protocol is evidence-informed and personalized to your diagnostic profile."</p>
+            
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+              <Link to="/contact" className="w-full sm:w-auto">
+                <button className="w-full sm:w-auto px-12 py-5 bg-brand-teal text-white rounded-full font-dm font-bold text-[11px] uppercase tracking-[.3em] hover:bg-white hover:text-brand-navy transition-all shadow-2xl shadow-brand-teal/20">
+                  Book Clinical Assessment
+                </button>
+              </Link>
+              <a href="https://wa.me/919989033686" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+                <button className="w-full sm:w-auto px-12 py-5 border-2 border-white/20 text-white rounded-full font-dm font-bold text-[11px] uppercase tracking-[.3em] hover:bg-white/10 transition-all flex items-center justify-center gap-3">
+                  <MessageCircle size={18} /> Protocol Inquiry
+                </button>
+              </a>
+            </div>
           </ScrollReveal>
         </div>
       </section>
 
       {/* Related Therapies */}
       {relatedTherapies.length > 0 && (
-        <section className="py-24 px-6 bg-brand-white">
+        <section className="py-24 px-6 sm:px-8 md:px-12 bg-white">
           <div className="max-w-7xl mx-auto">
             <ScrollReveal>
-              <SectionLabel>COMPLEMENTARY THERAPIES</SectionLabel>
-              <h2 className="font-cormorant text-5xl md:text-6xl text-brand-navy mb-16">
-                Often Combined With
-              </h2>
+              <div className="text-center mb-16">
+                <SectionLabel>COMPLEMENTARY PROTOCOLS</SectionLabel>
+                <h2 className="font-cormorant text-4xl sm:text-5xl text-brand-navy mt-4 italic">Often Combined With</h2>
+              </div>
             </ScrollReveal>
 
-            <div className="grid md:grid-cols-3 gap-8">
-              {relatedTherapies.map((related, index) => (
-                <ScrollReveal key={related.slug} delay={index * 0.1}>
-                  <TherapyCard
-                    icon={related.icon}
-                    title={related.title}
-                    description={related.subtitle}
-                    slug={related.slug}
-                  />
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {relatedTherapies.map((rel, i) => (
+                <ScrollReveal key={i} delay={i * 0.1}>
+                  <Link to={`/therapies/${rel.slug}`}>
+                    <div className="bg-brand-ice/50 p-8 rounded-[40px] border border-transparent hover:border-brand-teal/20 transition-all group h-full flex flex-col justify-between">
+                      <div className="flex items-center gap-4 mb-6">
+                        <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-brand-teal shadow-sm group-hover:bg-brand-teal group-hover:text-white transition-all">
+                          <CheckCircle size={20} />
+                        </div>
+                        <h4 className="font-dm font-bold text-[11px] uppercase tracking-widest text-brand-navy">{rel.title}</h4>
+                      </div>
+                      <div className="text-brand-teal font-dm font-bold text-[9px] uppercase tracking-widest flex items-center gap-2 group-hover:gap-4 transition-all">
+                        View Protocol <ArrowRight size={14} />
+                      </div>
+                    </div>
+                  </Link>
                 </ScrollReveal>
               ))}
             </div>
           </div>
         </section>
       )}
-
-      {/* CTA */}
-      <section className="py-24 px-6 bg-brand-ice">
-        <div className="max-w-4xl mx-auto text-center">
-          <ScrollReveal>
-            <h2 className="font-cormorant text-5xl md:text-6xl text-brand-navy mb-8">
-              Ready to Begin?
-            </h2>
-            <p className="text-brand-muted text-lg leading-relaxed mb-12 max-w-2xl mx-auto">
-              Schedule a consultation to discuss your diagnostic assessment and personalized {therapy.title.toLowerCase()} protocol.
-            </p>
-            <CTAButton variant="primary" to="/contact">
-              Book Consultation
-            </CTAButton>
-          </ScrollReveal>
-        </div>
-      </section>
     </div>
   );
 }

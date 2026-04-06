@@ -145,7 +145,7 @@ export default function FAQ() {
                     <p className="text-brand-muted leading-relaxed mb-6">
                       Schedule a consultation to discuss your specific health concerns and explore personalized therapeutic options.
                     </p>
-                    <CTAButton variant="primary" to="/contact" className="w-full justify-center">
+                    <CTAButton variant="primary" to="/contact" className="w-full justify-center !text-white">
                       Book Consultation
                     </CTAButton>
                     
@@ -174,6 +174,19 @@ export default function FAQ() {
                           <div className="text-brand-navy">
                             Mon–Sat, 9:00 AM – 6:00 PM
                           </div>
+                        </div>
+                        <div>
+                          <div className="font-mono text-brand-teal text-xs uppercase tracking-wider mb-1">
+                            Maps
+                          </div>
+                          <a
+                            href="https://maps.google.com/?q=Secunderabad%2C+Hyderabad"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-brand-navy underline hover:text-brand-teal transition-colors"
+                          >
+                            Open in Google Maps
+                          </a>
                         </div>
                       </div>
                     </div>

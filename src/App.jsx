@@ -5,17 +5,17 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import WhatsAppButton from './components/WhatsAppButton';
 import Home from './pages/Home';
-import Diagnostics from './pages/Diagnostics';
-import Longevity from './pages/Longevity';
-import Gynaecology from './pages/Gynaecology'; // Added
-import Therapies from './pages/Therapies';
-import TherapyDetail from './pages/TherapyDetail';
-import Nutrition from './pages/Nutrition';
-import Founder from './pages/Founder';
+import IntegrativeMedicine from './pages/IntegrativeMedicine';
+import HealthspanOptimization from './pages/HealthspanOptimization';
 import FAQ from './pages/FAQ';
 import Contact from './pages/Contact';
-import Terms from './pages/Terms'; // Added
+import Terms from './pages/Terms';
 import NotFound from './pages/NotFound';
+import Therapies from './pages/Therapies';
+import TherapyDetail from './pages/TherapyDetail';
+import Programs from './pages/Programs';
+import ForDoctors from './pages/ForDoctors';
+import About from './pages/About';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -58,13 +58,13 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/diagnostics" element={<Diagnostics />} />
-          <Route path="/longevity" element={<Longevity />} />
-          <Route path="/gynaecology" element={<Gynaecology />} />
+          <Route path="/integrative-medicine" element={<IntegrativeMedicine />} />
+          <Route path="/healthspan-optimization" element={<HealthspanOptimization />} />
           <Route path="/therapies" element={<Therapies />} />
           <Route path="/therapies/:slug" element={<TherapyDetail />} />
-          <Route path="/nutrition" element={<Nutrition />} />
-          <Route path="/founder" element={<Founder />} />
+          <Route path="/programs" element={<Programs />} />
+          <Route path="/for-doctors" element={<ForDoctors />} />
+          <Route path="/about" element={<About />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/terms" element={<Terms />} />

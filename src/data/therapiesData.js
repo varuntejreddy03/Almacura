@@ -1,16 +1,31 @@
 export const therapiesData = {
   hbot: {
-    title: "Hyperbaric Oxygen Therapy",
+    title: "Hyperbaric Oxygen Therapy (HBOT)",
     subtitle: "Enhanced tissue oxygenation under pressure",
+    description: "Breathing pure oxygen in a pressurized chamber to enhance tissue oxygenation.",
     sessionDuration: "60–90 minutes",
     typicalCourse: "20–40 sessions",
     nonInvasive: true,
-    supervision: "Medical staff monitored",
-    workup: [
-      "Full blood count",
-      "Cardiac evaluation",
-      "Lung function check",
-      "Blood pressure assessment"
+    benefits: [
+      "Faster healing",
+      "Improved brain function",
+      "Reduced inflammation",
+      "Enhanced tissue regeneration",
+      "Improved circulation",
+      "Cellular repair stimulation"
+    ],
+    usedFor: [
+      "Non-healing wounds",
+      "Stroke recovery",
+      "Chronic fatigue",
+      "Neurological conditions",
+      "Post-surgery recovery"
+    ],
+    notSuitableFor: [
+      "Certain lung conditions",
+      "Untreated pneumothorax",
+      "Severe claustrophobia (without sedation)",
+      "High fever"
     ],
     procedure: [
       "Patient enters pressurized chamber",
@@ -19,264 +34,172 @@ export const therapiesData = {
       "Session monitored by medical staff",
       "Gradual depressurization at end"
     ],
-    benefits: [
-      "Enhanced wound healing",
-      "Tissue regeneration",
-      "Reduced inflammation",
-      "Improved circulation",
-      "Cellular repair stimulation",
-      "Oxygen delivery optimization"
-    ],
-    followUp: "Biomarker reassessment after every 10 sessions. Clinical response evaluation includes wound healing progress, inflammatory marker reduction, and functional improvement tracking.",
-    relatedTherapies: ['ozone', 'photobiomodulation', 'hydrogen']
-  },
-  eecp: {
-    title: "Enhanced External Counter Pulsation",
-    subtitle: "Non-invasive coronary circulation enhancement",
-    sessionDuration: "1 hour",
-    typicalCourse: "35 sessions",
-    nonInvasive: true,
-    supervision: "Cardiac specialist monitored",
-    workup: [
-      "Complete cardiac evaluation",
-      "ECG and stress test",
-      "Blood pressure monitoring",
-      "Vascular assessment"
-    ],
-    procedure: [
-      "Pressure cuffs applied to lower limbs",
-      "Sequential inflation synchronized with heartbeat",
-      "Diastolic augmentation increases coronary flow",
-      "Continuous ECG monitoring",
-      "Gradual pressure adjustment"
-    ],
-    benefits: [
-      "Improved coronary circulation",
-      "Reduced angina symptoms",
-      "Enhanced cardiac output",
-      "Collateral vessel formation",
-      "Exercise tolerance improvement",
-      "Non-surgical cardiac support"
-    ],
-    followUp: "Cardiac function reassessment every 12 sessions. Symptom tracking, exercise capacity evaluation, and quality of life metrics monitored throughout course.",
-    relatedTherapies: ['hbot', 'ozone', 'nutrition']
-  },
-  prp: {
-    title: "Platelet-Rich Plasma Therapy",
-    subtitle: "Autologous growth factor concentration",
-    sessionDuration: "45–60 minutes",
-    typicalCourse: "3–6 sessions",
-    nonInvasive: false,
-    supervision: "Physician administered",
-    workup: [
-      "Complete blood count",
-      "Platelet function assessment",
-      "Infection screening",
-      "Target area evaluation"
-    ],
-    procedure: [
-      "Blood drawn from patient",
-      "Centrifugation to concentrate platelets",
-      "PRP preparation and activation",
-      "Targeted injection to treatment area",
-      "Post-procedure monitoring"
-    ],
-    benefits: [
-      "Tissue regeneration",
-      "Joint pain reduction",
-      "Accelerated healing",
-      "Collagen stimulation",
-      "Reduced inflammation",
-      "Natural growth factor delivery"
-    ],
-    followUp: "Clinical response evaluation at 4-6 weeks post-treatment. Functional assessment and symptom tracking guide additional session requirements.",
-    relatedTherapies: ['ozone', 'photobiomodulation', 'pain-management']
+    relatedTherapies: ['ozone', 'red-light', 'hydrogen']
   },
   ozone: {
     title: "Ozone Therapy",
     subtitle: "Medical ozone for oxygen metabolism enhancement",
+    description: "Use of medical-grade ozone to stimulate the immune system and improve oxygen delivery.",
     sessionDuration: "30–45 minutes",
     typicalCourse: "10–20 sessions",
-    nonInvasive: true,
-    supervision: "Medical staff monitored",
-    workup: [
-      "G6PD enzyme screening",
-      "Complete blood count",
-      "Liver function tests",
-      "Oxidative stress markers"
-    ],
-    procedure: [
-      "Medical-grade ozone preparation",
-      "Administration via selected protocol",
-      "Controlled dosage delivery",
-      "Patient monitoring during session",
-      "Post-treatment observation"
-    ],
+    nonInvasive: false,
     benefits: [
       "Enhanced oxygen metabolism",
       "Immune system modulation",
       "Antimicrobial effects",
-      "Circulation improvement",
       "Cellular detoxification",
       "Inflammatory response regulation"
     ],
-    followUp: "Biomarker assessment every 5-10 sessions. Oxidative stress markers, inflammatory markers, and clinical response guide protocol adjustments.",
-    relatedTherapies: ['hbot', 'hydrogen', 'photobiomodulation']
-  },
-  photobiomodulation: {
-    title: "Photobiomodulation Therapy",
-    subtitle: "Light-based mitochondrial energy optimization",
-    sessionDuration: "20–30 minutes",
-    typicalCourse: "15–30 sessions",
-    nonInvasive: true,
-    supervision: "Technician supervised",
-    workup: [
-      "Skin assessment",
-      "Photosensitivity screening",
-      "Target area evaluation",
-      "Baseline functional assessment"
+    usedFor: [
+      "Chronic infections",
+      "Autoimmune conditions",
+      "Chronic fatigue",
+      "Circulatory disorders",
+      "Wound healing"
+    ],
+    notSuitableFor: [
+      "G6PD deficiency",
+      "Hyperthyroidism",
+      "Thrombocytopenia",
+      "Recent myocardial infarction"
     ],
     procedure: [
-      "Specific wavelength light application",
-      "Targeted tissue exposure",
-      "Mitochondrial chromophore activation",
-      "Controlled duration and intensity",
-      "Non-thermal therapeutic effect"
+      "Medical-grade ozone preparation",
+      "Administration via selected protocol (Autohemotherapy or Insufflation)",
+      "Controlled dosage delivery",
+      "Patient monitoring during session"
     ],
+    relatedTherapies: ['hbot', 'hydrogen', 'iv-therapy']
+  },
+  'iv-therapy': {
+    title: "IV Nutrient Therapy",
+    subtitle: "Direct cellular nourishment",
+    description: "Intravenous administration of vitamins, minerals, and antioxidants for maximum absorption.",
+    sessionDuration: "45–60 minutes",
+    typicalCourse: "Weekly or bi-weekly",
+    nonInvasive: false,
     benefits: [
-      "Mitochondrial energy production",
-      "Cellular ATP synthesis",
-      "Reduced oxidative stress",
-      "Tissue repair acceleration",
-      "Pain reduction",
-      "Anti-inflammatory effects"
+      "100% nutrient absorption",
+      "Boosted energy levels",
+      "Enhanced immune support",
+      "Detoxification",
+      "Cellular hydration"
     ],
-    followUp: "Functional assessment every 10 sessions. Energy levels, pain scores, and tissue healing progress tracked throughout treatment course.",
-    relatedTherapies: ['hbot', 'hydrogen', 'ozone']
+    usedFor: [
+      "Nutrient deficiencies",
+      "Chronic fatigue",
+      "Immune boost",
+      "Dehydration",
+      "Performance recovery"
+    ],
+    notSuitableFor: [
+      "Severe kidney disease",
+      "Certain heart conditions",
+      "Allergy to specific nutrients"
+    ],
+    procedure: [
+      "Consultation to determine nutrient mix",
+      "Sterile IV insertion by medical professional",
+      "Controlled drip of nutrient solution",
+      "Relaxation in comfortable lounge"
+    ],
+    relatedTherapies: ['ozone', 'hydrogen', 'nutrition']
   },
   hydrogen: {
-    title: "Molecular Hydrogen Therapy",
+    title: "Hydrogen Therapy",
     subtitle: "Selective antioxidant for oxidative stress reduction",
+    description: "Inhalation of molecular hydrogen gas to neutralize harmful free radicals.",
     sessionDuration: "30–60 minutes",
     typicalCourse: "20–40 sessions",
     nonInvasive: true,
-    supervision: "Medical staff monitored",
-    workup: [
-      "Oxidative stress marker assessment",
-      "Inflammatory marker panel",
-      "Metabolic evaluation",
-      "Baseline symptom assessment"
-    ],
-    procedure: [
-      "Medical-grade hydrogen gas preparation",
-      "Inhalation or infusion protocol",
-      "Controlled concentration delivery",
-      "Session monitoring",
-      "Post-treatment observation"
-    ],
     benefits: [
       "Selective antioxidant action",
-      "Oxidative stress reduction",
+      "Reduced oxidative stress",
       "Neuroprotective effects",
       "Anti-inflammatory properties",
-      "Metabolic optimization",
-      "Cellular protection"
+      "Metabolic optimization"
     ],
-    followUp: "Oxidative stress biomarker reassessment every 10-15 sessions. Inflammatory markers, metabolic parameters, and clinical symptoms guide treatment duration.",
-    relatedTherapies: ['ozone', 'photobiomodulation', 'hbot']
+    usedFor: [
+      "Brain health",
+      "Metabolic disorders",
+      "Inflammatory conditions",
+      "Longevity support",
+      "Athletic recovery"
+    ],
+    notSuitableFor: [],
+    procedure: [
+      "Medical-grade hydrogen gas inhalation",
+      "Relaxed breathing through nasal cannula",
+      "Controlled concentration delivery",
+      "Can be combined with other therapies"
+    ],
+    relatedTherapies: ['ozone', 'red-light', 'hbot']
   },
-  'pain-management': {
-    title: "Pain Portal Blocks",
-    subtitle: "Targeted neural pain pathway intervention",
-    sessionDuration: "30–45 minutes",
-    typicalCourse: "1–3 sessions",
-    nonInvasive: false,
-    supervision: "Physician administered",
-    workup: [
-      "Pain assessment and mapping",
-      "Neurological examination",
-      "Imaging if indicated",
-      "Medication review"
+  'red-light': {
+    title: "Red Light Therapy",
+    subtitle: "Mitochondrial energy optimization",
+    description: "Exposing the body to low-level red and near-infrared light to stimulate cellular energy.",
+    sessionDuration: "20–30 minutes",
+    typicalCourse: "10–20 sessions",
+    nonInvasive: true,
+    benefits: [
+      "Mitochondrial energy production",
+      "Reduced oxidative stress",
+      "Skin health & anti-aging",
+      "Tissue repair acceleration",
+      "Pain reduction"
+    ],
+    usedFor: [
+      "Skin rejuvenation",
+      "Muscle recovery",
+      "Joint pain",
+      "Sleep optimization",
+      "Energy enhancement"
+    ],
+    notSuitableFor: [
+      "Certain eye conditions (without protection)",
+      "Light-sensitive medications"
     ],
     procedure: [
-      "Target nerve identification",
-      "Local anesthetic preparation",
-      "Precise injection technique",
-      "Real-time patient feedback",
-      "Post-procedure monitoring"
+      "Targeted light exposure with specific panels",
+      "Mitochondrial activation through red light",
+      "Comfortable, non-thermal treatment"
     ],
-    benefits: [
-      "Rapid pain relief",
-      "Targeted neural blockade",
-      "Reduced medication dependence",
-      "Improved functional capacity",
-      "Diagnostic and therapeutic value",
-      "Minimal systemic effects"
-    ],
-    followUp: "Pain assessment at 1 week and 4 weeks post-procedure. Functional improvement and duration of relief guide additional intervention needs.",
-    relatedTherapies: ['prp', 'ozone', 'photobiomodulation']
+    relatedTherapies: ['hbot', 'hydrogen', 'acupuncture']
   },
-  hifem: {
-    title: "HIFEM Therapy",
-    subtitle: "High-Intensity Focused Electromagnetic technology",
-    sessionDuration: "30 minutes",
+  acupuncture: {
+    title: "Acupuncture",
+    subtitle: "Balancing energy and biological systems",
+    description: "Traditional practice of inserting thin needles at specific points to balance the body's flow of energy (Qi).",
+    sessionDuration: "45–60 minutes",
     typicalCourse: "6–10 sessions",
-    nonInvasive: true,
-    supervision: "Medical staff monitored",
-    workup: [
-      "Pelvic floor assessment",
-      "Continence level evaluation",
-      "Medical history review",
-      "Contraindication screening"
+    nonInvasive: false,
+    benefits: [
+      "Pain relief",
+      "Stress reduction",
+      "Hormonal balance",
+      "Improved circulation",
+      "Enhanced recovery"
+    ],
+    usedFor: [
+      "Chronic pain",
+      "Fertility support",
+      "Hormonal imbalances",
+      "Stress & anxiety",
+      "Migraines"
+    ],
+    notSuitableFor: [
+      "Bleeding disorders",
+      "Presence of a pacemaker (for electro-acupuncture)",
+      "Extreme needle phobia"
     ],
     procedure: [
-      "Patient remains fully clothed",
-      "Positions on HIFEM chair",
-      "Adjustable intensity settings",
-      "Supramaximal muscle contractions",
-      "Relaxation phases included"
+      "Mapping of meridian points",
+      "Insertion of sterile, ultra-fine needles",
+      "Controlled stimulation and relaxation",
+      "Needle removal after retention period"
     ],
-    benefits: [
-      "Strengthens pelvic floor muscles",
-      "Improves urinary continence",
-      "Enhances pelvic functional support",
-      "Non-invasive treatment",
-      "Restores neuromuscular control",
-      "Improved sexual well-being"
-    ],
-    followUp: "Pelvic strength reassessment at 4 and 12 weeks. Maintenance sessions recommended based on clinical outcome.",
-    relatedTherapies: ['hifu', 'nutrition', 'gynaecology']
-  },
-  hifu: {
-    title: "HIFU Therapy",
-    subtitle: "High-Intensity Focused Ultrasound",
-    sessionDuration: "30–45 minutes",
-    typicalCourse: "1–3 sessions",
-    nonInvasive: true,
-    supervision: "Physician administered",
-    workup: [
-      "Structural tissue assessment",
-      "Tissue laxity evaluation",
-      "Imaging if indicated",
-      "Suitability screening"
-    ],
-    procedure: [
-      "Precise ultrasound energy delivery",
-      "Focused thermal coagulation points",
-      "Targeted deep tissue layers",
-      "Controlled intensity and depth",
-      "Real-time monitoring"
-    ],
-    benefits: [
-      "Supports tissue tightening",
-      "Improves structural integrity",
-      "Stimulates collagen production",
-      "Non-surgical functional restoration",
-      "Long-term structural support",
-      "Minimally invasive approach"
-    ],
-    followUp: "Tissue tone assessment at 3 and 6 months. Long-term structural monitoring to evaluate sustained benefits.",
-    relatedTherapies: ['hifem', 'prp', 'gynaecology']
+    relatedTherapies: ['red-light', 'nutrition', 'ozone']
   }
 };
 
@@ -284,47 +207,37 @@ export const therapyList = [
   {
     slug: 'hbot',
     icon: 'Waves',
-    shortDescription: 'Improves tissue oxygenation, wound healing, cellular repair, and recovery in chronic conditions.'
-  },
-  {
-    slug: 'eecp',
-    icon: 'HeartPulse',
-    shortDescription: 'Non-invasive therapy that improves blood flow to the heart and enhances coronary circulation.'
-  },
-  {
-    slug: 'prp',
-    icon: 'Syringe',
-    shortDescription: "Uses the patient's own blood-derived growth factors to support healing and tissue regeneration."
+    title: 'Hyperbaric Oxygen Therapy (HBOT)',
+    shortDescription: 'Enhance tissue oxygenation and cellular repair in a pressurized chamber.'
   },
   {
     slug: 'ozone',
     icon: 'Wind',
-    shortDescription: 'Uses medical-grade ozone to improve oxygen utilisation and modulate immune function.'
+    title: 'Ozone Therapy',
+    shortDescription: 'Boost immune function and enhance oxygen metabolism with medical-grade ozone.'
   },
   {
-    slug: 'photobiomodulation',
-    icon: 'Lightbulb',
-    shortDescription: 'Uses light to stimulate cellular function, enhance mitochondrial activity and promote repair.'
+    slug: 'iv-therapy',
+    icon: 'Syringe',
+    title: 'IV Nutrient Therapy',
+    shortDescription: 'Direct cellular nourishment with specialized vitamin and mineral infusions.'
   },
   {
     slug: 'hydrogen',
     icon: 'Atom',
-    shortDescription: 'Inhalation of molecular hydrogen acts as a selective antioxidant to reduce oxidative stress.'
+    title: 'Hydrogen Therapy',
+    shortDescription: 'Neutralize oxidative stress and protect brain health with molecular hydrogen.'
   },
   {
-    slug: 'pain-management',
+    slug: 'red-light',
+    icon: 'Lightbulb',
+    title: 'Red Light Therapy',
+    shortDescription: 'Stimulate mitochondrial energy and promote cellular repair with infrared light.'
+  },
+  {
+    slug: 'acupuncture',
     icon: 'ShieldAlert',
-    shortDescription: 'Targeted injections to interrupt pain pathways, reduce chronic pain, and improve mobility.'
-  },
-  {
-    slug: 'hifem',
-    icon: 'Zap',
-    shortDescription: 'Non-invasive pelvic muscle strengthening therapy for improving continence and pelvic support.'
-  },
-  {
-    slug: 'hifu',
-    icon: 'Focus',
-    shortDescription: 'Focused ultrasound therapy used for tissue tightening and support in selected cases.'
+    title: 'Acupuncture',
+    shortDescription: 'Restore biological balance and manage pain through evidence-informed meridian therapy.'
   }
 ];
-

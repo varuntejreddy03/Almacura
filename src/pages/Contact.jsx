@@ -1,39 +1,38 @@
 import { useState } from 'react';
-import { Phone, Mail, Clock, MapPin, Send } from 'lucide-react';
+import { ArrowRight, MapPin, MessageCircle, CheckCircle2, ShieldCheck, Stethoscope } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import ScrollReveal from '../components/ScrollReveal';
 import SectionLabel from '../components/SectionLabel';
-import CTAButton from '../components/CTAButton';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
     email: '',
+    consultationType: '',
     therapy: '',
-    message: '',
-    preferredDate: ''
+    message: ''
   });
 
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
 
   const therapyOptions = [
-    'General Consultation',
     'HBOT - Hyperbaric Oxygen Therapy',
-    'EECP - Enhanced External Counter Pulsation',
-    'PRP - Platelet-Rich Plasma Therapy',
     'Ozone Therapy',
-    'Photobiomodulation',
-    'Molecular Hydrogen Therapy',
-    'Pain Portal Blocks',
-    'Longevity Protocol',
-    'Nutritional Assessment'
+    'IV Nutrient Therapy',
+    'Hydrogen Therapy',
+    'Red Light Therapy',
+    'Acupuncture',
+    'Longevity Program',
+    'Energy Optimization',
+    'Other / Not Sure'
   ];
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
-    // Clear error when user starts typing
     if (errors[name]) {
       setErrors(prev => ({ ...prev, [name]: '' }));
     }
@@ -41,209 +40,182 @@ export default function Contact() {
 
   const validateForm = () => {
     const newErrors = {};
-    
-    if (!formData.name.trim()) {
-      newErrors.name = 'Name is required';
-    }
-    
-    if (!formData.phone.trim()) {
-      newErrors.phone = 'Phone number is required';
-    } else if (!/^\+?[\d\s-]{10,}$/.test(formData.phone)) {
-      newErrors.phone = 'Please enter a valid phone number';
-    }
-    
-    if (!formData.email.trim()) {
-      newErrors.email = 'Email is required';
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = 'Please enter a valid email address';
-    }
-    
-    if (!formData.therapy) {
-      newErrors.therapy = 'Please select a therapy of interest';
-    }
-    
+    if (!formData.name.trim()) newErrors.name = 'Full name is required';
+    if (!formData.phone.trim()) newErrors.phone = 'Phone number is required';
+    if (!formData.email.trim()) newErrors.email = 'Email address is required';
+    if (!formData.consultationType) newErrors.consultationType = 'Please select a consultation type';
     return newErrors;
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
     const newErrors = validateForm();
-    
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
       return;
     }
-    
-    // Here you would typically send the form data to your backend
-    console.log('Form submitted:', formData);
     setSubmitted(true);
-    
-    // Reset form after 3 seconds
     setTimeout(() => {
       setFormData({
-        name: '',
-        phone: '',
-        email: '',
-        therapy: '',
-        message: '',
-        preferredDate: ''
+        name: '', phone: '', email: '', consultationType: '', therapy: '', message: ''
       });
       setSubmitted(false);
     }, 3000);
   };
 
   return (
-    <div className="bg-brand-white pt-24">
+    <div className="bg-brand-white pt-24 min-h-screen">
       {/* Hero */}
-      <section className="py-24 px-6 bg-brand-ice">
-        <div className="max-w-4xl mx-auto text-center">
+      <section className="py-24 px-6 bg-brand-ice/50 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(11,110,110,0.05),transparent_50%)]" />
+        <div className="max-w-5xl mx-auto text-center relative z-10">
           <ScrollReveal>
-            <SectionLabel>GET IN TOUCH</SectionLabel>
-            <h1 className="font-cormorant text-6xl md:text-8xl text-brand-navy mb-8">
-              Begin Your Journey
+            <SectionLabel>BOOK YOUR VISIT</SectionLabel>
+            <h1 className="font-dm text-[clamp(44px,8vw,80px)] leading-[0.95] text-brand-navy font-bold tracking-tight mb-8">
+              Begin Your <br /> Pathway to Vitality
             </h1>
-            <p className="text-brand-muted text-lg leading-relaxed max-w-2xl mx-auto">
-              Schedule a consultation to discuss your health optimization goals and explore personalized therapeutic protocols.
+            <p className="text-brand-muted text-xl leading-relaxed italic max-w-2xl mx-auto font-cormorant">
+              "Select your preferred consultation type to start your evidence-based health journey."
             </p>
           </ScrollReveal>
         </div>
       </section>
 
-      {/* Contact Form & Info */}
-      <section className="py-24 px-6">
+      {/* Main Content */}
+      <section className="py-24 px-6 sm:px-8 md:px-12">
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-5 gap-12">
-            {/* Contact Form */}
+          <div className="grid lg:grid-cols-5 gap-16">
+            {/* Booking Form */}
             <div className="lg:col-span-3">
               <ScrollReveal>
-                <div className="glass-card p-8 md:p-12">
-                  <h2 className="font-cormorant text-4xl text-brand-navy mb-8">
-                    Book Your Consultation
-                  </h2>
+                <div className="bg-white p-10 sm:p-12 rounded-[50px] shadow-2xl shadow-brand-navy/5 border border-brand-ice relative overflow-hidden">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-brand-ice rounded-bl-full" />
                   
                   {submitted ? (
-                    <div className="bg-brand-teal/10 border border-brand-teal/30 rounded-sm p-8 text-center">
-                      <div className="text-brand-teal text-5xl mb-4">✓</div>
-                      <h3 className="font-dm font-semibold text-brand-navy text-xl mb-2">
-                        Thank You!
-                      </h3>
-                      <p className="text-brand-muted">
-                        Your consultation request has been received. We will contact you within 24 hours.
-                      </p>
-                    </div>
-                  ) : (
-                    <form onSubmit={handleSubmit} className="space-y-6">
-                      {/* Name */}
-                      <div>
-                        <label htmlFor="name" className="block font-mono text-brand-teal text-xs uppercase tracking-wider mb-2">
-                          Full Name *
-                        </label>
-                        <input
-                          type="text"
-                          id="name"
-                          name="name"
-                          value={formData.name}
-                          onChange={handleChange}
-                          className={`w-full bg-brand-white border ${errors.name ? 'border-red-500' : 'border-brand-border'} focus:border-brand-teal px-4 py-3 text-brand-navy placeholder-brand-dim outline-none transition-colors`}
-                          placeholder="Enter your full name"
-                        />
-                        {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
+                    <motion.div 
+                      initial={{ opacity: 0, scale: 0.9 }} 
+                      animate={{ opacity: 1, scale: 1 }}
+                      className="py-20 text-center"
+                    >
+                      <div className="w-20 h-20 rounded-full bg-brand-teal/10 flex items-center justify-center text-brand-teal mx-auto mb-8">
+                        <CheckCircle2 size={40} />
                       </div>
-
-                      {/* Phone & Email */}
-                      <div className="grid md:grid-cols-2 gap-6">
-                        <div>
-                          <label htmlFor="phone" className="block font-mono text-brand-teal text-xs uppercase tracking-wider mb-2">
-                            Phone Number *
+                      <h3 className="font-cormorant text-4xl text-brand-navy mb-4 italic">Booking Received</h3>
+                      <p className="text-brand-muted text-lg font-dm tracking-wide mb-8 uppercase">Our medical team will contact you shortly.</p>
+                      <button 
+                        onClick={() => setSubmitted(false)}
+                        className="font-dm font-bold text-[11px] uppercase tracking-widest text-brand-teal hover:text-brand-navy transition-colors"
+                      >
+                        Send Another Request
+                      </button>
+                    </motion.div>
+                  ) : (
+                    <form onSubmit={handleSubmit} className="space-y-8 relative z-10">
+                      <div className="grid md:grid-cols-2 gap-8">
+                        <div className="space-y-2">
+                          <label className="font-dm font-bold text-[10px] uppercase tracking-[.3em] text-brand-teal flex items-center gap-2">
+                            Full Name <span className="opacity-30">*</span>
+                          </label>
+                          <input
+                            type="text"
+                            name="name"
+                            value={formData.name}
+                            onChange={handleChange}
+                            placeholder="Full Name"
+                            className={`w-full bg-brand-ice/50 border ${errors.name ? 'border-red-400' : 'border-transparent'} focus:border-brand-teal/30 p-5 rounded-2xl outline-none font-dm text-[13px] uppercase tracking-widest transition-all`}
+                          />
+                        </div>
+                        <div className="space-y-2">
+                          <label className="font-dm font-bold text-[10px] uppercase tracking-[.3em] text-brand-teal flex items-center gap-2">
+                            Phone Number <span className="opacity-30">*</span>
                           </label>
                           <input
                             type="tel"
-                            id="phone"
                             name="phone"
                             value={formData.phone}
                             onChange={handleChange}
-                            className={`w-full bg-brand-white border ${errors.phone ? 'border-red-500' : 'border-brand-border'} focus:border-brand-teal px-4 py-3 text-brand-navy placeholder-brand-dim outline-none transition-colors`}
-                            placeholder="+91 9989033686"
+                            placeholder="+91 91234 56789"
+                            className={`w-full bg-brand-ice/50 border ${errors.phone ? 'border-red-400' : 'border-transparent'} focus:border-brand-teal/30 p-5 rounded-2xl outline-none font-dm text-[13px] uppercase tracking-widest transition-all`}
                           />
-                          {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone}</p>}
-                        </div>
-
-                        <div>
-                          <label htmlFor="email" className="block font-mono text-brand-teal text-xs uppercase tracking-wider mb-2">
-                            Email Address *
-                          </label>
-                          <input
-                            type="email"
-                            id="email"
-                            name="email"
-                            value={formData.email}
-                            onChange={handleChange}
-                            className={`w-full bg-brand-white border ${errors.email ? 'border-red-500' : 'border-brand-border'} focus:border-brand-teal px-4 py-3 text-brand-navy placeholder-brand-dim outline-none transition-colors`}
-                            placeholder="your@email.com"
-                          />
-                          {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
                         </div>
                       </div>
 
-                      {/* Therapy Selection */}
-                      <div>
-                        <label htmlFor="therapy" className="block font-mono text-brand-teal text-xs uppercase tracking-wider mb-2">
-                          Therapy of Interest *
-                        </label>
-                        <select
-                          id="therapy"
-                          name="therapy"
-                          value={formData.therapy}
-                          onChange={handleChange}
-                          className={`w-full bg-brand-white border ${errors.therapy ? 'border-red-500' : 'border-brand-border'} focus:border-brand-teal px-4 py-3 text-brand-navy outline-none transition-colors`}
-                        >
-                          <option value="">Select a therapy</option>
-                          {therapyOptions.map(option => (
-                            <option key={option} value={option}>{option}</option>
-                          ))}
-                        </select>
-                        {errors.therapy && <p className="text-red-500 text-sm mt-1">{errors.therapy}</p>}
-                      </div>
-
-                      {/* Preferred Date */}
-                      <div>
-                        <label htmlFor="preferredDate" className="block font-mono text-brand-teal text-xs uppercase tracking-wider mb-2">
-                          Preferred Date (Optional)
+                      <div className="space-y-2">
+                        <label className="font-dm font-bold text-[10px] uppercase tracking-[.3em] text-brand-teal flex items-center gap-2">
+                          Email Address <span className="opacity-30">*</span>
                         </label>
                         <input
-                          type="date"
-                          id="preferredDate"
-                          name="preferredDate"
-                          value={formData.preferredDate}
+                          type="email"
+                          name="email"
+                          value={formData.email}
                           onChange={handleChange}
-                          className="w-full bg-brand-white border border-brand-border focus:border-brand-teal px-4 py-3 text-brand-navy outline-none transition-colors"
+                          placeholder="your@email.com"
+                          className={`w-full bg-brand-ice/50 border ${errors.email ? 'border-red-400' : 'border-transparent'} focus:border-brand-teal/30 p-5 rounded-2xl outline-none font-dm text-[13px] uppercase tracking-widest transition-all`}
                         />
                       </div>
 
-                      {/* Message */}
-                      <div>
-                        <label htmlFor="message" className="block font-mono text-brand-teal text-xs uppercase tracking-wider mb-2">
-                          Message (Optional)
+                      <div className="space-y-4">
+                        <label className="font-dm font-bold text-[10px] uppercase tracking-[.3em] text-brand-teal flex items-center gap-2 mb-4">
+                          Type of Visit <span className="opacity-30">*</span>
+                        </label>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                          {[
+                            { id: 'paid', title: 'Paid Consultation', desc: 'Expert medical assessment', icon: Stethoscope },
+                            { id: 'free', title: 'Free Suitability Check', desc: 'New patient guidance', icon: ShieldCheck }
+                          ].map(type => (
+                            <button
+                              key={type.id}
+                              type="button"
+                              onClick={() => setFormData(prev => ({ ...prev, consultationType: type.id }))}
+                              className={`p-6 rounded-3xl border-2 text-left transition-all flex items-start gap-4 ${formData.consultationType === type.id ? 'border-brand-teal bg-brand-ice/50' : 'border-brand-ice bg-white hover:border-brand-teal/30'}`}
+                            >
+                              <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${formData.consultationType === type.id ? 'bg-brand-teal text-white' : 'bg-brand-ice text-brand-teal'}`}>
+                                <type.icon size={20} />
+                              </div>
+                              <div>
+                                <div className="font-dm font-bold text-[11px] uppercase tracking-widest text-brand-navy mb-1">{type.title}</div>
+                                <div className="text-[10px] uppercase tracking-widest text-brand-muted">{type.desc}</div>
+                              </div>
+                            </button>
+                          ))}
+                        </div>
+                        {errors.consultationType && <p className="text-red-400 text-[10px] font-bold uppercase tracking-widest mt-2">{errors.consultationType}</p>}
+                      </div>
+
+                      <div className="space-y-2">
+                        <label className="font-dm font-bold text-[10px] uppercase tracking-[.3em] text-brand-teal">
+                          Therapy of Interest
+                        </label>
+                        <select
+                          name="therapy"
+                          value={formData.therapy}
+                          onChange={handleChange}
+                          className="w-full bg-brand-ice/50 border border-transparent focus:border-brand-teal/30 p-5 rounded-2xl outline-none font-dm text-[11px] font-bold uppercase tracking-widest appearance-none transition-all cursor-pointer"
+                        >
+                          <option value="">Select Protocol</option>
+                          {therapyOptions.map(opt => <option key={opt} value={opt}>{opt}</option>)}
+                        </select>
+                      </div>
+
+                      <div className="space-y-2">
+                        <label className="font-dm font-bold text-[10px] uppercase tracking-[.3em] text-brand-teal">
+                          Additional Message
                         </label>
                         <textarea
-                          id="message"
                           name="message"
                           value={formData.message}
                           onChange={handleChange}
+                          placeholder="Your message..."
                           rows="4"
-                          className="w-full bg-brand-white border border-brand-border focus:border-brand-teal px-4 py-3 text-brand-navy placeholder-brand-dim outline-none transition-colors resize-none"
-                          placeholder="Tell us about your health concerns or questions..."
-                        ></textarea>
+                          className="w-full bg-brand-ice/50 border border-transparent focus:border-brand-teal/30 p-5 rounded-2xl outline-none font-dm text-[13px] uppercase tracking-widest transition-all resize-none"
+                        />
                       </div>
 
-                      {/* Submit Button */}
                       <button
                         type="submit"
-                        className="w-full bg-brand-teal text-brand-navy px-8 py-4 font-dm font-semibold uppercase tracking-widest text-sm hover:bg-brand-tealLight transition-all duration-300 flex items-center justify-center gap-3"
+                        className="w-full py-5 bg-brand-navy text-white rounded-3xl font-dm font-bold text-[11px] uppercase tracking-[.4em] hover:bg-brand-teal transition-all shadow-2xl shadow-brand-navy/20 flex items-center justify-center gap-4 group"
                       >
-                        <Send size={18} />
-                        Book Consultation
+                        Request Appointment <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform" />
                       </button>
                     </form>
                   )}
@@ -251,96 +223,59 @@ export default function Contact() {
               </ScrollReveal>
             </div>
 
-            {/* Info Panel */}
-            <div className="lg:col-span-2">
-              <div className="space-y-6">
-                <ScrollReveal delay={0.2}>
-                  <div className="glass-card p-8">
-                    <Phone className="text-brand-teal mb-4" size={32} />
-                    <h3 className="font-dm font-semibold text-brand-navy text-xl mb-3 uppercase tracking-wide">
-                      Phone & WhatsApp
-                    </h3>
-                    <p className="text-brand-muted mb-2">
-                      Call or message us directly
-                    </p>
-                    <a href="tel:+919989033686" className="text-brand-teal hover:text-brand-tealLight text-lg font-medium">
-                      +91 9989033686
+            {/* Info Cards */}
+            <div className="lg:col-span-2 space-y-8">
+              <ScrollReveal delay={0.2}>
+                <div className="bg-brand-navy p-10 rounded-[50px] text-white relative overflow-hidden group">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-bl-full group-hover:scale-125 transition-transform duration-700" />
+                  <div className="relative z-10">
+                    <MessageCircle className="text-brand-teal mb-6" size={40} />
+                    <h3 className="font-cormorant text-3xl font-bold italic mb-4">WhatsApp Support</h3>
+                    <p className="text-white/40 text-sm uppercase tracking-widest mb-8 leading-loose">Get instant guidance and protocol information via direct message.</p>
+                    <a 
+                      href="https://wa.me/919989033686"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-4 text-brand-teal font-dm font-bold text-[11px] uppercase tracking-[.3em] group-hover:gap-6 transition-all"
+                    >
+                      Connect on WhatsApp <ArrowRight size={16} />
                     </a>
                   </div>
-                </ScrollReveal>
+                </div>
+              </ScrollReveal>
 
-                <ScrollReveal delay={0.3}>
-                  <div className="glass-card p-8">
-                    <Mail className="text-brand-teal mb-4" size={32} />
-                    <h3 className="font-dm font-semibold text-brand-navy text-xl mb-3 uppercase tracking-wide">
-                      Email
-                    </h3>
-                    <p className="text-brand-muted mb-2">
-                      Send us your queries
-                    </p>
-                    <a href="mailto:doctorkvsreddy@yahoo.com" className="text-brand-teal hover:text-brand-tealLight font-medium break-all">
-                      doctorkvsreddy@yahoo.com
-                    </a>
+              <ScrollReveal delay={0.3}>
+                <div className="bg-brand-ice/50 p-10 rounded-[50px] border border-white group">
+                  <div className="flex items-center gap-6 mb-8 text-brand-teal">
+                    <MapPin size={32} />
+                    <div className="font-dm font-bold text-[11px] uppercase tracking-widest border-l-2 border-brand-teal/20 pl-6 text-brand-navy">Secunderabad, <br /> Hyderabad</div>
                   </div>
-                </ScrollReveal>
-
-                <ScrollReveal delay={0.4}>
-                  <div className="glass-card p-8">
-                    <Clock className="text-brand-teal mb-4" size={32} />
-                    <h3 className="font-dm font-semibold text-brand-navy text-xl mb-3 uppercase tracking-wide">
-                      Hours
-                    </h3>
-                    <div className="space-y-2 text-brand-muted">
-                      <div className="flex justify-between">
-                        <span>Monday – Saturday</span>
-                        <span className="text-brand-navy">9:00 AM – 6:00 PM</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span>Sunday</span>
-                        <span className="text-brand-dim">Closed</span>
-                      </div>
+                  <div className="space-y-6">
+                    <div className="flex justify-between items-center border-b border-brand-teal/10 pb-4">
+                      <div className="font-dm font-bold text-[9px] uppercase tracking-widest text-brand-muted">Monday – Saturday</div>
+                      <div className="font-dm font-bold text-[10px] uppercase tracking-widest text-brand-navy">9 AM – 6 PM</div>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <div className="font-dm font-bold text-[9px] uppercase tracking-widest text-brand-muted">Direct Email</div>
+                      <div className="font-dm font-bold text-[10px] uppercase tracking-widest text-brand-teal underline">doctorkvsreddy@yahoo.com</div>
                     </div>
                   </div>
-                </ScrollReveal>
+                </div>
+              </ScrollReveal>
 
-                <ScrollReveal delay={0.5}>
-                  <div className="glass-card p-8">
-                    <MapPin className="text-brand-teal mb-4" size={32} />
-                    <h3 className="font-dm font-semibold text-brand-navy text-xl mb-3 uppercase tracking-wide">
-                      Location
-                    </h3>
-                    <p className="text-brand-muted">
-                      Hyderabad, India
-                    </p>
-                    <p className="text-brand-dim text-sm mt-2">
-                      Exact address provided upon consultation booking
-                    </p>
-                  </div>
-                </ScrollReveal>
-              </div>
+              <ScrollReveal delay={0.4}>
+                <div className="p-10 text-center">
+                  <SectionLabel>REFERRED BY A DOCTOR?</SectionLabel>
+                  <p className="text-brand-muted text-sm italic font-cormorant mt-4 mb-8 leading-loose">"Please mention your referring physician in the message section for co-managed care updates."</p>
+                  <Link to="/for-doctors">
+                    <button className="text-brand-teal font-dm font-bold text-[9px] uppercase tracking-[.3em] flex items-center justify-center gap-2 mx-auto hover:text-brand-navy transition-colors">
+                      Physician Portal <ArrowRight size={12} />
+                    </button>
+                  </Link>
+                </div>
+              </ScrollReveal>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Map Section */}
-      <section className="py-24 px-6 bg-brand-ice">
-        <div className="max-w-7xl mx-auto">
-          <ScrollReveal>
-            <div className="glass-card p-4 overflow-hidden">
-              <div className="aspect-video bg-brand-white flex items-center justify-center border border-brand-border">
-                <div className="text-center">
-                  <MapPin className="mx-auto mb-4 text-brand-teal" size={48} />
-                  <p className="text-brand-muted">
-                    Map integration available upon request
-                  </p>
-                  <p className="text-brand-dim text-sm mt-2">
-                    Exact location shared with confirmed appointments
-                  </p>
-                </div>
-              </div>
-            </div>
-          </ScrollReveal>
         </div>
       </section>
     </div>

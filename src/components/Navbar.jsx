@@ -5,12 +5,12 @@ import { Menu, X } from 'lucide-react';
 
 const navLinks = [
   { name: 'Home', path: '/' },
-  { name: 'About', path: '/founder' },
-  { name: 'Integrative Medicine', path: '/therapies' },
-  { name: 'Healthspan', path: '/longevity' },
-  { name: 'Gynaecology', path: '/gynaecology' },
-  { name: 'Diagnostics', path: '/diagnostics' },
-  { name: 'FAQs', path: '/faq' }
+  { name: 'Integrative Medicine', path: '/integrative-medicine' },
+  { name: 'Healthspan', path: '/healthspan-optimization' },
+  { name: 'Therapies', path: '/therapies' },
+  { name: 'Programs', path: '/programs' },
+  { name: 'For Doctors', path: '/for-doctors' },
+  { name: 'About', path: '/about' }
 ];
 
 export default function Navbar() {
@@ -71,7 +71,7 @@ export default function Navbar() {
               {/* Logo - Left */}
               <Link to="/" className="flex items-center gap-5 group flex-shrink-0">
                 <img
-                  src="/Almacura_Logo_Icon_80px.png"
+                  src="/logo.png"
                   alt="ALMACURA"
                   className="h-9 w-9 object-contain transition-transform duration-500 group-hover:scale-110"
                 />
@@ -89,64 +89,36 @@ export default function Navbar() {
               <div className="hidden lg:flex items-center gap-12">
                 <nav className="flex items-center gap-9">
                   <Link 
-                    to="/" 
+                    to="/integrative-medicine" 
                     className={`font-dm text-[11px] font-bold tracking-[0.2em] uppercase transition-all flex items-center h-10 ${
-                      location.pathname === '/' ? 'text-brand-teal' : 'text-brand-navy/60 hover:text-brand-teal'
+                      location.pathname === '/integrative-medicine' ? 'text-brand-teal' : 'text-brand-navy/60 hover:text-brand-teal'
                     }`}
                   >
-                    Home
+                    Integrative Medicine
                   </Link>
                   <Link 
-                    to="/founder" 
+                    to="/healthspan-optimization" 
                     className={`font-dm text-[11px] font-bold tracking-[0.2em] uppercase transition-all flex items-center h-10 ${
-                      location.pathname === '/founder' ? 'text-brand-teal' : 'text-brand-navy/60 hover:text-brand-teal'
+                      location.pathname === '/healthspan-optimization' ? 'text-brand-teal' : 'text-brand-navy/60 hover:text-brand-teal'
                     }`}
                   >
-                    About
+                    Healthspan
                   </Link>
-                  
-                  {/* Specialties Dropdown */}
-                  <div className="relative group/dropdown flex items-center h-10">
-                    <button className="flex items-center gap-2 font-dm text-[11px] font-bold tracking-[0.2em] uppercase text-brand-navy/60 group-hover/dropdown:text-brand-teal transition-all">
-                      Specialties
-                      <svg className="w-3 h-3 transition-transform group-hover/dropdown:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M19 9l-7 7-7-7" />
-                      </svg>
-                    </button>
-                    
-                    {/* Dropdown Menu */}
-                    <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 opacity-0 invisible group-hover/dropdown:opacity-100 group-hover/dropdown:visible transition-all duration-300 transform translate-y-2 group-hover/dropdown:translate-y-0 z-[70]">
-                      <div className="bg-white/95 backdrop-blur-3xl border border-brand-teal/10 shadow-2xl rounded-2xl p-3 min-w-[220px]">
-                        <div className="flex flex-col gap-1">
-                          {[
-                            { name: 'Integrative Medicine', path: '/therapies' },
-                            { name: 'Healthspan', path: '/longevity' },
-                            { name: 'Gynaecology', path: '/gynaecology' },
-                            { name: 'Diagnostics', path: '/diagnostics' }
-                          ].map((item) => (
-                            <Link 
-                              key={item.path}
-                              to={item.path} 
-                              className="px-5 py-3.5 rounded-xl hover:bg-brand-teal/5 text-brand-navy/80 hover:text-brand-teal font-dm text-[10px] font-bold tracking-[0.1em] uppercase transition-all flex items-center justify-between group/item"
-                            >
-                              {item.name}
-                              <svg className="w-3 h-3 opacity-0 group-hover/item:opacity-100 -translate-x-2 group-hover/item:translate-x-0 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" />
-                              </svg>
-                            </Link>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
                   <Link 
-                    to="/faq" 
+                    to="/therapies" 
                     className={`font-dm text-[11px] font-bold tracking-[0.2em] uppercase transition-all flex items-center h-10 ${
-                      location.pathname === '/faq' ? 'text-brand-teal' : 'text-brand-navy/60 hover:text-brand-teal'
+                      location.pathname === '/therapies' ? 'text-brand-teal' : 'text-brand-navy/60 hover:text-brand-teal'
                     }`}
                   >
-                    FAQs
+                    Therapies
+                  </Link>
+                  <Link 
+                    to="/for-doctors" 
+                    className={`font-dm text-[11px] font-bold tracking-[0.2em] uppercase transition-all flex items-center h-10 ${
+                      location.pathname === '/for-doctors' ? 'text-brand-teal' : 'text-brand-navy/60 hover:text-brand-teal'
+                    }`}
+                  >
+                    For Doctors
                   </Link>
                 </nav>
                 
@@ -156,7 +128,7 @@ export default function Navbar() {
                     whileTap={{ scale: 0.95 }}
                     className="bg-brand-navy text-white px-8 py-3 rounded-full font-dm font-bold text-[11px] tracking-[0.2em] uppercase shadow-lg shadow-brand-navy/10 hover:shadow-brand-teal/20 hover:bg-brand-teal transition-all h-full flex items-center justify-center min-w-[140px]"
                   >
-                    Contact
+                    Book Now
                   </motion.button>
                 </Link>
               </div>
