@@ -6,7 +6,7 @@ import ScrollReveal from '../components/ScrollReveal';
 import SectionLabel from '../components/SectionLabel';
 
 export default function Programs() {
-  useSEO('Clinical Programs | ALMACURA', 'Explore ALMACURA clinical programs including detox, energy revitalization, and longevity strategies.', '/programs');
+  useSEO("Clinical Programs | ALMACURA", "Explore ALMACURA clinical programs including detox, energy revitalization, and longevity strategies.", "/programs");
 
   const programs = [
     {

@@ -8,7 +8,7 @@ import TherapyCard from '../components/TherapyCard';
 import { therapyList, therapiesData } from '../data/therapiesData';
 
 export default function Therapies() {
-  useSEO('Therapies We Offer | ALMACURA', 'Explore evidence-based therapies including HBOT, EECP, PRP, HIFEM, HIFU, regenerative medicine, and wellness treatments at ALMACURA.', '/therapies');
+  useSEO("Therapies We Offer | ALMACURA", "Explore evidence-based therapies including HBOT, EECP, PRP, HIFEM, HIFU, regenerative medicine, and wellness treatments at ALMACURA.", "/therapies");
 
   return (
     <div className="bg-brand-white pt-32 pb-24 px-6 sm:px-8 md:px-12">

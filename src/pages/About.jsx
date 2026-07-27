@@ -20,7 +20,7 @@ const pillars = [
 ];
 
 export default function About() {
-  useSEO('About ALMACURA | Integrative Medicine and Wellness Experts', 'Learn about Almacura mission and approach to integrative medicine, functional gynaecology, and healthspan optimisation.', '/about');
+  useSEO("About ALMACURA | Integrative Medicine & Wellness Experts", "Learn about Almacura's mission and approach to integrative medicine, functional gynaecology, and healthspan optimisation.", "/about");
 
   return (
     <main className="w-full bg-brand-white">

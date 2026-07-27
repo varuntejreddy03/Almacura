@@ -4,7 +4,7 @@ import { Leaf, Heart, Activity, ArrowRight, Shield } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export default function FunctionalGynaecology() {
-  useSEO('Functional Gynaecology in Hyderabad | ALMACURA', 'Expert care for hormonal balance, menopause, pelvic health, and womens wellness through functional gynaecology.', '/functional-gynaecology');
+  useSEO("Functional Gynaecology in Hyderabad | ALMACURA", "Expert care for hormonal balance, menopause, pelvic health, and women's wellness through functional gynaecology.", "/functional-gynaecology");
 
   const fadeInUp = {
     initial: { opacity: 0, y: 30 },

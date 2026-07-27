@@ -420,10 +420,7 @@ function DoctorCard({ member, isOpen, onToggle }) {
 }
 
 export default function Team() {
-  useSEO(
-    'Our Clinical Specialists & Directors',
-    "Meet the medical directors and consultants at ALMACURA, leading integrative wellness, pelvic floor rehabilitation, non-surgical pain management, and preventive women's healthcare."
-  );
+  useSEO("Our Team | Almacura Medical Experts", "Meet Almacura's specialists in integrative medicine, functional gynaecology, and healthspan optimisation.", "/team");
 
   const [activeFilter, setActiveFilter] = useState('All');
   const [searchTerm, setSearchTerm] = useState('');

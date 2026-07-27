@@ -27,7 +27,7 @@ const integrativeFocus = [
 ];
 
 export default function Founder() {
-  useSEO('Institute Overview | ALMACURA Hyderabad', 'Meet the founder of Almacura and the vision behind our integrative medicine and functional gynaecology institute.', '/about');
+  useSEO("Institute Overview | ALMACURA Hyderabad", "Meet the founder of Almacura and the vision behind our integrative medicine and functional gynaecology institute.", "/about");
 
   return (
     <main className="bg-brand-white pt-24">

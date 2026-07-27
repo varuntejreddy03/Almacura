@@ -6,7 +6,7 @@ import ScrollReveal from '../components/ScrollReveal';
 import SectionLabel from '../components/SectionLabel';
 
 export default function ForDoctors() {
-  useSEO('For Doctors | ALMACURA Referral Program', 'Refer patients to ALMACURA for integrative medicine, regenerative therapies, and functional gynaecology.', '/for-doctors');
+  useSEO("For Doctors | ALMACURA Referral Program", "Refer patients to ALMACURA for integrative medicine, regenerative therapies, and functional gynaecology.", "/for-doctors");
 
   return (
     <div className="bg-brand-white pt-32 pb-24 px-6 sm:px-8 md:px-12">

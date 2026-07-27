@@ -6,7 +6,7 @@ import ScrollReveal from '../components/ScrollReveal';
 import SectionLabel from '../components/SectionLabel';
 
 export default function HealthspanOptimization() {
-  useSEO('Healthspan Optimization | ALMACURA', 'Optimise your healthspan with Almacura science-backed protocols for longevity, energy, and disease prevention.', '/healthspan-optimization');
+  useSEO("Healthspan Optimization | ALMACURA", "Optimise your healthspan with Almacura's science-backed protocols for longevity, energy, and disease prevention.", "/healthspan-optimization");
 
   return (
     <div className="bg-brand-white pt-32 pb-24 px-6 sm:px-8 md:px-12">

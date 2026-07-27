@@ -7,7 +7,7 @@ import SectionLabel from '../components/SectionLabel';
 import CTAButton from '../components/CTAButton';
 
 export default function Longevity() {
-  useSEO('Longevity and Healthy Aging Programs | ALMACURA', 'Discover Almacura longevity programs focused on healthy ageing, disease prevention, and extending healthspan.', '/longevity');
+  useSEO("Longevity & Healthy Aging Programs | ALMACURA", "Discover Almacura's longevity programs focused on healthy ageing, disease prevention, and extending healthspan.", "/longevity");
 
   const [expandedStep, setExpandedStep] = useState(null);
 

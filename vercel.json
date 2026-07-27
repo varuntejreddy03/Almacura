@@ -1,4 +1,18 @@
 {
+  "redirects": [
+    { "source": "/founder", "destination": "/about/founder", "permanent": true },
+    { "source": "/team", "destination": "/about/team", "permanent": true },
+    { "source": "/meet-our-specialists", "destination": "/about/team", "permanent": true },
+    { "source": "/faqs", "destination": "/faq", "permanent": true },
+    { "source": "/privacy", "destination": "/privacy-policy", "permanent": true },
+    { "source": "/clinical-programs", "destination": "/programs", "permanent": true },
+    { "source": "/integrative-medicine", "destination": "/services/integrative-medicine", "permanent": true },
+    { "source": "/healthspan-optimization", "destination": "/services/healthspan-optimization", "permanent": true },
+    { "source": "/functional-gynaecology", "destination": "/services/functional-gynaecology", "permanent": true },
+    { "source": "/longevity", "destination": "/services/longevity", "permanent": true },
+    { "source": "/diagnostics", "destination": "/services/diagnostics", "permanent": true },
+    { "source": "/nutrition", "destination": "/services/nutrition", "permanent": true }
+  ],
   "rewrites": [
     {
       "source": "/(.*)",

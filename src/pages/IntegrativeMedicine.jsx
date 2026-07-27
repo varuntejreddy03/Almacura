@@ -6,7 +6,7 @@ import ScrollReveal from '../components/ScrollReveal';
 import SectionLabel from '../components/SectionLabel';
 
 export default function IntegrativeMedicine() {
-  useSEO('Integrative Medicine | Almacura Institute', 'Almacura integrative medicine combines modern and holistic care to treat root causes and restore lasting vitality.', '/integrative-medicine');
+  useSEO("Integrative Medicine | Almacura Institute", "Almacura's integrative medicine combines modern and holistic care to treat root causes and restore lasting vitality.", "/integrative-medicine");
 
   return (
     <div className="bg-brand-white pt-32 pb-24 px-6 sm:px-8 md:px-12">

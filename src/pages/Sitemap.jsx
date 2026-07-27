@@ -64,7 +64,7 @@ const sitemapData = [
 ];
 
 export default function Sitemap() {
-  useSEO('Sitemap | ALMACURA', 'Browse all pages of the ALMACURA website.', '/sitemap');
+  useSEO("Sitemap | ALMACURA", "Browse all pages of the ALMACURA website.", "/sitemap");
 
   return (
     <div className="pt-32 pb-24 bg-brand-beige min-h-screen">

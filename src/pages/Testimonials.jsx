@@ -7,7 +7,7 @@ const placeholders = [1, 2, 3, 4, 5, 6];
 const googleReviewUrl = 'https://g.page/r/CYtqRXgkH3lWEBM/review';
 
 export default function Testimonials() {
-  useSEO('Patient Testimonials | ALMACURA Hyderabad', 'Read real patient experiences and success stories about ALMACURA integrative treatments and regenerative care.', '/testimonials');
+  useSEO("Patient Testimonials | ALMACURA Hyderabad", "Read real patient experiences and success stories about ALMACURA's integrative treatments, health optimization, and regenerative care.", "/testimonials");
 
   return (
     <div className="bg-brand-white pt-24">

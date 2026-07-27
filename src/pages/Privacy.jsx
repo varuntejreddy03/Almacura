@@ -2,7 +2,7 @@ import useSEO from '../hooks/useSEO';
 import { motion } from 'framer-motion';
 
 export default function Privacy() {
-  useSEO('Privacy Policy | ALMACURA', 'Read the privacy policy of ALMACURA Institute, Hyderabad.', '/privacy');
+  useSEO("Privacy Policy | ALMACURA", "Read the privacy policy of ALMACURA Institute, Hyderabad.", "/privacy");
 
   return (
     <div className="pt-32 pb-24 bg-brand-beige min-h-screen">

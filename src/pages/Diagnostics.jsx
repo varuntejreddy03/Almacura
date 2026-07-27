@@ -5,7 +5,7 @@ import SectionLabel from '../components/SectionLabel';
 import CTAButton from '../components/CTAButton';
 
 export default function Diagnostics() {
-  useSEO('Advanced Health Diagnostics | ALMACURA', 'Comprehensive diagnostic evaluations for personalized treatment planning, disease prevention, and health optimization.', '/diagnostics');
+  useSEO("Advanced Health Diagnostics | ALMACURA", "Comprehensive diagnostic evaluations for personalized treatment planning, disease prevention, and health optimization.", "/diagnostics");
 
   const categories = [
     {

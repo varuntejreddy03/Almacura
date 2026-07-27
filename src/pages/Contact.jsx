@@ -6,10 +6,7 @@ import useSEO from '../hooks/useSEO';
 const googleMapsUrl = 'https://www.google.com/maps/place/ALMACURA/@17.3511785,78.5095196,17z/data=!3m1!4b1!4m6!3m5!1s0x3bcb99fc1fd6c481:0x56791f2478456a8b!8m2!3d17.3511785!4d78.5095196!16s%2Fg%2F11z6nbf7zt?entry=ttu&g_ep=EgoyMDI2MDYwMS4wIKXMDSoASAFQAw%3D%3D';
 
 export default function Contact() {
-  useSEO(
-    'Contact ALMACURA | Location & Appointments',
-    'Get in touch with ALMACURA at Nightingale Super Specialty Hospital. View contact numbers, location directions, and download QR codes for printables.'
-  );
+  useSEO("Contact ALMACURA Hyderabad | Book a Consultation", "Contact ALMACURA to schedule a consultation for integrative medicine, women's health, regenerative therapies, and wellness programs.", "/contact");
   const [submitted, setSubmitted] = useState(false);
   const fadeInUp = {
     initial: { opacity: 0, y: 30 },

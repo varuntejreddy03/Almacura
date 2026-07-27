@@ -13,7 +13,7 @@ const categories = [
 ];
 
 export default function Blog() {
-  useSEO('Health and Wellness Blog | ALMACURA', 'Read expert insights on integrative medicine, longevity, womens health, nutrition, regenerative therapies, and preventive healthcare.', '/blog');
+  useSEO("Health & Wellness Blog | ALMACURA", "Read expert insights on integrative medicine, longevity, women's health, nutrition, regenerative therapies, and preventive healthcare.", "/blog");
 
   return (
     <div className="bg-brand-white pt-24">

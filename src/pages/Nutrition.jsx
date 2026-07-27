@@ -5,7 +5,7 @@ import SectionLabel from '../components/SectionLabel';
 import CTAButton from '../components/CTAButton';
 
 export default function Nutrition() {
-  useSEO('Clinical Nutrition and Lifestyle Care | ALMACURA', 'Personalised nutrition plans at Almacura support healing, hormone balance, and healthspan optimisation.', '/nutrition');
+  useSEO("Clinical Nutrition & Lifestyle Care | ALMACURA", "Personalised nutrition plans at Almacura support healing, hormone balance, and healthspan optimisation.", "/nutrition");
 
   const assessmentCards = [
     {

@@ -3,7 +3,7 @@ import ScrollReveal from '../components/ScrollReveal';
 import SectionLabel from '../components/SectionLabel';
 
 export default function Terms() {
-  useSEO('Terms & Conditions | ALMACURA', 'Read the terms and conditions for using ALMACURA services and website.', '/terms');
+  useSEO("Terms & Conditions | ALMACURA", "Read the terms and conditions for using ALMACURA services and website.", "/terms");
 
   const sections = [
     {

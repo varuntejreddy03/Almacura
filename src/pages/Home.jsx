@@ -6,7 +6,7 @@ import { Target, Zap, ShieldCheck, Brain, Droplets, Microscope, Activity, Wind, 
 import SuitabilityModal from '../components/SuitabilityModal';
 
 export default function Home() {
-  useSEO('Integrative Medicine and Functional Gynaecology in Hyderabad | ALMACURA', 'Discover integrative medicine and functional gynaecology at Almacura. We treat root causes, optimise healthspan, and restore vitality.', '/');
+  useSEO("Integrative Medicine & Functional Gynaecology in Hyderabad | ALMACURA", "Discover integrative medicine & functional gynaecology at Almacura. We treat root causes, optimise healthspan, and restore vitality — not just symptoms.", "/");
 
   const [isSuitabilityOpen, setIsSuitabilityOpen] = useState(false);
   const fadeInUp = {
