@@ -4,10 +4,16 @@ import { motion } from 'framer-motion';
 import ScrollReveal from '../components/ScrollReveal';
 import SectionLabel from '../components/SectionLabel';
 import { therapiesData, therapyList } from '../data/therapiesData';
+import useSEO from '../hooks/useSEO';
 
 export default function TherapyDetail() {
   const { slug } = useParams();
   const therapy = therapiesData[slug];
+  useSEO(
+    therapy ? `${therapy.title} | ALMACURA Hyderabad` : 'Therapy | ALMACURA',
+    therapy ? `${therapy.description} Learn more about ${therapy.title} at ALMACURA, Hyderabad.` : 'Advanced therapy at ALMACURA.',
+    `/therapies/${slug}`
+  );
 
   if (!therapy) {
     return (

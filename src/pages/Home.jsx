@@ -1,3 +1,4 @@
+import useSEO from '../hooks/useSEO';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
@@ -5,6 +6,8 @@ import { Target, Zap, ShieldCheck, Brain, Droplets, Microscope, Activity, Wind, 
 import SuitabilityModal from '../components/SuitabilityModal';
 
 export default function Home() {
+  useSEO('Integrative Medicine and Functional Gynaecology in Hyderabad | ALMACURA', 'Discover integrative medicine and functional gynaecology at Almacura. We treat root causes, optimise healthspan, and restore vitality.', '/');
+
   const [isSuitabilityOpen, setIsSuitabilityOpen] = useState(false);
   const fadeInUp = {
     initial: { opacity: 0, y: 30 },

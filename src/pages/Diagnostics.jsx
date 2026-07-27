@@ -1,9 +1,12 @@
+import useSEO from '../hooks/useSEO';
 import { Microscope, Activity, Flame, Heart, Zap, Stethoscope } from 'lucide-react';
 import ScrollReveal from '../components/ScrollReveal';
 import SectionLabel from '../components/SectionLabel';
 import CTAButton from '../components/CTAButton';
 
 export default function Diagnostics() {
+  useSEO('Advanced Health Diagnostics | ALMACURA', 'Comprehensive diagnostic evaluations for personalized treatment planning, disease prevention, and health optimization.', '/diagnostics');
+
   const categories = [
     {
       icon: Activity,

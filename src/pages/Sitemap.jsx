@@ -1,3 +1,4 @@
+import useSEO from '../hooks/useSEO';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ChevronRight, Activity, Heart, Users, FileText, Globe } from 'lucide-react';
@@ -63,6 +64,8 @@ const sitemapData = [
 ];
 
 export default function Sitemap() {
+  useSEO('Sitemap | ALMACURA', 'Browse all pages of the ALMACURA website.', '/sitemap');
+
   return (
     <div className="pt-32 pb-24 bg-brand-beige min-h-screen">
       <div className="max-w-7xl mx-auto px-6">

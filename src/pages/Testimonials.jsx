@@ -1,3 +1,4 @@
+import useSEO from '../hooks/useSEO';
 import ScrollReveal from '../components/ScrollReveal';
 import SectionLabel from '../components/SectionLabel';
 import { ExternalLink, Play, Star } from 'lucide-react';
@@ -6,6 +7,8 @@ const placeholders = [1, 2, 3, 4, 5, 6];
 const googleReviewUrl = 'https://g.page/r/CYtqRXgkH3lWEBM/review';
 
 export default function Testimonials() {
+  useSEO('Patient Testimonials | ALMACURA Hyderabad', 'Read real patient experiences and success stories about ALMACURA integrative treatments and regenerative care.', '/testimonials');
+
   return (
     <div className="bg-brand-white pt-24">
 

@@ -1,3 +1,4 @@
+import useSEO from '../hooks/useSEO';
 import { motion } from 'framer-motion';
 import { ArrowRight, Activity, ShieldCheck, Target, Zap, Clock, Sparkles, Brain, Heart, Leaf, ChevronRight, MessageCircle, Microscope } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -5,6 +6,8 @@ import ScrollReveal from '../components/ScrollReveal';
 import SectionLabel from '../components/SectionLabel';
 
 export default function Programs() {
+  useSEO('Clinical Programs | ALMACURA', 'Explore ALMACURA clinical programs including detox, energy revitalization, and longevity strategies.', '/programs');
+
   const programs = [
     {
       id: 'detox',

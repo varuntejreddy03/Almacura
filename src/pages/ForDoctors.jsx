@@ -1,3 +1,4 @@
+import useSEO from '../hooks/useSEO';
 import { motion } from 'framer-motion';
 import { ArrowRight, Activity, ShieldCheck, Microscope, HeartPulse, Sparkles, ChevronRight, MessageCircle, FileText, Share2, Shield } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -5,6 +6,8 @@ import ScrollReveal from '../components/ScrollReveal';
 import SectionLabel from '../components/SectionLabel';
 
 export default function ForDoctors() {
+  useSEO('For Doctors | ALMACURA Referral Program', 'Refer patients to ALMACURA for integrative medicine, regenerative therapies, and functional gynaecology.', '/for-doctors');
+
   return (
     <div className="bg-brand-white pt-32 pb-24 px-6 sm:px-8 md:px-12">
       <div className="max-w-7xl mx-auto">

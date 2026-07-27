@@ -1,3 +1,4 @@
+import useSEO from '../hooks/useSEO';
 import ScrollReveal from '../components/ScrollReveal';
 import SectionLabel from '../components/SectionLabel';
 import CTAButton from '../components/CTAButton';
@@ -12,6 +13,8 @@ const categories = [
 ];
 
 export default function Blog() {
+  useSEO('Health and Wellness Blog | ALMACURA', 'Read expert insights on integrative medicine, longevity, womens health, nutrition, regenerative therapies, and preventive healthcare.', '/blog');
+
   return (
     <div className="bg-brand-white pt-24">
 

@@ -1,3 +1,4 @@
+import useSEO from '../hooks/useSEO';
 import { motion } from 'framer-motion';
 import { ArrowRight, Activity, ShieldCheck, Microscope, HeartPulse, Sparkles, ChevronRight, Target } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -5,6 +6,8 @@ import ScrollReveal from '../components/ScrollReveal';
 import SectionLabel from '../components/SectionLabel';
 
 export default function IntegrativeMedicine() {
+  useSEO('Integrative Medicine | Almacura Institute', 'Almacura integrative medicine combines modern and holistic care to treat root causes and restore lasting vitality.', '/integrative-medicine');
+
   return (
     <div className="bg-brand-white pt-32 pb-24 px-6 sm:px-8 md:px-12">
       <div className="max-w-7xl mx-auto">

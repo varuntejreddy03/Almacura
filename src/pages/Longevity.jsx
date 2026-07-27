@@ -1,3 +1,4 @@
+import useSEO from '../hooks/useSEO';
 import { Clock, TrendingDown, Activity, Shield, Users, Briefcase, Heart as HeartIcon, User } from 'lucide-react';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
@@ -6,6 +7,8 @@ import SectionLabel from '../components/SectionLabel';
 import CTAButton from '../components/CTAButton';
 
 export default function Longevity() {
+  useSEO('Longevity and Healthy Aging Programs | ALMACURA', 'Discover Almacura longevity programs focused on healthy ageing, disease prevention, and extending healthspan.', '/longevity');
+
   const [expandedStep, setExpandedStep] = useState(null);
 
   const protocolSteps = [

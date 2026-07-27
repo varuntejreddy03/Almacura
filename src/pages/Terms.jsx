@@ -1,7 +1,10 @@
+import useSEO from '../hooks/useSEO';
 import ScrollReveal from '../components/ScrollReveal';
 import SectionLabel from '../components/SectionLabel';
 
 export default function Terms() {
+  useSEO('Terms & Conditions | ALMACURA', 'Read the terms and conditions for using ALMACURA services and website.', '/terms');
+
   const sections = [
     {
       title: '1. Scope of Services',

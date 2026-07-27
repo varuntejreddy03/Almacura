@@ -1,9 +1,12 @@
+import useSEO from '../hooks/useSEO';
 import { Activity, CheckCircle, Clock, Droplets, HeartPulse, Leaf, Microscope, TrendingUp, Waves } from 'lucide-react';
 import ScrollReveal from '../components/ScrollReveal';
 import SectionLabel from '../components/SectionLabel';
 import CTAButton from '../components/CTAButton';
 
 export default function Nutrition() {
+  useSEO('Clinical Nutrition and Lifestyle Care | ALMACURA', 'Personalised nutrition plans at Almacura support healing, hormone balance, and healthspan optimisation.', '/nutrition');
+
   const assessmentCards = [
     {
       icon: Microscope,

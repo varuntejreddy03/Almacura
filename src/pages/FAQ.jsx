@@ -1,3 +1,4 @@
+import useSEO from '../hooks/useSEO';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Plus, Minus } from 'lucide-react';
@@ -6,6 +7,8 @@ import SectionLabel from '../components/SectionLabel';
 import CTAButton from '../components/CTAButton';
 
 export default function FAQ() {
+  useSEO('Patient FAQs | ALMACURA Healthcare', 'Find answers to common questions about consultations, therapies, treatment plans, appointments, and patient care at ALMACURA.', '/faq');
+
   const [activeIndex, setActiveIndex] = useState(null);
 
   const faqs = [

@@ -1,3 +1,4 @@
+import useSEO from '../hooks/useSEO';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import ScrollReveal from '../components/ScrollReveal';
@@ -26,6 +27,8 @@ const integrativeFocus = [
 ];
 
 export default function Founder() {
+  useSEO('Institute Overview | ALMACURA Hyderabad', 'Meet the founder of Almacura and the vision behind our integrative medicine and functional gynaecology institute.', '/about');
+
   return (
     <main className="bg-brand-white pt-24">
 

@@ -1,3 +1,4 @@
+import useSEO from '../hooks/useSEO';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Shield, Heart, Activity, Leaf } from 'lucide-react';
@@ -19,6 +20,8 @@ const pillars = [
 ];
 
 export default function About() {
+  useSEO('About ALMACURA | Integrative Medicine and Wellness Experts', 'Learn about Almacura mission and approach to integrative medicine, functional gynaecology, and healthspan optimisation.', '/about');
+
   return (
     <main className="w-full bg-brand-white">
 

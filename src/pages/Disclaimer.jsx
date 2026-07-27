@@ -1,7 +1,10 @@
+import useSEO from '../hooks/useSEO';
 import { motion } from 'framer-motion';
 import { AlertCircle } from 'lucide-react';
 
 export default function Disclaimer() {
+  useSEO('Disclaimer | ALMACURA', 'Read the medical disclaimer for ALMACURA integrative medicine and wellness therapies.', '/disclaimer');
+
   return (
     <div className="pt-32 pb-24 bg-brand-beige min-h-screen">
       <div className="max-w-4xl mx-auto px-6">

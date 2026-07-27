@@ -1,0 +1,97 @@
+WEEK - 1,SEO Audit,https://docs.google.com/document/d/1xyheiNT_Lez0yyIcon5hjVTFVYpS4Hwz9q9b9Ln9yCM/edit?tab=t.0
+,SEO sitemap ,checked
+,robots.txt,checked
+,meta title & desc,suggested
+,,
+WEEK-2,url structure,suggested
+,sitemap,recreated as originall are not able to read
+,robotstxt,recreated as originall are not able to read
+,schema,created
+,url structure,created
+meta title & description suggestion,,
+Home,Integrative Medicine & Functional Gynaecology in Hyderabad | ALMACURA,"Discover integrative medicine & functional gynaecology at Almacura. We treat root causes, optimise healthspan, and restore vitality — not just symptoms."
+About Us,About ALMACURA | Integrative Medicine & Wellness Experts,"Learn about Almacura's mission and approach to integrative medicine, functional gynaecology, and healthspan optimisation."
+Founders,Institute Overview | ALMACURA Hyderabad,Meet the founder of Almacura and the vision behind our integrative medicine and functional gynaecology institute.
+Our Team,Our Team | Almacura Medical Experts,"Meet Almacura's specialists in integrative medicine, functional gynaecology, and healthspan optimisation."
+Patient FAQs,Patient FAQs | ALMACURA Healthcare,"Find answers to common questions about consultations, therapies, treatment plans, appointments, and patient care at ALMACURA."
+Blog,Health & Wellness Blog | ALMACURA,"Read expert insights on integrative medicine, longevity, women's health, nutrition, regenerative therapies, and preventive healthcare."
+Testimonials,Patient Testimonials | ALMACURA Hyderabad,"Read real patient experiences and success stories about ALMACURA's integrative treatments, health optimization, and regenerative care."
+Therapies (Main),Therapies We Offer | ALMACURA,"Explore evidence-based therapies including HBOT, EECP, PRP, HIFEM, HIFU, regenerative medicine, and wellness treatments at ALMACURA."
+HBOT Oxygen Therapy,Hyperbaric Oxygen Therapy (HBOT) in Hyderabad | ALMACURA,"Hyperbaric Oxygen Therapy (HBOT) at Almacura boosts healing, energy, and cellular repair as part of your care plan."
+EECP Therapy,EECP Therapy for Heart Health | ALMACURA Hyderabad,"Non-invasive EECP therapy to improve circulation, cardiac health, and recovery under expert medical supervision at ALMACURA."
+HIFEM Pelvic Chair,HIFEM Pelvic Chair Therapy | ALMACURA,Strengthen pelvic floor muscles and improve bladder control with advanced HIFEM Pelvic Chair therapy at ALMACURA.
+HIFU Women Wellness,HIFU Women's Wellness Treatment | ALMACURA,"Experience non-surgical HIFU treatment for vaginal rejuvenation, pelvic wellness, and intimate health at ALMACURA."
+PRP Therapy,PRP Regenerative Therapy | ALMACURA Hyderabad,"Discover Platelet-Rich Plasma (PRP) therapy for regenerative healing, tissue repair, and advanced wellness solutions."
+DSCB Pain Portal Block,Chronic Pain Management Therapy | ALMACURA,Find relief from chronic pain with advanced DSCB Pain Portal Block therapy and personalized pain management programs.
+Regenerative Yoga,Regenerative Yoga Therapy | ALMACURA,"Restore mobility, improve flexibility, and support healing through guided regenerative yoga programs at ALMACURA."
+Integrative Medicine,Integrative Medicine | Almacura Institute,Almacura's integrative medicine combines modern and holistic care to treat root causes and restore lasting vitality.
+Healthspan Optimization,Healthspan Optimization | ALMACURA,"Optimise your healthspan with Almacura's science-backed protocols for longevity, energy, and disease prevention."
+Functional Gynaecology,Functional Gynaecology in Hyderabad | ALMACURA,"Expert care for hormonal balance, menopause, pelvic health, and women's wellness through functional gynaecology."
+Longevity Protocols,Longevity & Healthy Aging Programs | ALMACURA,"Discover Almacura's longevity programs focused on healthy ageing, disease prevention, and extending healthspan."
+Diagnostics,Advanced Health Diagnostics | ALMACURA,"Comprehensive diagnostic evaluations for personalized treatment planning, disease prevention, and health optimization."
+Nutrition,Clinical Nutrition & Lifestyle Care | ALMACURA,"Personalised nutrition plans at Almacura support healing, hormone balance, and healthspan optimisation."
+Detox Protocol,Medical Detox Program | ALMACURA,"Safe, medically supervised detoxification programs designed to improve energy, metabolism, and overall health."
+Energy Revitalization,Energy Revitalization Program | ALMACURA,"Restore vitality, reduce fatigue, and improve physical performance through personalized energy optimization programs."
+Longevity Strategy,Personalized Longevity Strategy | ALMACURA,Achieve healthier aging with evidence-based longevity strategies tailored to your health goals and lifestyle.
+Contact,Contact ALMACURA Hyderabad | Book a Consultation,"Contact ALMACURA to schedule a consultation for integrative medicine, women's health, regenerative therapies, and wellness programs."
+IV Therapy,IV Therapy | Nutrient Infusions | Almacura,Almacura's IV therapy delivers vitamins and nutrients directly for faster recovery and enhanced vitality.
+therapies/ hydrogen,Hydrogen Therapy | Almacura Institute,"Explore hydrogen therapy at Almacura, an antioxidant-rich treatment supporting recovery and reduced inflammation."
+/therapies/red-light,Red Light Therapy | Almacura Institute,"Almacura's red light therapy supports cellular repair, skin health, and recovery via photobiomodulation."
+/therapies/acupuncture,Acupuncture Therapy | Almacura Institute,"Almacura offers acupuncture as part of integrative care to relieve pain, balance hormones, and support wellness."
+,,
+URL Structure suggestion,,
+,/,
+,/about,
+,/about/founder          (nested under about — currently /founder),
+,/about/team             (nested under about — currently /team),
+,/contact,
+,/for-doctors,
+,/programs,
+,,
+,/services                          (new hub page),
+,/services/integrative-medicine,
+,/services/healthspan-optimization,
+,/services/functional-gynaecology,
+,/services/longevity,
+,/services/diagnostics,
+,/services/nutrition,
+,,
+,"/therapies                         (keep as-is, already well-structured)",
+,/therapies/hbot,
+,/therapies/eecp,
+,/therapies/iv-therapy,
+,/therapies/hydrogen,
+,/therapies/red-light,
+,/therapies/acupuncture,
+,/therapies/prp,
+,/therapies/hifem,
+,/therapies/hifu,
+,/therapies/dscb,
+,/therapies/yoga,
+,/therapies/infrared-sauna,
+,,
+,/blog,
+,/blog/[post-slug]        (individual articles — big opportunity for long-tail SEO),
+,/faq,
+,/testimonials,
+,/privacy-policy           (rename from /privacy — more standard & descriptive),
+,,
+ROBOTS.TXT,,
+,User-agent: *,
+,Allow: /,
+,Disallow: /privacy,
+,Sitemap: https://www.almacura.in/sitemap.xml,
+,,
+,Notes:,
+,,
+,"Make sure it's served at https://www.almacura.in/robots.txt (root of the www host, since that's your canonical domain based on your links).",
+,"Don't disallow /faq, /blog, /testimonials — these are valuable indexable pages.",
+,"/privacy is low-value for search, optional to disallow (won't remove it from Google if already indexed — you'd need noindex for that instead)",
+,,
+sitemap.xml,,
+,,
+,will share .txt file directly,
+,,
+schema,,
+,,
+,will share .txt file directly,
