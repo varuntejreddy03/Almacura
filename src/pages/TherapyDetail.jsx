@@ -10,8 +10,8 @@ export default function TherapyDetail() {
   const { slug } = useParams();
   const therapy = therapiesData[slug];
   useSEO(
-    therapy ? `${therapy.title} | ALMACURA Hyderabad` : 'Therapy | ALMACURA',
-    therapy ? `${therapy.description} Learn more about ${therapy.title} at ALMACURA, Hyderabad.` : 'Advanced therapy at ALMACURA.',
+    therapy?.seoTitle || (therapy ? `${therapy.title} | ALMACURA Hyderabad` : 'Therapy | ALMACURA'),
+    therapy?.seoDescription || (therapy ? `${therapy.description} Learn more about ${therapy.title} at ALMACURA, Hyderabad.` : 'Advanced therapy at ALMACURA.'),
     `/therapies/${slug}`
   );
 

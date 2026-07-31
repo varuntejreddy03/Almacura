@@ -17,6 +17,9 @@ const FunctionalGynaecology = lazy(() => import('./pages/FunctionalGynaecology')
 const IntegrativeMedicine = lazy(() => import('./pages/IntegrativeMedicine'));
 const HealthspanOptimization = lazy(() => import('./pages/HealthspanOptimization'));
 const Longevity = lazy(() => import('./pages/Longevity'));
+const DetoxProtocol = lazy(() => import('./pages/DetoxProtocol'));
+const EnergyRevitalization = lazy(() => import('./pages/EnergyRevitalization'));
+const LongevityStrategy = lazy(() => import('./pages/LongevityStrategy'));
 const Diagnostics = lazy(() => import('./pages/Diagnostics'));
 const Nutrition = lazy(() => import('./pages/Nutrition'));
 const ForDoctors = lazy(() => import('./pages/ForDoctors'));
@@ -92,6 +95,11 @@ function App() {
             <Route path="/services/longevity" element={<Longevity />} />
             <Route path="/services/diagnostics" element={<Diagnostics />} />
             <Route path="/services/nutrition" element={<Nutrition />} />
+
+            {/* Program Pages */}
+            <Route path="/programs/detox" element={<DetoxProtocol />} />
+            <Route path="/programs/energy-revitalization" element={<EnergyRevitalization />} />
+            <Route path="/programs/longevity-strategy" element={<LongevityStrategy />} />
 
             {/* Therapies */}
             <Route path="/therapies" element={<Therapies />} />

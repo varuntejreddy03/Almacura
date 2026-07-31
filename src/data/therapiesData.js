@@ -1,6 +1,8 @@
 ﻿export const therapiesData = {
   hbot: {
     title: "Hyperbaric Oxygen Therapy (HBOT)",
+    seoTitle: "Hyperbaric Oxygen Therapy (HBOT) in Hyderabad | ALMACURA",
+    seoDescription: "Hyperbaric Oxygen Therapy (HBOT) at Almacura boosts healing, energy, and cellular repair as part of your care plan.",
     subtitle: "Enhanced tissue oxygenation under pressure",
     img: "/therapy-hbot.jpg",
     description: "Breathing pure oxygen in a pressurized chamber to enhance tissue oxygenation.",
@@ -39,6 +41,8 @@
   },
   ozone: {
     title: "Ozone Therapy",
+    seoTitle: "Ozone Therapy in Hyderabad | ALMACURA",
+    seoDescription: "Medical-grade ozone therapy at Almacura to stimulate immune function, improve oxygen delivery, and support healing.",
     subtitle: "Medical ozone for oxygen metabolism enhancement",
     img: "/therapy-ozone.jpg",
     description: "Use of medical-grade ozone to stimulate the immune system and improve oxygen delivery.",
@@ -75,6 +79,8 @@
   },
   'iv-therapy': {
     title: "IV Nutrient Therapy",
+    seoTitle: "IV Therapy | Nutrient Infusions | Almacura",
+    seoDescription: "Almacura's IV therapy delivers vitamins and nutrients directly for faster recovery and enhanced vitality.",
     subtitle: "Direct cellular nourishment",
     img: "/therapy-iv.jpg",
     description: "Intravenous administration of vitamins, minerals, and antioxidants for maximum absorption.",
@@ -110,6 +116,8 @@
   },
   hydrogen: {
     title: "Hydrogen Therapy",
+    seoTitle: "Hydrogen Therapy | Almacura Institute",
+    seoDescription: "Explore hydrogen therapy at Almacura, an antioxidant-rich treatment supporting recovery and reduced inflammation.",
     subtitle: "Selective antioxidant for oxidative stress reduction",
     img: "/therapy-hydrogen.jpg",
     description: "Inhalation of molecular hydrogen gas to neutralize harmful free radicals.",
@@ -141,6 +149,8 @@
   },
   'red-light': {
     title: "Red Light Therapy",
+    seoTitle: "Red Light Therapy | Almacura Institute",
+    seoDescription: "Almacura's red light therapy supports cellular repair, skin health, and recovery via photobiomodulation.",
     subtitle: "Mitochondrial energy optimization",
     img: "/therapy-redlight.jpg",
     description: "Exposing the body to low-level red and near-infrared light to stimulate cellular energy.",
@@ -174,6 +184,8 @@
   },
   acupuncture: {
     title: "Acupuncture",
+    seoTitle: "Acupuncture Therapy | Almacura Institute",
+    seoDescription: "Almacura offers acupuncture as part of integrative care to relieve pain, balance hormones, and support wellness.",
     subtitle: "Balancing energy and biological systems",
     img: "/therapy-acupuncture.jpg",
     description: "Traditional practice of inserting thin needles at specific points to balance the body's flow of energy (Qi).",
@@ -209,6 +221,8 @@
   },
   hifem: {
     title: "HIFEM - Pelvic Chair Therapy",
+    seoTitle: "HIFEM Pelvic Chair Therapy | ALMACURA",
+    seoDescription: "Strengthen pelvic floor muscles and improve bladder control with advanced HIFEM Pelvic Chair therapy at ALMACURA.",
     subtitle: "High-Intensity Focused Electromagnetic Technology",
     img: "/HIFEM Pelvic Chair therapy.jpeg",
     description: "A non-invasive procedure for pelvic floor strengthening and urinary incontinence treatment.",
@@ -246,6 +260,8 @@
   },
   hifu: {
     title: "HIFU - Women Wellness Therapy",
+    seoTitle: "HIFU Women's Wellness Treatment | ALMACURA",
+    seoDescription: "Experience non-surgical HIFU treatment for vaginal rejuvenation, pelvic wellness, and intimate health at ALMACURA.",
     subtitle: "High-Intensity Focused Ultrasound for Restoration",
     img: "/therapy-hifu.jpg",
     description: "Advanced non-surgical ultrasonic technology for vaginal rejuvenation and tissue tightening.",
@@ -283,6 +299,8 @@
   },
   eecp: {
     title: "EECP Therapy",
+    seoTitle: "EECP Therapy for Heart Health | ALMACURA Hyderabad",
+    seoDescription: "Non-invasive EECP therapy to improve circulation, cardiac health, and recovery under expert medical supervision at ALMACURA.",
     subtitle: "Enhanced External Counter Pulsation",
     img: "/therapy-eecp.jpg",
     description: "A non-invasive treatment that improves blood flow to the heart and systemic circulation.",
@@ -320,6 +338,8 @@
   },
   prp: {
     title: "PRP Therapy",
+    seoTitle: "PRP Regenerative Therapy | ALMACURA Hyderabad",
+    seoDescription: "Discover Platelet-Rich Plasma (PRP) therapy for regenerative healing, tissue repair, and advanced wellness solutions.",
     subtitle: "Platelet-rich plasma for regenerative support",
     img: "/therapy-prp.jpg",
     description: "A regenerative protocol using concentrated platelets and growth factors from the patient's own blood to support tissue repair.",
@@ -357,6 +377,8 @@
   },
   dscb: {
     title: "DSCB - Distal Sodium Channel Block (Pain Portal Block)",
+    seoTitle: "Chronic Pain Management Therapy | ALMACURA",
+    seoDescription: "Find relief from chronic pain with advanced DSCB Pain Portal Block therapy and personalized pain management programs.",
     subtitle: "Distal Sodium Channel Block — minimally invasive pain portal block therapy",
     img: "/therapy-dscb.jpg",
     description: "Advanced clinical protocols for managing chronic and acute pain through localized neuro-modulation.",
@@ -394,6 +416,8 @@
   },
   yoga: {
     title: "Regenerative Yoga Therapy",
+    seoTitle: "Regenerative Yoga Therapy | ALMACURA",
+    seoDescription: "Restore mobility, improve flexibility, and support healing through guided regenerative yoga programs at ALMACURA.",
     subtitle: "Clinical yoga for physiological regulation and stress management",
     img: "/Regenerative Yoga Therapy.jpeg",
     description: "Yoga therapy at ALMACURA is not fitness — it is a clinical tool for physiological regulation, stress management, and long-term functional recovery.",
@@ -430,6 +454,8 @@
   },
   'infrared-sauna': {
     title: "Infrared Sauna",
+    seoTitle: "Infrared Sauna Therapy | ALMACURA Hyderabad",
+    seoDescription: "Deep thermal infrared sauna therapy for cellular detoxification, circulation, muscle recovery, and stress relief at ALMACURA.",
     subtitle: "Deep thermal heat for cellular detoxification & recovery",
     img: "/Infrared Sauna.jpeg",
     description: "Exposing the body to infrared heat wavelengths to stimulate circulation, promote detoxification, and support cellular repair.",
