@@ -2,13 +2,65 @@ import useSEO from '../hooks/useSEO';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Target, Zap, ShieldCheck, Brain, Droplets, Microscope, Activity, Wind, CheckCircle, Heart, Shield, ArrowRight, Calendar, MapPin, Phone, MessageSquare, Clock, ChevronRight, TrendingUp, Leaf, HeartPulse, FlaskConical, Flame, Sun } from 'lucide-react';
+import { Target, Zap, ShieldCheck, Brain, Droplets, Microscope, Activity, Wind, CheckCircle, Heart, Shield, ArrowRight, Calendar, MapPin, Phone, MessageSquare, Clock, ChevronRight, TrendingUp, Leaf, HeartPulse, FlaskConical, Flame, Sun, Plus, Minus } from 'lucide-react';
 import SuitabilityModal from '../components/SuitabilityModal';
 
 export default function Home() {
   useSEO("Integrative Medicine & Functional Gynaecology in Hyderabad | ALMACURA", "Discover integrative medicine & functional gynaecology at Almacura. We treat root causes, optimise healthspan, and restore vitality — not just symptoms.", "/");
 
   const [isSuitabilityOpen, setIsSuitabilityOpen] = useState(false);
+  const [activeFaq, setActiveFaq] = useState(null);
+
+  const homeFaqs = [
+    {
+      question: "What is integrative medicine, and how is it different from conventional treatment?",
+      answer: "Integrative medicine combines conventional diagnostics and treatment with evidence-informed complementary therapies to address the root cause of a condition, not just its symptoms. Instead of treating an isolated complaint, an integrative approach looks at nutrition, hormones, gut health, inflammation, and lifestyle factors together to build a personalised treatment plan aimed at long-term health, not just short-term symptom relief."
+    },
+    {
+      question: "What is functional gynaecology, and how is it different from visiting a regular gynaecologist?",
+      answer: "Functional gynaecology looks beyond standard diagnosis and prescription to investigate the underlying hormonal, metabolic, and lifestyle drivers behind conditions like irregular cycles, PCOS, perimenopause symptoms, or chronic pelvic issues. While a conventional gynaecologist typically manages symptoms or performs procedures, a functional approach also works on why the imbalance occurred, using detailed testing and individualised treatment plans."
+    },
+    {
+      question: "What conditions does Hyperbaric Oxygen Therapy (HBOT) treat?",
+      answer: "HBOT involves breathing pure oxygen in a pressurised chamber to increase the amount of oxygen your blood can carry. It's commonly used to support faster wound healing, post-surgical and sports recovery, reduction of inflammation, and management of certain chronic and non-healing conditions. It's also increasingly explored for cognitive and anti-ageing support as part of a broader healthspan plan."
+    },
+    {
+      question: "Is HBOT safe, and how many sessions are usually needed to see results?",
+      answer: "HBOT is a well-established, non-invasive therapy when administered by trained professionals in a monitored setting. Most protocols involve a course of multiple sessions rather than a single visit, as oxygen delivery benefits build cumulatively over time. The right number of sessions depends on your specific condition and goals, which is why we start with a consultation to design a plan suited to you."
+    },
+    {
+      question: "What is EECP therapy, and who is it recommended for?",
+      answer: "EECP (Enhanced External Counterpulsation) is a non-invasive therapy that uses cuffs on the legs, inflated and deflated in sync with your heartbeat, to improve blood flow to the heart. It's often considered for people with angina or coronary artery disease who want a non-surgical option to improve circulation and reduce chest pain symptoms, typically alongside — not instead of — guidance from a cardiologist."
+    },
+    {
+      question: "How does PRP therapy work, and what is it used for?",
+      answer: "Platelet-Rich Plasma (PRP) therapy uses a concentrated portion of your own blood platelets, which contain growth factors that support tissue repair and regeneration. It's used across several areas of care, including hair restoration, skin rejuvenation, joint and soft-tissue recovery, and select gynaecological applications, where it may support tissue healing and function."
+    },
+    {
+      question: "What are the benefits of ozone therapy, and is it safe?",
+      answer: "Ozone therapy introduces a controlled, medical-grade ozone-oxygen mixture into the body to help improve circulation, support the immune system, and reduce inflammation. When administered by trained practitioners using proper medical protocols and dosing, it's considered a safe complementary therapy; as with any treatment, it should be done under professional supervision and isn't a substitute for necessary conventional care."
+    },
+    {
+      question: "What is pelvic floor therapy, and who needs it?",
+      answer: "Pelvic floor therapy addresses weakness, tightness, or dysfunction in the muscles that support the bladder, uterus, and bowel. It's commonly recommended for women experiencing urinary incontinence, pelvic pain, prolapse symptoms, postpartum recovery needs, or sexual dysfunction linked to pelvic floor issues, and is often used alongside functional gynaecology care."
+    },
+    {
+      question: 'What does "healthspan optimisation" mean, and how is it measured?',
+      answer: "Healthspan refers to the number of years you live in good health, free of chronic disease and functional decline — as distinct from lifespan, which is simply how long you live. Optimising healthspan typically involves tracking biomarkers (metabolic, hormonal, inflammatory), assessing lifestyle factors, and using targeted interventions to slow age-related decline and extend the years you spend feeling well and active."
+    },
+    {
+      question: "Do I need a referral, or can I book a consultation directly at Almacura?",
+      answer: "You can book a consultation directly with our team — no referral is required. Simply call or WhatsApp us at +91 9966030085, or email info@almacura.in, and we'll schedule your visit. During your first appointment, we review your health history and goals to recommend the most appropriate diagnostic tests and treatment path for you."
+    },
+    {
+      question: "Where is Almacura located in Hyderabad, and what are your clinic hours?",
+      answer: "Almacura is located at Nightingale Hospital, X Roads, Nagarjuna Sagar Ring Road, near Santoshnagar, Saidabad, Hyderabad 500059. We're open Monday to Saturday from 9:00 AM to 6:00 PM. You can reach us at +91 9966030085 (phone & WhatsApp) or info@almacura.in to book an appointment."
+    },
+    {
+      question: "Is there scientific evidence behind Almacura's therapies?",
+      answer: "Yes — our treatment approach draws on published clinical research and established medical protocols for therapies such as HBOT, EECP, PRP, and ozone therapy, which are used in evidence-informed and regulatory frameworks worldwide. We combine this research base with individualised diagnostics so treatment decisions are tailored to your specific health picture rather than applied generically."
+    }
+  ];
   const fadeInUp = {
     initial: { opacity: 0, y: 30 },
     whileInView: { opacity: 1, y: 0 },
@@ -488,7 +540,61 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 9. Final CTA Section */}
+      {/* 9. FAQ Section */}
+      <section className="py-12 md:py-24 bg-white">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-8">
+          <motion.div {...fadeInUp} className="text-center mb-10 md:mb-16">
+            <h2 className="font-cormorant text-4xl md:text-5xl font-bold text-brand-navy mb-4">Frequently Asked Questions</h2>
+            <p className="font-dm text-lg text-brand-text max-w-2xl mx-auto">Clear answers about our integrative approach, therapies, and care.</p>
+            <div className="w-16 h-1 bg-brand-gold mx-auto rounded-full mt-6"></div>
+          </motion.div>
+
+          <div className="max-w-4xl mx-auto space-y-4">
+            {homeFaqs.map((faq, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.05 }}
+                className="bg-brand-ice border border-brand-teal/10 rounded-2xl overflow-hidden"
+              >
+                <button
+                  onClick={() => setActiveFaq(activeFaq === index ? null : index)}
+                  className="w-full px-6 py-5 flex justify-between items-center gap-4 text-left hover:bg-brand-teal/5 transition-colors"
+                >
+                  <h3 className="font-dm font-semibold text-brand-navy text-base md:text-lg pr-4">{faq.question}</h3>
+                  <div className="text-brand-teal flex-shrink-0">
+                    {activeFaq === index ? <Minus size={20} /> : <Plus size={20} />}
+                  </div>
+                </button>
+                <motion.div
+                  initial={false}
+                  animate={{ height: activeFaq === index ? 'auto' : 0, opacity: activeFaq === index ? 1 : 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="overflow-hidden"
+                >
+                  <div className="px-6 pb-5 text-brand-text font-dm leading-relaxed">{faq.answer}</div>
+                </motion.div>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="mt-12 text-center">
+            <Link to="/faq">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-8 py-4 bg-white text-brand-navy border border-brand-teal/20 rounded-full font-dm font-bold text-xs tracking-[0.2em] uppercase shadow-sm hover:border-brand-teal hover:bg-brand-ice transition-all inline-flex items-center gap-3"
+              >
+                View All FAQs <ArrowRight className="w-4 h-4" />
+              </motion.button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* 10. Final CTA Section */}
       <section className="py-16 md:py-32 bg-brand-beige relative overflow-hidden">
         <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-brand-teal/5 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
         <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
