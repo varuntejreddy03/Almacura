@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://almacura.in/sitemap.xml
+Disallow: /privacy
+Sitemap: https://www.almacura.in/sitemap.xml
